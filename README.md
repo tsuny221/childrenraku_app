@@ -41,3 +41,7 @@ https://docs.google.com/spreadsheets/d/1VkMcbUaErn9sy6cioJIrw_9qh0R-E5k8SXxHGA3F
 
 - 保護者同士のチャットが行える機能（イベント委員ごとにルームの作成ができるなど）
 - 写真管理機能（施設で撮った写真をアルバムで管理）
+
+### 遷移図/ワイヤーフレーム
+
+- https://xd.adobe.com/view/c1a0f38d-7063-4b83-a51b-e1d52729a880-94f3/
