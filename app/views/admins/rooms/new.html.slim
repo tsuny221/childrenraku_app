@@ -1,0 +1,14 @@
+h2
+  | ルームの作成
+= form_with model: @room ,url: admins_rooms_path do |f|
+  = render "layouts/errors", obj: @room
+  .field
+    = f.label :name
+    br
+    = f.text_field :name, autofocus: true, autocomplete: "name"
+  .field
+    = f.label :key
+    br
+    = f.text_field :key, autofocus: true, autocomplete: "key"
+  .actions
+    = f.submit "ルームを作成"
