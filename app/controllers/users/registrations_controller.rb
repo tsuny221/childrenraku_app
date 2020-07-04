@@ -6,19 +6,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
    def new
-    #byebug
    @room = Room.find_by(key: params[:room_key])
    unless @room.present?
+    #@roomがない＝一致するものがないということ
     flash[:notice] = "ルームキーが見つかりません"
     render 'rooms/new'
    else
      super
-   end
-   end
+  end
+end
 
   # POST /resource
     def create
-      @room = Room.find_by(@room)
+    @room =  params[:user][:room_id]
+    @family = Family.new
+    @family.room_id = @room.to_i
+    @family.save
+    #familiesテーブルの作成
+    params[:user][:family_id] = @family.id
+    #作成したfamilyのidを入れる。hiddenは必要ない。
      super
     end
 
