@@ -1,0 +1,60 @@
+h2
+  | Sign up
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = render "users/shared/error_messages", resource: resource
+  .field
+    = f.label :room_id
+    br
+    = f.text_field :room_id, value: @room.id, readonly: true
+  .field
+    = f.label :last_name
+    br
+    = f.text_field :last_name, autofocus: true, autocomplete: "family-name"
+  .field
+    = f.label :first_name
+    br
+    = f.text_field :first_name, autofocus: true, autocomplete: "given-name"
+  .field
+    = f.label :last_name_kana
+    br
+    = f.text_field :last_name_kana, autofocus: true
+  .field
+    = f.label :first_name_kana
+    br
+    = f.text_field :first_name_kana, autofocus: true
+  .field
+    = f.label :last_name_kana
+    br
+    = f.text_field :postcode, autofocus: true
+  .field
+    = f.label :postcode
+    br
+    = f.text_field :postcode, autofocus: true, autocomplete: "post-code"
+  .field
+    = f.label :address
+    br
+    = f.text_field :address, autofocus: true, autocomplete: "address"
+  .field
+    = f.label :phone_number
+    br
+    = f.text_field :phone_number, autofocus: true, autocomplete: "tele"
+  .field
+    = f.label :email
+    br
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+  .field
+    = f.label :password
+    - if @minimum_password_length
+      em
+        | (
+        = @minimum_password_length
+        |  characters minimum)
+    br
+    = f.password_field :password, autocomplete: "new-password"
+  .field
+    = f.label :password_confirmation
+    br
+    = f.password_field :password_confirmation, autocomplete: "new-password"
+  .actions
+    = f.submit "Sign up"
+= render "users/shared/links"

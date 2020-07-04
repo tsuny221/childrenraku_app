@@ -1,0 +1,9 @@
+h2
+  | ルームキーの入力
+= form_with model: @room ,url: new_user_registration_path, method: :get, local: true do |f|
+  .field
+    = f.label :room_key
+    br
+    = f.text_field :room_key
+  .actions
+    = f.submit "ルームキー"
