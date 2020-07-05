@@ -9,14 +9,31 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
       attributes:
         user:
-          name: 名前
+          last_name: 苗字
+          first_name: 名前
+          last_name_kana: フリガナ
+          first_name_kana: フリガナ
           email: メールアドレス
-          birth_date: 年齢
-          sex: 性別
-          school: 学校名
-          admin: 管理者権限
+          phone_number: 電話番号
+          postcode: 郵便番号
+          address: 住所
+          profile_image: プロフィール画像
           password: パスワード
           password_confirmation: パスワード（確認）
+          created_at: 登録日時
+          updated_at: 更新日時
+          remember_me: ログインを記憶する
+        admin:
+          name: 名前
+          email: メールアドレス
+          password: パスワード
+          password_confirmation: パスワード（確認）
+          created_at: 登録日時
+          updated_at: 更新日時
+          remember_me: ログインを記憶する
+        room:
+          name: ルーム名
+          key: ルームキー
           created_at: 登録日時
           updated_at: 更新日時
           remember_me: ログインを記憶する

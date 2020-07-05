@@ -73,3 +73,5 @@ gem 'rubocop-airbnb'
 
 gem 'devise'
 gem 'devise_invitable'
+gem 'devise-i18n'
+gem 'devise-i18n-views'

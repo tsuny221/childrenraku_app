@@ -1,2 +1,122 @@
-h1 home#top
-= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav_txt"
+.top_bg
+  .container
+    .row
+      section.main-visual
+      .main-visual_cont.wrap
+        .main-visual-left
+          img.main-visual_img src="images/main-visual.jpg" /
+        .main-visual-right
+          h2.white_txt.main-visual_txt
+            | 出欠確認や連絡網をスムーズに
+            br
+            | 保育へのゆとりを
+          .signup_btn
+            p.yellow_txt.txtm 新規登録ですぐに使用できます
+            a.btnl.yellow_grad_btn href=""  いますぐ新規登録
+.container
+  .row
+      section.point
+        img.circle_bg1 src="images/circle.png" /
+        .wrap
+          h3.blue_txt
+            img.point-logo_img src="images/logo-blue.png" >/
+            | は、保育者の事務業務をICTで省力化し、
+            br
+            | 保育・教育の質向上を支援するツールです。
+          .point_cont
+            .point_box
+              .point_detail
+                p.txts
+                  | 習い事など出入りが多く、
+                  br
+                  | 情報共有がしきれない
+              img.point_img src="" /
+              p.blue_txt.txtm 入退室管理
+            .point_box
+              .point_detail
+                p.txts
+                  | 予定表を子どもが出し忘れたり、
+                  br
+                  | なくしてしまうことが…
+              img.point_img src="" /
+              p.blue_txt.txtm 予定表管理
+            .point_box
+              .point_detail
+                p.txts
+                  | 情報共有や緊急の時、
+                  img.point_img src="" /
+              img.point_img src="" /
+              p.blue_txt.txtm 連絡網
+            .point_box
+              .point_detail
+                p.txts 名簿の作成が大変
+              img.point_img src="" /
+              p.blue_txt.txtm 児童一覧
+        img.circle_bg1 src="images/circle.png" /
+.top_bg
+  .container
+    .row
+      section.intro.top_bg
+        .wrap
+          .intro_box
+            .intro_txt_box
+              p.blue_txt.intro_count 01
+              p.txtl
+                span.marker 入退室管理
+              p.txtm
+                | 子どもが登所した際に入室、退室をクリックするだけで切り替えが可能。
+                | 入室時退室時に保護者へメールを送ることが可能です。
+            img.intro_img src="images/main-visual.jpg" /
+          .intro_box
+            .intro_txt_box
+              p.blue_txt.intro_count 02
+              p.txtl
+                span.marker 入退室管理
+              p.txtm
+                | 子どもが登所した際に入室、退室をクリックするだけで切り替えが可能。
+                | 入室時退室時に保護者へメールを送ることお可能です。
+            img.intro_img src="images/main-visual.jpg" /
+          .intro_box
+            .intro_txt_box
+              p.blue_txt.intro_count 03
+              p.txtl
+                span.marker 入退室管理
+              p.txtm
+                | 子どもが登所した際に入室、退室をクリックするだけで切り替えが可能。
+                | 入室時退室時に保護者へメールを送ることお可能です。
+            img.intro_img src="images/main-visual.jpg" /
+.container
+  .row
+    section.catch-copy
+      .wrap
+        h2.catch-copy_txt 体験してみませんか？
+        .signup_btn
+           p.txtm 新規登録ですぐに使用できます
+           a.btnl.yellow_grad_btn href=""  いますぐ新規登録
+.top_bg
+  .container
+    .row
+      section.contact.top_bg
+        h2.contact_txt お問い合わせ
+        .form.wrap
+          form.form_cont
+            p.form_label
+              span.form_item> 必須
+              | 氏名
+            input.form_item_input placeholder="例）山田太郎" type="text" /
+          form.form_cont
+            p.form_label
+              span.form_item> 必須
+              | 電話番号
+            input.form_item_input placeholder="例）000-0000-0000" type="text" /
+          form.form_cont
+            p.form_label
+              span.form_item> 必須
+              | メールアドレス
+            input.form_item_input placeholder="例）example@gmail.com" type="text" /
+          form.form_cont
+            p.form_label
+              span.form_item> 必須
+              | お問い合わせ内容
+            textarea.form_item_textarea
+          input.form_btn type="submit" value="送信する" /

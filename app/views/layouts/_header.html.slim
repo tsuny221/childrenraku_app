@@ -1,0 +1,11 @@
+header#header.navbar.navbar-fixed-top.top_bg
+  .container
+        nav.nav.navbar-nav.navbar-left.header__logo
+          = link_to root_path do
+            = image_tag src="logo.png", class: "logo header__logo_img"
+        nav.collapse.navbar-collapse#navbarList
+          ul.nav.navbar-nav.navbar-right.header__nav_bg
+            li.nav_list = link_to 'ログイン', user_session_path, class:"header__nav_txt yellow_txt"
+            li.nav_list = link_to '新規登録', new_user_registration_path, class:"header__nav_txt yellow_txt"
+        button.navbar-toggler data-toggle="collapse" data-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="ナビゲーションの切替"
+        /! ハンバーガーメニュー

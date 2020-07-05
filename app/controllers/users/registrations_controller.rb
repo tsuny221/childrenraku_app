@@ -19,11 +19,13 @@ end
 
   # POST /resource
   def create
-    @room = params[:user][:room_id]
+    @room = Room.find_by(id: params[:user][:room_id])
+    # パラメータから@roomを再度探す
     @family = Family.new
-    @family.room_id = @room.to_i
+    @family.room_id = @room.id
     # stringなので数字に変換
-    @family.save
+    @family.save!
+
     # familiesテーブルの作成
     params[:user][:family_id] = @family.id
     # 作成したfamilyのidを入れる。hiddenは必要ない。
