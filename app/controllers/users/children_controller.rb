@@ -44,6 +44,7 @@ class Users::ChildrenController < ApplicationController
     flash[:notice] = "お子様の情報を削除完了いたしました。"
     redirect_to users_children_path
   end
+
   private
 
   def child_params

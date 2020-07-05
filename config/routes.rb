@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users, skip: :all
   devise_scope :user do
     get 'users/sign_in' => 'users/sessions#new', as: 'new_user_session'
@@ -10,7 +9,7 @@ Rails.application.routes.draw do
     get 'users/password/new' => 'users/passwords#new', as: 'new_user_password'
     get 'users/invitation/accept' => 'users/invitations#edit', as: 'accept_user_invitation'
     get 'users/invitation/new' => 'users/invitations#new', as: 'new_user_invitation'
-    put 'users/invitation' => 'users/invitations#update', as:''
+    put 'users/invitation' => 'users/invitations#update', as: ''
     post 'users/invitation' => 'users/invitations#create', as: 'user_invitation'
   end
 
