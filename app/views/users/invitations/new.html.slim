@@ -1,0 +1,9 @@
+h1 招待メール送信
+
+= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f|
+  = render "users/shared/error_messages", resource: resource
+
+  = f.label :email
+  = f.text_field :email
+
+  = f.submit

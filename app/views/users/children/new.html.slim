@@ -1,0 +1,38 @@
+h2
+  |お子様の情報登録
+= form_with model: @child, url: users_children_path do |f|
+  = render "layouts/errors", obj: @child
+  .field
+    = f.label :last_name
+    br
+    = f.text_field :last_name, autofocus: true, autocomplete: "name"
+  .field
+    = f.label :first_name
+    br
+    = f.text_field :first_name, autofocus: true, autocomplete: "name"
+  .field
+    = f.label :last_name_kana
+    br
+    = f.text_field :last_name_kana, autofocus: true, autocomplete: "name"
+  .field
+    = f.label :first_name_kana
+    br
+    = f.text_field :first_name_kana, autofocus: true, autocomplete: "name"
+  .field
+    = f.label :grade
+    br
+    = f.text_field :grade, autofocus: true, autocomplete: "grade"
+  .field
+    = f.label :school_class
+    br
+    = f.text_field :school_class, autofocus: true, autocomplete: "class"
+  .field
+    = f.label :allergy
+    br
+    = f.text_field :allergy, autofocus: true
+  .field
+    = f.label :special_notes
+    br
+    = f.text_area :special_notes, autofocus: true
+  .actions
+    = f.submit "登録"

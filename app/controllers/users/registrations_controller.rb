@@ -5,28 +5,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-   def new
-   @room = Room.find_by(key: params[:room_key])
-   unless @room.present?
-    #@roomがない＝一致するものがないということ
-    flash[:notice] = "ルームキーが見つかりません"
-    render 'rooms/new'
-   else
-     super
-  end
+  def new
+    @room = Room.find_by(key: params[:room_key])
+    # room#newのformから持ってきたパラメーター
+    if @room.present?
+      super
+    else
+      # @roomがない＝一致するものがないということ
+      flash[:notice] = "ルームキーが見つかりません"
+      render 'rooms/new'
+    end
 end
 
   # POST /resource
-    def create
-    @room =  params[:user][:room_id]
+  def create
+    @room = params[:user][:room_id]
     @family = Family.new
     @family.room_id = @room.to_i
+    # stringなので数字に変換
     @family.save
-    #familiesテーブルの作成
+    # familiesテーブルの作成
     params[:user][:family_id] = @family.id
-    #作成したfamilyのidを入れる。hiddenは必要ない。
-     super
-    end
+    # 作成したfamilyのidを入れる。hiddenは必要ない。
+    super
+  end
 
   # GET /resource/edit
   # def edit

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, skip: :all
   devise_scope :user do
     get 'users/sign_in' => 'users/sessions#new', as: 'new_user_session'
@@ -7,6 +8,10 @@ Rails.application.routes.draw do
     get 'users/sign_up' => 'users/registrations#new', as: 'new_user_registration'
     post 'users' => 'users/registrations#create', as: 'user_registration'
     get 'users/password/new' => 'users/passwords#new', as: 'new_user_password'
+    get 'users/invitation/accept' => 'users/invitations#edit', as: 'accept_user_invitation'
+    get 'users/invitation/new' => 'users/invitations#new', as: 'new_user_invitation'
+    put 'users/invitation' => 'users/invitations#update', as:''
+    post 'users/invitation' => 'users/invitations#create', as: 'user_invitation'
   end
 
   devise_for :admins, skip: :all
@@ -21,7 +26,12 @@ Rails.application.routes.draw do
 
   root 'home#top'
   resources :rooms, only: [:new]
-	namespace :admins do
-		resources :rooms, only: [:new, :create]
-	end
+  # 共通
+  namespace :admins do
+    resources :rooms, only: [:new, :create]
+  end
+  # 管理者
+  namespace :users do
+    resources :children
+  end
 end
