@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       super
     else
       # @roomがない＝一致するものがないということ
-      flash[:notice] = "ルームキーが見つかりません"
+      flash[:alert] = "ルームキーが見つかりません"
       render 'rooms/new'
     end
 end

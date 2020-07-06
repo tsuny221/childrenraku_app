@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
 
   root 'home#top'
+  get 'about' => 'home#about', as: 'about'
   resources :rooms, only: [:new]
   # 共通
   namespace :admins do

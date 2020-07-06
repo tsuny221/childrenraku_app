@@ -15,3 +15,4 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+//ヘッダーの高さ分だけコンテンツを下げる

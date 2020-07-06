@@ -29,6 +29,7 @@
 }
 
 body {
+  padding-top: 50px;
   color: #5c6567;
   font-family: "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体",
     "YuGothic", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ",
@@ -58,6 +59,12 @@ section {
 table {
   border-collapse: collapse;
 }
+
+/*------------Bootstrap上書き-------------*/
+.navbar-nav .nav-link:hover {
+  background-color: #fff;
+}
+
 /*------------全ページ共通-------------*/
 .txtxs {
   font-size: 12px;
@@ -120,6 +127,9 @@ table {
 .white_bg {
   background-color: #fff;
 }
+.yellow_bg {
+  background-color: #fffe62;
+}
 /*------------ヘッダー-------------*/
 
 .header__logo {
@@ -138,13 +148,15 @@ table {
 .header__nav_txt:hover {
   color: #e3e230;
 }
-.header_bg {
-  background-color: #00c4cc;
-  height: 50px;
-}
 .navbar-toggler {
   display: none;
 }
+/*------------フラッシュメッセージ-------------*/
+.alert {
+  margin: 0px;
+}
+/*-------------エラーメッセージ -------------*/
+
 /*------------メインビジュアル-------------*/
 .main-visual_cont {
   padding: 10% 0px;
@@ -353,6 +365,11 @@ textarea:focus {
 .footer__bg {
   background-color: #d5fdff;
 }
+/*------------aboutページ-------------*/
+.about__cont {
+  margin: 10% 0px;
+}
+
 /*------------------------------スマホ版-----------------------------*/
 @media (max-width: 1200px) {
   /*------------共通-------------*/

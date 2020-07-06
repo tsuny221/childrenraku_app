@@ -1,4 +1,4 @@
-module ApplicationHelper
+module DeviseHelper
   def bootstrap_alert(key)
     case key
     when "alert"
@@ -10,4 +10,4 @@ module ApplicationHelper
     end
   end
 end
- # フラッシュメッセージをBootstrapデザインで
+ # dviseのフラッシュメッセージをBootstrapデザインで
