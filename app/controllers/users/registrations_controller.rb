@@ -10,22 +10,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # room#newのformから持ってきたパラメーター
     if @room.present?
       super
-    else
-      # @roomがない＝一致するものがないということ
-      flash[:alert] = "ルームキーが見つかりません"
-      render 'rooms/new'
-    end
-end
+     else
+        render 'rooms/check'
+        flash[:alert] = "ルームキーが見つかりません"
+     end
+  end
 
   # POST /resource
   def create
+    byebug
     @room = Room.find_by(id: params[:user][:room_id])
     # パラメータから@roomを再度探す
     @family = Family.new
     @family.room_id = @room.id
-    # stringなので数字に変換
     @family.save!
-
     # familiesテーブルの作成
     params[:user][:family_id] = @family.id
     # 作成したfamilyのidを入れる。hiddenは必要ない。

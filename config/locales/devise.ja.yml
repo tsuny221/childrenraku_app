@@ -20,6 +20,7 @@ ja:
     attributes:
       user:
         room_id: 部屋ID
+        room: 部屋名
         last_name: 苗字
         first_name: 名前
         last_name_kana: フリガナ
@@ -35,6 +36,15 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
+      admin:
+          room_id: 部屋ID
+          email: メールアドレス
+          current_password: "現在のパスワード"
+          name: 名前
+          email: "メールアドレス"
+          password: "パスワード"
+          password_confirmation: "確認用パスワード"
+          remember_me: "次回から自動的にログイン"
     models:
       user: "ユーザ"
   devise:

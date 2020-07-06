@@ -135,6 +135,9 @@ table {
 .yellow_bg {
   background-color: #fffe62;
 }
+.page_space {
+  padding: 8% 0px;
+}
 /*------------ヘッダー-------------*/
 
 .header__logo {
@@ -258,10 +261,10 @@ table {
   font-weight: bold;
 }
 /*------------お問い合わせ-------------*/
-.contact {
+.inquiry {
   padding: 20px 0px;
 }
-.contact__txt {
+.inquiry__txt {
   font-size: 30px;
   text-align: center;
   font-weight: 600;
@@ -272,6 +275,11 @@ table {
   margin-left: auto;
   margin-right: auto;
   max-width: 720px;
+}
+.form__midashi {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 600;
 }
 input:focus,
 textarea:focus {
@@ -296,11 +304,19 @@ textarea:focus {
 .form__item_input {
   border: 1px solid #ddd;
   border-radius: 6px;
-  padding-left: 1em;
-  padding-right: 1em;
   margin-bottom: 30px;
   height: 48px;
   width: 100%;
+  background: #fff;
+  font-size: 15px;
+}
+.form__item_input_s {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  margin-right: 10px;
+  height: 48px;
+  width: 47%;
   background: #fff;
   font-size: 15px;
 }
@@ -314,23 +330,15 @@ textarea:focus {
   background: #fff;
   font-size: 15px;
 }
+
 .form__btn {
-  border: 2px solid #fff;
-  color: #5c6567;
-  border-radius: 6px;
-  margin-top: 32px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 10px 10px;
-  width: 250px;
+  margin: 10px auto;
+  padding: 5px 50px;
   display: block;
-  letter-spacing: 0.05em;
-  background: #fffe62;
-  font-weight: bold;
-  font-size: 20px;
 }
-.form__btn:hover {
-  background-color: #ccb100;
+
+.form__btn:active {
+  border: 0px;
 }
 
 /*------------管理者かユーザーか選択ボタン-------------*/

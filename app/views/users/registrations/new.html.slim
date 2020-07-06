@@ -1,60 +1,58 @@
 .container
-  .row
-    section
-      h2
-        | Sign up
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  .row.page_space
+    h2.form__midashi
+        | 新規登録
+    form.form
+      - resource = User.new unless resource
+      = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
         = render "users/shared/error_messages", resource: resource
         .field
-        p.bold ルーム名
-        p =@room.name
+          p.bold.form__label ルーム名
+          p.form__label = @room.name
+
         .field
           = f.hidden_field :room_id, :value => @room.id
+
         .field
-          = f.label :last_name
-          br
-          = f.text_field :last_name, autofocus: true, autocomplete: "family-name"
+          = f.label :first_name, class: "form__label"
+          = f.text_field :last_name, autofocus: true, autocomplete: "family-name", class: "form__item_input_s"
+          = f.text_field :first_name, autofocus: true, autocomplete: "given-name", class: "form__item_input_s"
+
         .field
-          = f.label :first_name
-          br
-          = f.text_field :first_name, autofocus: true, autocomplete: "given-name"
+          = f.label :last_name_kana, class: "form__label"
+          = f.text_field :last_name_kana, autofocus: true, class: "form__item_input_s"
+          = f.text_field :first_name_kana, autofocus: true, class: "form__item_input_s"
+
         .field
-          = f.label :last_name_kana
-          br
-          = f.text_field :last_name_kana, autofocus: true
+          = f.label :postcode, class: "form__label"
+          = f.text_field :postcode, autofocus: true, autocomplete: "post-code", class: "form__item_input"
+
         .field
-          = f.label :first_name_kana
-          br
-          = f.text_field :first_name_kana, autofocus: true
+          = f.label :address, class: "form__label"
+          = f.text_field :address, autofocus: true, autocomplete: "address", class: "form__item_input"
+
         .field
-          = f.label :postcode
-          br
-          = f.text_field :postcode, autofocus: true, autocomplete: "post-code"
+          = f.label :phone_number, class: "form__label"
+          = f.text_field :phone_number, autofocus: true, autocomplete: "tele", class: "form__item_input"
+
         .field
-          = f.label :address
-          br
-          = f.text_field :address, autofocus: true, autocomplete: "address"
+          = f.label :email, class: "form__label"
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "form__item_input"
+
         .field
-          = f.label :phone_number
-          br
-          = f.text_field :phone_number, autofocus: true, autocomplete: "tele"
-        .field
-          = f.label :email
-          br
-          = f.email_field :email, autofocus: true, autocomplete: "email"
-        .field
-          = f.label :password
+          = f.label :password, class: "form__label"
           - if @minimum_password_length
             em
               | (
               = @minimum_password_length
               |  characters minimum)
-          br
-          = f.password_field :password, autocomplete: "new-password"
+          = f.password_field :password, autocomplete: "new-password", class: "form__item_input"
+
         .field
-          = f.label :password_confirmation
-          br
-          = f.password_field :password_confirmation, autocomplete: "new-password"
+          = f.label :password_confirmation, class: "form__label"
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: "form__item_input"
+
         .actions
-          = f.submit "Sign up"
+          = f.submit "登録", class: "form__btn"
+
       = render "users/shared/links"

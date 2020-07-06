@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   root 'home#top'
   get 'about' => 'home#about', as: 'about'
-  resources :rooms, only: [:new]
+  get 'rooms/check' => 'rooms#check', as: 'check'
   # 共通
   namespace :admins do
     resources :rooms, only: [:new, :create]
