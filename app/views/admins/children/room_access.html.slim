@@ -1,0 +1,37 @@
+.container
+  .row
+    section.admin-page
+              h3.midashi.txt_size_l.admin-page__midashi
+                | 入退室管理
+              table.table.table_theme_main border="1"
+                caption.txt_size_m
+                  | 5月30日(金)
+
+                thead
+                  tr.table__thead_theme_main
+                    th
+                      | 学年
+                    th
+                      | 児童名
+                    th
+                      | 入室
+                    th
+                      | 退出
+                    th
+                      | お知らせメール
+                - @children.all.each do |child|
+                  tbody.table__tbody_theme_main
+                    tr
+                      td
+                        = child.grade
+                      td
+                        = child.first_name
+                      td
+                        a.enter_btn.yellow_btn[href=""]
+                          | 入室
+                      td
+                        a.exit_btn.green_btn[href=""]
+                          | 退室
+                      td
+                        a.access_submit_btn.gray_btn[href=""]
+                          | 送信

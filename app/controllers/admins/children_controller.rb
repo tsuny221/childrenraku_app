@@ -1,7 +1,6 @@
 class Admins::ChildrenController < ApplicationController
+  before_action :current_room_family
   def index
-    @room = current_admin.room
-    @families = Family.where(room_id: @room.id)
     @children = Child.where(family_id: @families).page(params[:page]).reverse_order
   end
 
@@ -9,8 +8,8 @@ class Admins::ChildrenController < ApplicationController
     @child = Child.find(params[:id])
   end
 
-  def edit
-    @child = Child.find(params[:id])
+  def room_access
+    @children = Child.where(family_id: @families).page(params[:page]).reverse_order
   end
 
   def update
@@ -27,5 +26,9 @@ class Admins::ChildrenController < ApplicationController
 
   def child_params
     params.require(:child).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :grade, :school_class, :gender, :allergy, :special_notes, :room_access)
+  end
+  def current_room_family
+    @room = current_admin.room
+    @families = Family.where(room_id: @room.id)
   end
 end

@@ -1,28 +1,37 @@
 .container
   .row
-    section
-      table.table.product_table.txts.table-hover.table-inverse
-        thead
-          tr
-            th.brown_txt.txts
-              | 名前
-            th.brown_txt.txts
-              | 学年
-            th.brown_txt.txts
-              | クラス
-            th.brown_txt.txts
-              | 入退室
-            th
-        tbody
-          - @children.each do |child|
-            tr
-              td
-                = child.first_name
-              td
-                = child.grade
-              td
-                = child.school_class
-              td
-                = child.room_access
-      .text-center
-       = paginate @children, class: "paginate"
+    section.admin-page
+              h3.midashi.txt_size_l.admin-page__midashi
+                | 児童名簿
+              table.table.table_theme_simple border="1"
+                caption.txt_size_m
+                  | 年度
+                thead.table__thead_theme_simple
+                  tr
+                    th
+                      | 学年
+                    th
+                      | 児童名
+                    th
+                      | クラス
+                    th
+                      | 性別
+                    th
+                      | 詳細
+                  - Child.all.each do |child|
+                    tbody.table__tbody_theme_simple
+
+                      tr
+                        td
+                          = child.grade
+                        td
+                          = child.first_name
+                        td
+                          = child.school_class
+                        td
+                          = child.gender
+                        td
+                          = link_to '詳細', admins_child_path(child.id)
+
+              .text-center
+                = paginate @children, class: "paginate"

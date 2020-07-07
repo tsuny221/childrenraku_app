@@ -32,7 +32,8 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :rooms, only: [:new, :create]
     get 'top' => 'home#top', as: 'top'
-    resources :children, only: [:index, :show, :edit, :update]
+    resources :children, only: [:index, :show, :update]
+    get 'room_access' => 'children#room_access', as: 'room_access'
   end
   # 管理者
   namespace :users do

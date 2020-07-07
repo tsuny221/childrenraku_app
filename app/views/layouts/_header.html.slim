@@ -6,10 +6,10 @@ header#header.navbar.navbar-fixed-top.top_bg
         nav.collapse.navbar-collapse#navbarList
           - if admin_signed_in?
             ul.nav.navbar-nav.navbar-right.header__nav_bg
-              li.nav_list = link_to '入退室管理', about_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to '入退室管理', admins_room_access_path, class:"header__nav_txt txt_color_yellow"
               li.nav_list = link_to '予定表', about_path, class:"header__nav_txt txt_color_yellow"
               li.nav_list = link_to '連絡網', about_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to '児童名簿', user_session_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to '児童名簿', admins_children_path,class:"header__nav_txt txt_color_yellow"
               li.nav_list = link_to 'ユーザー管理', user_session_path, class:"header__nav_txt txt_color_yellow"
               li.nav_list = link_to 'ログアウト', destroy_user_session_path, method: :delete,  class:"header__nav_txt txt_color_yellow"
           - elsif user_signed_in?
