@@ -11,23 +11,25 @@
                     th
                       | 学年
                     th
-                      | 児童名
-                    th
                       | クラス
+                    th
+                      | 児童名
                     th
                       | 性別
                     th
                       | 詳細
-                  - Child.all.each do |child|
+                  - @children.each do |child|
                     tbody.table__tbody_theme_simple
 
                       tr
                         td
                           = child.grade
-                        td
-                          = child.first_name
+                          | 年
                         td
                           = child.school_class
+                          | 組
+                        td
+                          = child.full_name
                         td
                           = child.gender
                         td

@@ -61,11 +61,10 @@ table {
   border-collapse: collapse;
 }
 
-/*------------Bootstrap上書き-------------*/
+/*------------Bootstrap上書き/初期化系-------------*/
 .navbar-nav > li > a:hover {
   background-color: transparent;
 }
-
 /*------------全ページ共通-------------*/
 .txt_size_xs {
   font-size: 12px;
@@ -292,7 +291,7 @@ textarea:focus {
   border: 2px solid #fffe62;
 }
 .form__label {
-  margin: 10px 0px;
+  margin: 5px 0px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -310,8 +309,9 @@ textarea:focus {
 .form__item_input {
   border: 1px solid #ddd;
   border-radius: 6px;
-  margin-bottom: 30px;
-  height: 48px;
+  margin-bottom: 20px;
+  padding: 10px;
+  height: 45px;
   width: 100%;
   background: #fff;
   font-size: 15px;
@@ -319,9 +319,10 @@ textarea:focus {
 .form__item_input_s {
   border: 1px solid #ddd;
   border-radius: 6px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  padding: 10px;
   margin-right: 10px;
-  height: 48px;
+  height: 45px;
   width: 47%;
   background: #fff;
   font-size: 15px;
@@ -330,9 +331,21 @@ textarea:focus {
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 6px;
-  margin-top: 15px;
+  margin-bottom: 20px;
+  padding: 10px;
   margin-left: 0;
   height: 200px;
+  background: #fff;
+  font-size: 15px;
+}
+.form__item_select {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  padding: 10px;
+  margin-right: 10px;
+  height: 45px;
+  width: 47%;
   background: #fff;
   font-size: 15px;
 }
@@ -543,6 +556,28 @@ caption {
 }
 .table__tbody_theme_simple:nth-child(odd) {
   background-color: #fff;
+}
+/*------------マイページ-------------*/
+.my-page__box {
+  display: flex;
+}
+.my-page__box_txt {
+  letter-spacing: 0.00625em;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5rem;
+  hyphens: auto;
+  word-break: break-word;
+  word-wrap: break-word;
+  color: #202124;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.my-page__box_midashi {
+  flex-basis: 156px;
+  display: flex;
+  margin-right: 5px;
 }
 /*------------------------------スマホ版-----------------------------*/
 @media (max-width: 1200px) {

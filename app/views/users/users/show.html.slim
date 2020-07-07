@@ -5,33 +5,38 @@
           | マイページ
         .my-page__cont
           h3.marker
-            | ユーザー情報
-          p.txtm.blue_txt
-            | ユーザー名:
-          p.txtl
-            = @user.first_name
-          p.txtm.blue_txt
-            | メールアドレス:
-          p.txtl
-            = @user.email
+           | ユーザー情報
+          .my-page__box
+              p.my-page__box_midashi
+               | 氏名:
+              p.my-page__box_txt
+                = @user.full_name
+                = @user.full_name_kana
+          .my-page__box
+              p.my-page__box_midashi
+                | メールアドレス:
+              p.my-page__box_txt
+                = @user.email
         .my-page__cont
           h3.marker
-            | 家族情報
-          = link_to '家族招待', new_user_invitation_path, class:"btn_color_yellow user_edit_btn"
-        .children__cont
-        - @children.each do |child|
-            p.txtm.blue_txt
-              | ユーザー名:
-            p.txtl
-              = child.first_name
-            p.txtm.blue_txt
-              | メールアドレス:
-            p.txtl
-            = child.grade
-            p.txtm.blue_txt
-              | 性別:
-            p.txtl
-            = child.gender
+           | 家族情報
+          = link_to '家族招待', new_user_invitation_path, class: "btn_color_yellow user_edit_btn"
+           - @children.each do |child|
+              .my-page__box
+                p.my-page__box_midashi
+                  | 氏名:
+                p.my-page__box_txt
+                  = @user.full_name
+                  = @user.full_name_kana
+              .my-page__box
+                p.my-page__box_midashi
+                  | 学年:
+                p.my-page__box_txt
+                  = child.grade
+                p.my-page__box_midashi
+                  | 性別:
+                p.my-page__box_txt
+                  = child.gender
         .my-page__cont
           h3.marker
             | お子様の情報
@@ -39,17 +44,18 @@
           = link_to '編集', edit_users_user_path, class:"btn_color_yellow user_edit_btn"
         .children__cont
         - @children.each do |child|
-            p.txtm.blue_txt
+            p.mypage__txt
               | 児童名:
-            p.txtl
-              = child.first_name
-            p.txtm.blue_txt
+            p.txt_size_l
+              = child.full_name
+              = child.full_name_kana
+            p.mypage__txt
               | 学年:
-            p.txtl
-            = child.grade
-            p.txtm.blue_txt
+            p.txt_size_l
+             = child.grade
+            p.mypage__txt
               | 性別:
-            p.txtl
-            = child.gender
+            p.txt_size_l
+              = child.gender
 
         .user
