@@ -32,10 +32,12 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :rooms, only: [:new, :create]
     get 'top' => 'home#top', as: 'top'
+    resources :children, only: [:index, :show, :edit, :update]
   end
   # 管理者
   namespace :users do
     get 'top' => 'home#top', as: 'top'
     resources :children
+    resources :users
   end
 end

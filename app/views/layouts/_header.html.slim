@@ -15,8 +15,8 @@ header#header.navbar.navbar-fixed-top.top_bg
           - elsif user_signed_in?
             ul.nav.navbar-nav.navbar-right.header__nav_bg
               li.nav_list = link_to '予定管理', about_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to '出欠管理', about_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to 'マイページ', users_top_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to '連絡網', about_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to 'マイページ', users_user_path(current_user.id), class:"header__nav_txt txt_color_yellow"
               li.nav_list = link_to 'ログアウト', destroy_user_session_path, method: :delete,  class:"header__nav_txt txt_color_yellow"
           - else
             ul.nav.navbar-nav.navbar-right.header__nav_bg

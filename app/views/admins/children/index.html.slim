@@ -1,0 +1,28 @@
+.container
+  .row
+    section
+      table.table.product_table.txts.table-hover.table-inverse
+        thead
+          tr
+            th.brown_txt.txts
+              | 名前
+            th.brown_txt.txts
+              | 学年
+            th.brown_txt.txts
+              | クラス
+            th.brown_txt.txts
+              | 入退室
+            th
+        tbody
+          - @children.each do |child|
+            tr
+              td
+                = child.first_name
+              td
+                = child.grade
+              td
+                = child.school_class
+              td
+                = child.room_access
+      .text-center
+       = paginate @children, class: "paginate"

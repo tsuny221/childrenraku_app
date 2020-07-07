@@ -1,0 +1,55 @@
+.container
+  .row
+    section
+        h2.midashi
+          | マイページ
+        .my-page__cont
+          h3.marker
+            | ユーザー情報
+          p.txtm.blue_txt
+            | ユーザー名:
+          p.txtl
+            = @user.first_name
+          p.txtm.blue_txt
+            | メールアドレス:
+          p.txtl
+            = @user.email
+        .my-page__cont
+          h3.marker
+            | 家族情報
+          = link_to '家族招待', new_user_invitation_path, class:"btn_color_yellow user_edit_btn"
+        .children__cont
+        - @children.each do |child|
+            p.txtm.blue_txt
+              | ユーザー名:
+            p.txtl
+              = child.first_name
+            p.txtm.blue_txt
+              | メールアドレス:
+            p.txtl
+            = child.grade
+            p.txtm.blue_txt
+              | 性別:
+            p.txtl
+            = child.gender
+        .my-page__cont
+          h3.marker
+            | お子様の情報
+          = link_to '児童新規登録', new_users_child_path, class:"btn_color_yellow user_edit_btn"
+          = link_to '編集', edit_users_user_path, class:"btn_color_yellow user_edit_btn"
+        .children__cont
+        - @children.each do |child|
+            p.txtm.blue_txt
+              | 児童名:
+            p.txtl
+              = child.first_name
+            p.txtm.blue_txt
+              | 学年:
+            p.txtl
+            = child.grade
+            p.txtm.blue_txt
+              | 性別:
+            p.txtl
+            = child.gender
+
+        .user
