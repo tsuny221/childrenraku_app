@@ -1,0 +1,14 @@
+.container
+  .row
+    section.user-select
+      .wrap
+        h2.user-select__misashi
+          | どちらで新規登録しますか？
+        = link_to check_path, class: "user-select__btn btn__color_yellow" do
+          i.fas.fa-users.user-select__icon
+          p.txtm
+            | ユーザー新規登録
+        = link_to new_admin_registration_path, class: "user-select__btn btn__color_orange " do
+          i.fas.fa-user-cog.user-select__icon
+          p.txtm
+            | 管理者新規登録

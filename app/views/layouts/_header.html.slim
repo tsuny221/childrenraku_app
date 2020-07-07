@@ -6,20 +6,22 @@ header#header.navbar.navbar-fixed-top.top_bg
         nav.collapse.navbar-collapse#navbarList
           - if admin_signed_in?
             ul.nav.navbar-nav.navbar-right.header__nav_bg
-              li.nav_list = link_to '予定管理', about_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to '出欠管理', about_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to 'マイページ', user_session_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to '入退室管理', about_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to '予定表', about_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to '連絡網', about_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to '児童名簿', user_session_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to 'ユーザー管理', user_session_path, class:"header__nav_txt txt_color_yellow"
               li.nav_list = link_to 'ログアウト', destroy_user_session_path, method: :delete,  class:"header__nav_txt txt_color_yellow"
           - elsif user_signed_in?
             ul.nav.navbar-nav.navbar-right.header__nav_bg
               li.nav_list = link_to '予定管理', about_path, class:"header__nav_txt txt_color_yellow"
               li.nav_list = link_to '出欠管理', about_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to 'マイページ', user_session_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to 'マイページ', users_top_path, class:"header__nav_txt txt_color_yellow"
               li.nav_list = link_to 'ログアウト', destroy_user_session_path, method: :delete,  class:"header__nav_txt txt_color_yellow"
           - else
             ul.nav.navbar-nav.navbar-right.header__nav_bg
               li.nav_list = link_to 'About', about_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to 'ログイン', user_session_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to '新規登録', check_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to 'ログイン', login_select_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to '新規登録', signup_select_path, class:"header__nav_txt txt_color_yellow"
         button.navbar-toggler data-toggle="collapse" data-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="ナビゲーションの切替"
         /! ハンバーガーメニュー

@@ -1,0 +1,32 @@
+.top_bg
+  .container
+    .row
+      section.admin-top
+          h3.txt_color_white.midashi
+            | 使いたい機能を選択してください
+          .admin-top__cont
+
+          = link_to root_path, class: "btn_color_dark-blue admin-top__btn" do
+            p.txt_color_white.txt_size_l
+              | 入退室管理
+            = image_tag src="access.jpg", class: "admin-top__img"
+
+          = link_to root_path, class: "btn_color_green admin-top__btn" do
+            p.txt_color_white.txt_size_l
+              | 予定表
+            = image_tag src="calender.jpg", class: "admin-top__img"
+
+          = link_to root_path, class: "btn_color_blue admin-top__btn" do
+            p.txt_color_white.txt_size_l
+              | 連絡網
+            = image_tag src="contact.jpg", class: "admin-top__img"
+
+          .admin_top_select2
+
+          = link_to root_path, class: "btn_color_yellow admin-top__btn2" do
+            p.txt_color_gray.txt_size_m
+              | 児童一覧
+
+          = link_to root_path, class: "btn_color_yellow admin-top__btn2" do
+            p.txt_color_gray.txt_size_m
+              | ユーザー一覧

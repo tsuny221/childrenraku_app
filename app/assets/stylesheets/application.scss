@@ -42,6 +42,7 @@ a {
   text-decoration: none;
 }
 a:hover {
+  color: #333;
   text-decoration: none;
 }
 
@@ -89,7 +90,7 @@ table {
 .txt_color_blue {
   color: #00c4cc;
 }
-.gray_txt {
+.txt_color_gray {
   color: #5c6567;
 }
 .btn {
@@ -116,6 +117,9 @@ table {
 }
 .btn_theme_signup:hover {
   background: #ccb100;
+}
+.midashi {
+  font-weight: bold;
 }
 .top_bg {
   background-color: #00c4cc;
@@ -344,15 +348,18 @@ textarea:focus {
 }
 
 /*------------管理者かユーザーか選択ボタン-------------*/
-.signupcheck {
+.user-select {
   text-align: center;
   padding: 10% 0px;
   background: url();
   display: flex;
   justify-content: space-around;
 }
-
-.signupcheck_btn {
+.user-select__misashi {
+  font-weight: bold;
+  font-size: 25px;
+}
+.user-select__btn {
   width: 300px;
   color: #5c6567;
   display: inline-block;
@@ -360,19 +367,19 @@ textarea:focus {
   margin: 20px 50px;
   padding: 10px 50px;
 }
-.yellow_btn {
+.btn__color_yellow {
   background-color: #fffe62;
 }
-.yellow_btn:hover {
+.btn__color_yellow:hover {
   background-color: #c7c34c;
 }
-.orange_btn {
+.btn__color_orange {
   background-color: #ffd627;
 }
-.orange_btn:hover {
+.btn__color_orange:hover {
   background-color: #ccb100;
 }
-.signupcheck_icon {
+.user-select__icon {
   margin-top: 30px;
   font-size: 50px;
 }
@@ -395,7 +402,78 @@ textarea:focus {
 .about__cont {
   margin: 10% 0px;
 }
+/*------------管理者トップページ-------------*/
+.admin-top {
+  text-align: center;
+  padding: 7% 0px;
+}
+.admin-top__cont,
+.admin-top__cont2 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.admin-top__btn {
+  width: 250px;
+  display: inline-block;
+  border-radius: 15px;
+  margin: 8% 20px;
+  padding: 20px 50px;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.06);
+}
+.admin-top__btn2 {
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.06);
+  width: 200px;
+  display: inline-block;
+  border-radius: 5px;
+  margin: 5% 30px;
+  padding: 10px auto;
+}
+.admin-top__img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: top;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.btn_color_dark-blue {
+  background-color: #00a3cc;
+}
+.btn_color_dark-blue:hover {
+  background-color: #0183a3;
+}
+.btn_color_green {
+  background-color: #00ccb1;
+}
+.btn_color_green:hover {
+  background-color: #008080;
+}
+.btn_theme_main {
+  background-color: #00c4cc;
+}
+.btn_theme_main:hover {
+  background-color: #03989f;
+}
+.btn_color_blue {
+  background-color: #44c1eb;
+}
+.btn_color_blue:hover {
+  background-color: #0080a1;
+}
 
+.btn_color_yellow {
+  background-color: #fffe62;
+}
+.btn_color_yellow:hover {
+  background-color: #71f9ff;
+}
+
+.admin-top__icon {
+  color: #5c6567;
+  margin-top: 30px;
+  font-size: 50px;
+}
 /*------------------------------スマホ版-----------------------------*/
 @media (max-width: 1200px) {
   /*------------共通-------------*/
@@ -440,13 +518,18 @@ textarea:focus {
   .point__logo {
     width: 130px;
   }
-  /*-----------------------*/
-  .signupcheck {
+  /*------------ユーザー選択ページ-----------*/
+  .user-select {
     padding: 20% 0px;
   }
-  .signupcheck_btn {
+  .user-select__btn {
     width: 250px;
     margin: 10px;
+  }
+  /*-----------管理者トップページ------------*/
+  .admin-top__btn {
+    width: 300px;
+    padding: 20px 50px;
   }
   /*-----------フォーム------------*/
   .form {
@@ -484,13 +567,33 @@ textarea:focus {
   .main-visual__txt {
     font-size: 25px;
   }
+  /*------------ー機能紹介-------------*/
   .intro__txt_box {
     flex-basis: 100%;
   }
-  .signupcheck_btn {
+  /*--------------ユーザー選択-------------------*/
+  .user-select__btn {
     width: 200px;
     margin: 10px;
     padding: 10px 20px;
+  }
+  .user-select__misashi {
+    font-size: 20px;
+  }
+  /*--------------管理者トップページ-------------------*/
+  .admin-top__cont {
+    margin: 30px;
+    flex-direction: column;
+  }
+
+  .admin-top__btn {
+    margin: 30px auto;
+    padding: 5px 0px;
+    width: 60%;
+  }
+  .admin-top__btn2 {
+    width: 30%;
+    margin: 20px;
   }
   /*--------------ナビゲーション バー-------------------*/
   nav {

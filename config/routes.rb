@@ -25,13 +25,17 @@ Rails.application.routes.draw do
 
   root 'home#top'
   get 'about' => 'home#about', as: 'about'
+  get 'signup/select' => 'home#signup_select', as: 'signup_select'
+  get 'login/select' => 'home#login_select', as: 'login_select'
   get 'rooms/check' => 'rooms#check', as: 'check'
   # 共通
   namespace :admins do
     resources :rooms, only: [:new, :create]
+    get 'top' => 'home#top', as: 'top'
   end
   # 管理者
   namespace :users do
+    get 'top' => 'home#top', as: 'top'
     resources :children
   end
 end
