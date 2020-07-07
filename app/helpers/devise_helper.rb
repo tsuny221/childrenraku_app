@@ -10,4 +10,4 @@ module DeviseHelper
     end
   end
 end
- # dviseのフラッシュメッセージをBootstrapデザインで
+# dviseのフラッシュメッセージをBootstrapデザインで

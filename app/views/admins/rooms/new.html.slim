@@ -1,17 +1,16 @@
 .container
-  .row
-    section
-h2
-  | ルームの作成
-= form_with model: @room ,url: admins_rooms_path do |f|
-  = render "layouts/errors", obj: @room
-  .field
-    = f.label :name
-    br
-    = f.text_field :name, autofocus: true, autocomplete: "name"
-  .field
-    = f.label :key
-    br
-    = f.text_field :key, autofocus: true, autocomplete: "key"
-  .actions
-    = f.submit "ルームを作成"
+  .row.page_space
+    .form
+      h2.form__midashi
+        | ルームの作成
+      .form__cont
+        = form_with model: @room ,url: admins_rooms_path do |f|
+          = render "layouts/errors", obj: @room
+          .field
+            = f.label :name
+            = f.text_field :name, autofocus: true, autocomplete: "name"
+          .field
+            = f.label :key
+            = f.text_field :key, autofocus: true, autocomplete: "key"
+          .actions
+            = f.submit "ルームを作成"

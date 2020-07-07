@@ -10,4 +10,4 @@ module ApplicationHelper
     end
   end
 end
- # フラッシュメッセージをBootstrapデザインで
+# フラッシュメッセージをBootstrapデザインで

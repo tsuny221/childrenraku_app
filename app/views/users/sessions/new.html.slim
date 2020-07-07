@@ -1,19 +1,20 @@
 .container
   .row.page_space
-    h2.form__midashi
+    .form
+      h2.form__midashi
         | ログイン
-    form.form
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .field
-          = f.label :email, class: "form__label"
-          = f.email_field :email, autofocus: true, autocomplete: "email", class: "form__item_input"
-        .field
-          = f.label :password, class: "form__label"
-          = f.password_field :password, autocomplete: "current-password", class: "form__item_input"
-        - if devise_mapping.rememberable?
+      .form__cont
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .field
-            = f.check_box :remember_me
-            = f.label :remember_me
-        .actions
-          = f.submit "ログイン", class: "form__btn"
-        = render "users/shared/links"
+            = f.label :email, class: "form__label"
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "form__item_input"
+          .field
+            = f.label :password, class: "form__label"
+            = f.password_field :password, autocomplete: "current-password", class: "form__item_input"
+          - if devise_mapping.rememberable?
+            .field
+              = f.check_box :remember_me
+              = f.label :remember_me
+          .actions
+            = f.submit "ログイン", class: "form__btn"
+          = render "users/shared/links"

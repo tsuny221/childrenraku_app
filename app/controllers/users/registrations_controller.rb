@@ -10,9 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # room#newのformから持ってきたパラメーター
     if @room.present?
       super
-     else
-        render 'rooms/check'
-        flash[:alert] = "ルームキーが見つかりません"
+    else
+      render 'rooms/check'
+      flash[:alert] = "ルームキーが見つかりません"
      end
   end
 
