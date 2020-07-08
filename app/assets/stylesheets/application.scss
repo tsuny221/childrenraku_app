@@ -93,7 +93,19 @@ table {
   color: #5c6567;
 }
 .btn {
-  border-radius: 32px;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  -webkit-tap-highlight-color: transparent;
+  transition: 0.3s ease-out;
+}
+.btn:hover {
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.12), 0 3px 20px 0 rgba(0, 0, 0, 0.12),
+    0 5px 6px -2px rgba(0, 0, 0, 0.2);
 }
 .btn_size_s {
   font-size: 10px;
@@ -111,12 +123,57 @@ table {
   padding: 20px 40px;
 }
 .btn_theme_signup {
+  border-radius: 30px;
   color: #5c6567;
   background: -webkit-linear-gradient(left, #fffe32, #ffd627);
 }
 .btn_theme_signup:hover {
   background: #ccb100;
 }
+.btn_color_orange {
+  color: #fff;
+  background-color: #ff6900;
+}
+.btn_color_orange:hover {
+  background: #d45700;
+}
+.btn_color_dark-blue {
+  background-color: #00a3cc;
+}
+.btn_color_dark-blue:hover {
+  background-color: #0183a3;
+}
+.btn_color_green {
+  background-color: #00ccb1;
+}
+.btn_color_green:hover {
+  background-color: #008080;
+}
+.btn_theme_main {
+  background-color: #00c4cc;
+}
+.btn_theme_main:hover {
+  background-color: #03989f;
+}
+.btn_color_blue {
+  background-color: #44c1eb;
+}
+.btn_color_blue:hover {
+  background-color: #0080a1;
+}
+
+.btn_color_yellow {
+  background-color: #ffc605;
+  color: #fff;
+}
+.btn_color_gray {
+  background-color: #ddd;
+  color: #fff;
+}
+.btn_color_gray:hover {
+  background-color: #ccc;
+}
+
 .midashi {
   font-weight: bold;
 }
@@ -427,6 +484,8 @@ textarea:focus {
   flex-wrap: wrap;
 }
 .admin-top__btn {
+  font-size: 25px;
+  font-weight: bold;
   width: 250px;
   display: inline-block;
   border-radius: 15px;
@@ -435,6 +494,8 @@ textarea:focus {
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.06);
 }
 .admin-top__btn2 {
+  font-size: 15px;
+  font-weight: bold;
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.06);
   width: 200px;
   display: inline-block;
@@ -449,37 +510,6 @@ textarea:focus {
   object-position: top;
   margin-bottom: 10px;
   border-radius: 10px;
-}
-.btn_color_dark-blue {
-  background-color: #00a3cc;
-}
-.btn_color_dark-blue:hover {
-  background-color: #0183a3;
-}
-.btn_color_green {
-  background-color: #00ccb1;
-}
-.btn_color_green:hover {
-  background-color: #008080;
-}
-.btn_theme_main {
-  background-color: #00c4cc;
-}
-.btn_theme_main:hover {
-  background-color: #03989f;
-}
-.btn_color_blue {
-  background-color: #44c1eb;
-}
-.btn_color_blue:hover {
-  background-color: #0080a1;
-}
-
-.btn_color_yellow {
-  background-color: #fffe62;
-}
-.btn_color_yellow:hover {
-  background-color: #71f9ff;
 }
 
 .admin-top__icon {
@@ -579,6 +609,33 @@ caption {
   display: flex;
   margin-right: 5px;
 }
+.my-page__user_cont {
+  margin-left: 3%;
+}
+.my-page__family_cont,
+.my-page__children_cont {
+  position: relative;
+  margin-left: 3%;
+  padding: 3% 0px;
+  border-top: 1px solid #ccc;
+}
+.my-page__btn {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+.my-page___btn_position {
+  position: absolute;
+  right: 200px;
+  top: 30%;
+  width: 70px;
+}
+.my-page___btn_position2 {
+  position: absolute;
+  right: 100px;
+  top: 30%;
+  width: 70px;
+}
+
 /*------------------------------スマホ版-----------------------------*/
 @media (max-width: 1200px) {
   /*------------共通-------------*/
@@ -631,11 +688,7 @@ caption {
     width: 250px;
     margin: 10px;
   }
-  /*-----------管理者トップページ------------*/
-  .admin-top__btn {
-    width: 300px;
-    padding: 20px 50px;
-  }
+
   /*-----------フォーム------------*/
   .form {
     padding: 0px 20px;
@@ -647,6 +700,14 @@ caption {
   footer {
     padding-left: 10px;
     padding-right: 10px;
+  }
+  /*----------マイページ------------*/
+  .my-page___btn_position2 {
+    position: static;
+    margin-left: 10px;
+  }
+  .my-page___btn_position {
+    position: static;
   }
 }
 
@@ -660,11 +721,14 @@ caption {
 
   .txt_size_m {
     font-size: 15px;
-    margin: 20px 0px;
   }
   .btn_size_l {
     font-size: 20px;
     padding: 15px 20px;
+  }
+  .btn_size_m {
+    font-size: 15px;
+    padding: 5px 5px;
   }
   .main-visual__cont {
     flex-direction: column-reverse;
@@ -692,13 +756,18 @@ caption {
   }
 
   .admin-top__btn {
-    margin: 30px auto;
-    padding: 5px 0px;
-    width: 60%;
+    font-size: 13px;
+    padding: 10px 0px;
+    width: 100px;
   }
   .admin-top__btn2 {
-    width: 30%;
-    margin: 20px;
+    font-size: 13px;
+    width: 130px;
+    margin: 10px;
+    padding: 10px;
+  }
+  .admin-top__img {
+    width: 80px;
   }
   /*--------------ナビゲーション バー-------------------*/
   nav {

@@ -6,56 +6,75 @@
         .my-page__cont
           h3.marker
            | ユーザー情報
-          .my-page__box
-              p.my-page__box_midashi
-               | 氏名:
-              p.my-page__box_txt
-                = @user.full_name
-                = @user.full_name_kana
-          .my-page__box
-              p.my-page__box_midashi
-                | メールアドレス:
-              p.my-page__box_txt
-                = @user.email
-        .my-page__cont
-          h3.marker
-           | 家族情報
-          = link_to '家族招待', new_user_invitation_path, class: "btn_color_yellow user_edit_btn"
-           - @children.each do |child|
-              .my-page__box
+          .my-page__user_cont
+            .my-page__box
                 p.my-page__box_midashi
-                  | 氏名:
+                 | 氏名:
                 p.my-page__box_txt
                   = @user.full_name
+                  |(
                   = @user.full_name_kana
-              .my-page__box
+                  |)
+            .my-page__box
                 p.my-page__box_midashi
-                  | 学年:
+                  | メールアドレス:
                 p.my-page__box_txt
-                  = child.grade
-                p.my-page__box_midashi
-                  | 性別:
-                p.my-page__box_txt
-                  = child.gender
+                  = @user.email
+          .my-page__cont
+            h3.marker
+             | 家族情報
+            = link_to '家族招待', new_user_invitation_path, class: "btn btn_size_m btn_color_yellow btn_theme_edit my-page__btn"
+            - @users.each do |user|
+              .my-page__family_cont
+                  .my-page__box
+                    p.my-page__box_midashi
+                      | 氏名:
+                    p.my-page__box_txt
+                      = user.full_name
+                      |(
+                      = user.full_name_kana
+                      |)
+                  .my-page__box
+                    p.my-page__box_midashi
+                      | メールアドレス:
+                    p.my-page__box_txt
+                      = user.email
         .my-page__cont
           h3.marker
             | お子様の情報
-          = link_to '児童新規登録', new_users_child_path, class:"btn_color_yellow user_edit_btn"
-          = link_to '編集', edit_users_user_path, class:"btn_color_yellow user_edit_btn"
-        .children__cont
-        - @children.each do |child|
-            p.mypage__txt
-              | 児童名:
-            p.txt_size_l
-              = child.full_name
-              = child.full_name_kana
-            p.mypage__txt
-              | 学年:
-            p.txt_size_l
-             = child.grade
-            p.mypage__txt
-              | 性別:
-            p.txt_size_l
-              = child.gender
-
-        .user
+          = link_to '児童新規登録', new_users_child_path, class:"btn btn_size_m btn_color_yellow btn_theme_edit  my-page__btn"
+          - @children.each do |child|
+              .my-page__children_cont
+                .my-page__box
+                  p.my-page__box_midashi
+                    | 氏名:
+                  p.my-page__box_txt
+                    = child.full_name
+                    |(
+                    = child.full_name_kana
+                    |)
+                .my-page__box
+                  p.my-page__box_midashi
+                    | 学年・クラス:
+                  p.my-page__box_txt
+                    = child.grade
+                    | 年
+                    = child.school_class
+                    | 組
+                .my-page__box
+                  p.my-page__box_midashi
+                    | 性別:
+                  p.my-page__box_txt
+                    = child.gender
+                .my-page__box
+                  p.my-page__box_midashi
+                    | アレルギー:
+                  p.my-page__box_txt
+                    = child.allergy
+                .my-page__box
+                  p.my-page__box_midashi
+                    | 特筆事項:
+                  p.my-page__box_txt
+                    = child.special_notes
+                = link_to '編集', edit_users_child_path(child.id), class:"btn btn_size_m btn_color_orange my-page___btn_position"
+                = link_to '削除', users_user_path(child.id), method: :delete, "data-confirm" => 'Are you sure?',  class:"btn btn_size_m btn_color_gray my-page___btn_position2"

@@ -1,4 +1,5 @@
 class Admins::ChildrenController < ApplicationController
+   before_action :authenticate_admin!
   before_action :current_room_family
   def index
     @children = Child.where(family_id: @families).page(params[:page]).reverse_order
