@@ -11,16 +11,20 @@ class Admins::ChildrenController < ApplicationController
 
   def room_access
     @children = Child.where(family_id: @families).page(params[:page]).reverse_order
+    @child = Child.find_by(id: params[:id])
   end
 
-  def update
-    @child = Child.find(params[:id])
-    if @child.update
-      redirect_to users_child_path(@child)
-      flash[:notice] = "お子様の情報を編集完了いたしました。"
-    else
-      render :edit
-    end
+  def enter
+    @child = Child.find_by(id: params[:child][:id])
+    #ここ要注意パラメータよくみようchildの中に引き渡されている
+    @child.update(room_access: true)
+    #redirect_to admins_room_access_path(@child)
+  end
+  def leave
+    @child = Child.find_by(id: params[:child][:id])
+    #ここ要注意パラメータよくみようchildの中に引き渡されている
+    @child.update(room_access: false)
+    #redirect_to admins_room_access_path(@child)
   end
 
   private

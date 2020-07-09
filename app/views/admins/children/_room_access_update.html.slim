@@ -1,0 +1,11 @@
+- if child.room_access.present?
+  = form_with(model: child, url: admins_leave_path(child), method: :put) do |f|
+    = f.hidden_field :room_access, :value => :退室
+    = f.hidden_field :id, :value => child.id
+    = f.submit "入室", class: "room-access__btn btn_color_orange"
+
+- else
+  = form_with(model: child, url: admins_enter_path(child), method: :put) do |f|
+    = f.hidden_field :room_access, value: :入室
+    = f.hidden_field :id, :value => child.id
+    = f.submit "退室", class: "room-access__btn btn_color_blue"

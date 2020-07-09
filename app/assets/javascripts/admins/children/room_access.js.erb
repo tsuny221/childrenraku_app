@@ -1,0 +1,16 @@
+ <%# $('.room-access').change(function() {
+  var child_id = $(this).data('id');
+  var room_access = $(this).val();
+
+  $.ajax({
+        type: 'PATCH',
+        url: '/admins/children' + child_id + '/room_access',
+        data: {
+          child: {
+            id: child_id,
+            room_access: room_access
+          }
+        },
+        dataType: 'json',
+      })
+}); %>

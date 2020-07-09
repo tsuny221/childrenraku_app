@@ -12,26 +12,26 @@
                     th
                       | 学年
                     th
+                      | クラス
+                    th
                       | 児童名
                     th
-                      | 入室
-                    th
-                      | 退出
+                      | 入退室
                     th
                       | お知らせメール
-                - @children.all.each do |child|
-                  tbody.table__tbody_theme_main
+                tbody.table__tbody_theme_main
+                  - @children.each do |child|
                     tr
                       td
                         = child.grade
+                        | 年
+                      td
+                        = child.school_class
+                        | 組
                       td
                         = child.full_name
-                      td
-                        a.enter_btn.yellow_btn[href=""]
-                          | 入室
-                      td
-                        a.exit_btn.green_btn[href=""]
-                          | 退室
+                      td id="room_access_#{child.id}"
+                        = render 'admins/children/room_access_update', child: child
                       td
                         a.access_submit_btn.gray_btn[href=""]
                           | 送信

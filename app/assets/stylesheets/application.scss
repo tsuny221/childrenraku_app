@@ -284,7 +284,6 @@ table {
   padding: 20px 20px 20px 80px;
   flex-basis: 50%;
   background-color: #fff;
-  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.06);
   border-radius: 15px;
   z-index: 20;
 }
@@ -437,18 +436,6 @@ textarea:focus {
   margin: 20px 50px;
   padding: 10px 50px;
 }
-.btn__color_yellow {
-  background-color: #fffe62;
-}
-.btn__color_yellow:hover {
-  background-color: #c7c34c;
-}
-.btn__color_orange {
-  background-color: #ffd627;
-}
-.btn__color_orange:hover {
-  background-color: #ccb100;
-}
 .user-select__icon {
   margin-top: 30px;
   font-size: 50px;
@@ -491,12 +478,10 @@ textarea:focus {
   border-radius: 15px;
   margin: 8% 20px;
   padding: 20px 50px;
-  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.06);
 }
 .admin-top__btn2 {
   font-size: 15px;
   font-weight: bold;
-  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.06);
   width: 200px;
   display: inline-block;
   border-radius: 5px;
@@ -532,15 +517,8 @@ textarea:focus {
   color: #5c6567;
   border-radius: 10px;
 }
-.btn_theme_enter {
-  padding: 10px;
-  color: #5c6567;
-  border-radius: 10px;
-}
-.btn_theme_exit {
-  padding: 10px;
-  color: #5c6567;
-  border-radius: 10px;
+.room-access__btn {
+  padding: 5px;
 }
 /*------------表全般-------------*/
 table {
