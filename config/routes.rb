@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     get 'room_access' => 'children#room_access', as: 'room_access'
     put 'room_access/enter' => 'children#enter', as: 'enter'
     put 'room_access/leave' => 'children#leave', as: 'leave'
+    get 'room_access/mail' => 'children#mail', as: 'room_access_children_mail'
+    get 'room_access/mail_all' => 'children#mail_all', as: 'room_access_mail_all'
   end
   # 管理者
   namespace :users do

@@ -1,0 +1,5 @@
+- if child.room_access.present?
+ = form_with(model: child, url: admins_room_access_children_mail_path(child), method: :get) do |f|
+        = f.hidden_field :id, :value => child.id
+        = f.submit "送信", data: { confirm: "入室メールを送信しますか？"}, class: "btn_color_gray room-access__btn"
+- else

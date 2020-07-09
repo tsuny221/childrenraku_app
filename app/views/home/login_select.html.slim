@@ -4,11 +4,11 @@
       .wrap
         h2.user-select__misashi
           | どちらでログインしますか？
-        = link_to new_user_session_path, class: "user-select__btn btn__color_yellow" do
+        = link_to new_user_session_path, class: "btn user-select__btn btn_color_yellow" do
           i.fas.fa-users.user-select__icon
           p.txtm
             | ユーザーログイン
-        = link_to new_admin_session_path, class: "user-select__btn btn__color_orange " do
+        = link_to new_admin_session_path, class: "btn user-select__btn btn_color_orange " do
           i.fas.fa-user-cog.user-select__icon
           p.txtm
             | 管理者ログイン

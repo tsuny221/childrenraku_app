@@ -5,8 +5,8 @@
                 | 入退室管理
               table.table.table_theme_main border="1"
                 caption.txt_size_m
-                  | 5月30日(金)
-
+                  = Date.today.strftime('%Y年%m月%d日(%a)')
+                  = link_to 'お知らせメール(一括送信)', admins_room_access_mail_all_path, class: "btn_color_yellow btn room-access__mail_btn"
                 thead
                   tr.table__thead_theme_main
                     th
@@ -19,9 +19,9 @@
                       | 入退室
                     th
                       | お知らせメール
-                tbody.table__tbody_theme_main
+                tbody
                   - @children.each do |child|
-                    tr
+                    tr.table__tbody_theme_main
                       td
                         = child.grade
                         | 年
@@ -32,6 +32,5 @@
                         = child.full_name
                       td id="room_access_#{child.id}"
                         = render 'admins/children/room_access_update', child: child
-                      td
-                        a.access_submit_btn.gray_btn[href=""]
-                          | 送信
+                      td id="mail_#{child.id}"
+                        = render 'admins/children/mail', child: child

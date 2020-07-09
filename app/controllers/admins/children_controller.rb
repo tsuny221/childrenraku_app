@@ -26,6 +26,31 @@ class Admins::ChildrenController < ApplicationController
     @child.update(room_access: false)
     #redirect_to admins_room_access_path(@child)
   end
+  def mail
+    @child = Child.find_by(id: params[:child][:id])
+    @users = User.where(family_id: @child.family_id)
+    @users.each do |user|
+      RoomAccessMailer.with(user: user, child: @child, room: @room).enter_mail.deliver_now
+    end
+  end
+  def mail_all
+    @children = Child.where(room_access: true).where(family_id: @families)
+    if @children.present?
+      @children.each do |child|
+      @users = User.where(family_id: child.family_id)
+      @users.each do |user|
+      RoomAccessMailer.with(user: user, child: child, room: @room).enter_mail.deliver_now
+      end
+    end
+    redirect_to admins_room_access_path
+    flash[:success] = "お知らせメールを送信いたしました。"
+  else
+    @children = Child.where(family_id: @families).page(params[:page]).reverse_order
+    @child = Child.find_by(id: params[:id])
+    render :room_access
+    flash[:danger] = "入室している児童がいません。"
+  end
+  end
 
   private
 
