@@ -4,30 +4,30 @@
       h2.form__midashi
         | お子様の情報登録
       .form__cont
-        = form_with model: @child, url: users_children_path do |f|
-          = render "layouts/errors", obj: @child
-          .field
-            = f.label :first_name, class: "form__label"
-            = f.text_field :last_name, autofocus: true, autocomplete: "name", class: "form__item_input_s"
-            = f.text_field :first_name, autofocus: true, autocomplete: "name", class: "form__item_input_s"
-          .field
-            = f.label :last_name_kana, class: "form__label"
-            = f.text_field :last_name_kana, autofocus: true, autocomplete: "name", class: "form__item_input_s"
-            = f.text_field :first_name_kana, autofocus: true, autocomplete: "name", class: "form__item_input_s"
-          .field
-            = f.label :grade, class: "form__label"
-            = f.text_field :grade, autofocus: true, autocomplete: "grade", class: "form__item_input"
-          .field
-            = f.label :school_class, class: "form__label"
-            = f.text_field :school_class, autofocus: true, autocomplete: "class", class: "form__item_input"
-          .field
-            = f.label :gender, class: "form__label"
-            == f.select :gender, Child.genders.keys.map,{},{class: "form__item_select"}
-          .field
-            = f.label :allergy, class: "form__label"
-            = f.text_field :allergy, autofocus: true, class: "form__item_input"
-          .field
-            = f.label :special_notes, class: "form__label"
-            = f.text_area :special_notes, autofocus: true, class: "form__item_textarea"
-          .actions
-            = f.submit "登録", class: "form__btn"
+        = form_with model: @child, url: users_children_path, local: true do |f|
+            = render "/layouts/errors", obj: @child
+            .field
+              = f.label :first_name, class: "form__label"
+              = f.text_field :last_name, autofocus: true, autocomplete: "name", class: "form__item_input_s"
+              = f.text_field :first_name, autofocus: true, autocomplete: "name", class: "form__item_input_s"
+            .field
+              = f.label :last_name_kana, class: "form__label"
+              = f.text_field :last_name_kana, autofocus: true, autocomplete: "name", class: "form__item_input_s"
+              = f.text_field :first_name_kana, autofocus: true, autocomplete: "name", class: "form__item_input_s"
+            .field
+                = f.label :grade, class: "form__label"
+                = f.text_field :grade, autofocus: true, autocomplete: "grade", class: "form__item_input"
+            .field
+              = f.label :school_class, class: "form__label"
+              = f.text_field :school_class, autofocus: true, autocomplete: "class", class: "form__item_input"
+            .field
+              = f.label :gender, class: "form__label"
+              = f.select :gender, Child.genders.keys.map,{},{class: "form__item_select"}
+            .field
+              = f.label :allergy, class: "form__label"
+              = f.text_field :allergy, autofocus: true, class: "form__item_input"
+            .field
+              = f.label :special_notes, class: "form__label"
+              = f.text_area :special_notes, autofocus: true, class: "form__item_textarea"
+            .actions
+              = f.submit "登録", class: "form__btn"

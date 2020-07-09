@@ -4,7 +4,7 @@
       h2.form__midashi
         | お子様の情報編集
       .form__cont
-        = form_with model: @child, url: users_children_path do |f|
+        = form_with model: @child, url: users_child_path(@child), mehod: :post, local: true do |f|
           = render "layouts/errors", obj: @child
           .field
             = f.label :first_name, class: "form__label"
@@ -22,7 +22,7 @@
             = f.text_field :school_class, autofocus: true, autocomplete: "class", class: "form__item_input"
           .field
             = f.label :gender, class: "form__label"
-            == f.select :gender, Child.genders.keys.map,{},{class: "form__item_select"}
+            = f.select :gender, Child.genders.keys.map,{},{class: "form__item_select"}
           .field
             = f.label :allergy, class: "form__label"
             = f.text_field :allergy, autofocus: true, class: "form__item_input"

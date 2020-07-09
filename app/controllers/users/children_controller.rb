@@ -29,9 +29,10 @@ class Users::ChildrenController < ApplicationController
   end
 
   def update
+    @user = current_user
     @child = Child.find(params[:id])
-    if @child.update
-      redirect_to users_child_path(@child)
+    if @child.update(child_params)
+      redirect_to users_user_path(current_user)
       flash[:notice] = "お子様の情報を編集完了いたしました。"
     else
       render :edit
