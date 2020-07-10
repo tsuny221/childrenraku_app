@@ -111,21 +111,28 @@
       section.inquiry
         h2.inquiry__txt.txt_color_white お問い合わせ
         .form
-          form.form__cont
-            p.form__label
-              span.form__item 必須
-              | 氏名
-            input.form__item_input placeholder="例）山田太郎" type="text"
-            p.form_label
-              span.form__item 必須
-              | 電話番号
-            input.form__item_input placeholder="例）000-0000-0000" type="text"
-            p.form_label
-              span.form__item 必須
-              | メールアドレス
-            input.form__item_input placeholder="例）example@gmail.com" type="text"
-            p.form_label
-              span.form__item 必須
-              | お問い合わせ内容
-            textarea.form__item_textarea
-          input.btn.form__btn type="submit" value="送信する"
+          .form__cont
+            = form_with model: @inquiry, local: true do |f|
+                = render "layouts/errors", obj: @inquiry
+                .field
+                  .form__label
+                    span.form__item 必須
+                    = f.label :name
+                  = f.text_field :name, class: "form__item_input", :placeholder => "例）山田太郎"
+                .field
+                  .form__label
+                    span.form__item 必須
+                    = f.label :phone_number
+                  = f.text_field :phone_number, class:"form__item_input", :placeholder => "例）000-0000-0000"
+                .field
+                  .form__label
+                    span.form__item 必須
+                    = f.label :email
+                  = f.text_field :email, class:"form__item_input", :placeholder => "例）example@gmail.com"
+                .field
+                  .form__label
+                    span.form__item 必須
+                    = f.label :message
+                  = f.text_area :message, class:"form__item_textarea", :placeholder => "例）example@gmail.com"
+                .actions
+                  = f.submit "送信", class:"btn form__btn"

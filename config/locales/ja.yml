@@ -50,6 +50,14 @@ ja:
         created_at: 登録日時
         updated_at: 更新日時
         remember_me: ログインを記憶する
+      inquiry:
+        name: お名前
+        email: メール
+        phone_number: 電話番号
+        message: お問い合わせ内容
+        created_at: 登録日時
+        updated_at: 更新日時
+        remember_me: ログインを記憶する
   date:
     abbr_day_names:
       - 日

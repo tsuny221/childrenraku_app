@@ -5,7 +5,7 @@
                 | 児童名簿
               table.table.table_theme_simple border="1"
                 caption.txt_size_m
-                  | 年度
+                  = Date.today.strftime('%Y年')
                 thead.table__thead_theme_simple
                   tr
                     th
@@ -33,7 +33,7 @@
                         td
                           = child.gender
                         td
-                          = link_to '詳細', admins_child_path(child.id)
+                          = link_to '詳細', admins_child_path(child.id), class:"txt_color_blue"
 
               .text-center
                 = paginate @children, class: "paginate"

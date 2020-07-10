@@ -24,10 +24,12 @@ Rails.application.routes.draw do
   end
 
   root 'home#top'
+  get 'inquiries' => 'home#top', as: '/'
   get 'about' => 'home#about', as: 'about'
   get 'signup/select' => 'home#signup_select', as: 'signup_select'
   get 'login/select' => 'home#login_select', as: 'login_select'
   get 'rooms/check' => 'rooms#check', as: 'check'
+  resources :inquiries, only: [:create]
   # 共通
   namespace :admins do
     resources :rooms, only: [:new, :create]
