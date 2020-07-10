@@ -20,6 +20,7 @@
                   | メールアドレス:
                 p.my-page__box_txt
                   = @user.email
+            = link_to '編集', edit_users_user_path(@user.id), class:"btn btn_size_m btn_color_orange my-page___btn_position"
           .my-page__cont
             h3.marker
              | 家族情報

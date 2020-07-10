@@ -37,7 +37,7 @@ ja:
         last_name_kana: フリガナ
         first_name_kana: フリガナ
         grade: 学年
-        school_class: クラス
+        school_class: クラス（半角数字）
         gender: 性別
         allergy: アレルギー
         special_notes: 特筆事項

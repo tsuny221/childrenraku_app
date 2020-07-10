@@ -9,7 +9,7 @@ class Users::ChildrenController < ApplicationController
     @child.user_id = current_user.id
     @child.family_id = current_user.family_id
     if @child.save
-      redirect_to users_children_path
+      redirect_to users_user_path(current_user)
       flash[:notice] = "お子様の情報を登録完了いたしました。"
     else
       render :new
@@ -39,12 +39,12 @@ class Users::ChildrenController < ApplicationController
     end
   end
 
-  def destroy
-    @child = Child.find(params[:id])
-    @child.destroy
-    flash[:notice] = "お子様の情報を削除完了いたしました。"
-    redirect_to users_children_path
-  end
+  # def destroy
+  #   @child = Child.find(params[:id])
+  #   @child.destroy
+  #   flash[:notice] = "お子様の情報を削除完了いたしました。"
+  #   redirect_to users_children_path
+  # end
 
   private
 

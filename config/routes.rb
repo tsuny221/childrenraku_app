@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     get 'users/password/new' => 'users/passwords#new', as: 'new_user_password'
     get 'users/invitation/accept' => 'users/invitations#edit', as: 'accept_user_invitation'
     get 'users/invitation/new' => 'users/invitations#new', as: 'new_user_invitation'
-    put 'users/invitation' => 'users/invitations#update', as: ''
-    post 'users/invitation' => 'users/invitations#create', as: 'user_invitation'
+    put 'users/invitation/new' => 'users/invitations#update', as: ''
+    post 'users/invitation/new' => 'users/invitations#create', as: 'user_invitation'
   end
 
   devise_for :admins, skip: :all
@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   namespace :users do
     get 'top' => 'home#top', as: 'top'
     resources :children
+    post 'children/new' => 'children#create', as: 'new_child'
+    patch 'users/:id/edit' => 'users#update', as: 'edit_user'
     resources :users
   end
 end
