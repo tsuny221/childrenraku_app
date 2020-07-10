@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
     delete 'admins/sign_out' => 'admins/sessions#destroy', as: 'destroy_admin_session'
     get 'admins/sign_up' => 'admins/registrations#new', as: 'new_admin_registration'
-    post 'admins' => 'admins/registrations#create', as: 'admin_registration'
+    post 'admins/sign_up' => 'admins/registrations#create', as: 'admin_registration'
     get 'admins/password/new' => 'admins/passwords#new', as: 'new_admin_password'
   end
 
