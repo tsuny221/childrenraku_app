@@ -1,1 +1,5 @@
 = render 'admins/users/user_show',{users: @users, user: @user, children: @children}
+.container
+  .row
+    section
+      = link_to '戻る', admins_children_path,class:"btn btn_color_gray"

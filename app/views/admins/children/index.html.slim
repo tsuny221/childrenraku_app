@@ -9,6 +9,8 @@
                 thead.table__thead_theme_simple
                   tr
                     th
+                      |チェック
+                    th
                       | 学年
                     th
                       | クラス
@@ -23,6 +25,8 @@
 
                       tr
                         td
+                         input type="checkbox"
+                        td
                           = child.grade
                           | 年
                         td
@@ -30,6 +34,9 @@
                           | 組
                         td
                           = child.full_name
+                          |(
+                          = child.full_name_kana
+                          |)
                         td
                           = child.gender
                         td
