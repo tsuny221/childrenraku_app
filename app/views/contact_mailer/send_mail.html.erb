@@ -1,0 +1,10 @@
+<h3>連絡網</h3>
+
+------------------------------------------------
+<p>件名: <%= @contact.subject %></p>
+
+<p>本文: <%= @contact.text %></p>
+
+<%= image_tag attachments[@contact.image.id].url ,format: 'jpeg'%>
+
+------------------------------------------------

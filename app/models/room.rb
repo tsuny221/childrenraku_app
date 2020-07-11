@@ -4,4 +4,5 @@ class Room < ApplicationRecord
   belongs_to :admin
   has_many :families, dependent: :destroy
   has_many :users, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 end

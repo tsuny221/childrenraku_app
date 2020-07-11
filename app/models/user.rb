@@ -11,4 +11,7 @@ class User < ApplicationRecord
   def full_name_kana
      "#{self.last_name_kana } #{self.first_name_kana}"
   end
+  def full_address
+    "〒#{self.postcode} #{self.address}"
+  end
 end

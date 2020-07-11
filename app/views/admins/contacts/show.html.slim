@@ -1,0 +1,20 @@
+.container
+  .row
+    section.contact_show
+        h3.midashi.txt_size_l.admin-page__midashi
+          | 連絡網詳細
+        .my-page__cont
+          h4.marker
+           | 送信日時
+          p.my-page__box_txt.my-page__user_cont
+             = @contact.created_at.to_s(:datetime_jp)
+        .my-page__cont
+          h4.marker
+            | 件名
+          p.my-page__box_txt.my-page__user_cont
+             = @contact.subject
+        .my-page__cont
+          h4.marker
+            | 本文
+          p.my-page__box_txt.my-page__user_cont
+             = @contact.text

@@ -1,0 +1,25 @@
+.container
+  .row
+    section.admin-page
+              h3.midashi.txt_size_l.admin-page__midashi
+                | 連絡網一覧
+              table.table.table_theme_simple border="1"
+                caption.txt_size_m
+                thead.table__thead_theme_simple
+                  tr
+                    th
+                      | 日付
+                    th
+                      | 件名
+                  - @contacts.each do |contact|
+                    tbody.table__tbody_theme_simple
+
+                      tr
+                        td
+                          = contact.created_at.to_s(:datetime_jp)
+                        td
+                          = link_to users_contact_path(contact.id),class:"txt_color_blue" do
+                           = contact.subject
+
+              .text-center
+                = paginate @contacts, class: "paginate"

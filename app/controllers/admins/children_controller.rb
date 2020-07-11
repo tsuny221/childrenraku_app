@@ -2,15 +2,18 @@ class Admins::ChildrenController < ApplicationController
    before_action :authenticate_admin!
   before_action :current_room_family
   def index
-    @children = Child.order(grade: "DESC").where(family_id: @families).page(params[:page]).reverse_order
+    @children = Child.order(grade: "DESC").where(family_id: @families).page(params[:page])
   end
 
   def show
     @child = Child.find(params[:id])
+    @user = User.find_by(id: @child.user_id)
+    @children = Child.where(family_id: @user.family_id)
+    @users = User.where(family_id: @child.family_id).where.not(id: @user)
   end
 
   def room_access
-    @children = Child.order(grade: "DESC").where(family_id: @families).page(params[:page]).reverse_order
+    @children = Child.order(grade: "DESC").where(family_id: @families).page(params[:page])
     @child = Child.find_by(id: params[:id])
   end
 

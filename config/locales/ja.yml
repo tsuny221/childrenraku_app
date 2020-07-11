@@ -1,5 +1,12 @@
 ---
 ja:
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."
   activerecord:
     errors:
       messages:
@@ -55,6 +62,14 @@ ja:
         email: メール
         phone_number: 電話番号
         message: お問い合わせ内容
+        created_at: 登録日時
+        updated_at: 更新日時
+        remember_me: ログインを記憶する
+      contact:
+        subject: 件名
+        text: 本文
+        image_id: 画像
+        file: ファイル
         created_at: 登録日時
         updated_at: 更新日時
         remember_me: ログインを記憶する

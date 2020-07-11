@@ -1,8 +1,9 @@
 .container
   .row
     section
-        h2.midashi.txt_size_xl
-          | マイページ
+        h3.midashi
+          = user.full_name
+          | 様の詳細
         .my-page__cont
           h3.marker.txt_size_l
            | ユーザー情報
@@ -30,12 +31,10 @@
                   | 電話番号:
                 p.my-page__box_txt
                   = @user.phone_number
-            = link_to '編集', edit_users_user_path(@user.id), class:"btn btn_size_m btn_color_orange my-page___btn_position"
-          .my-page__cont
+        .my-page__cont
             h3.marker.txt_size_l
              | 家族情報
-            = link_to '家族招待', new_user_invitation_path, class: "btn btn_size_m btn_color_yellow btn_theme_edit my-page__btn"
-            - @users.each do |user|
+            - users.each do |user|
               .my-page__family_cont
                   .my-page__box
                     p.my-page__box_midashi
@@ -53,8 +52,7 @@
         .my-page__cont
           h3.marker.txt_size_l
             | お子様の情報
-          = link_to '児童新規登録', new_users_child_path, class:"btn btn_size_m btn_color_yellow btn_theme_edit  my-page__btn"
-          - @children.each do |child|
+          - children.each do |child|
               .my-page__children_cont
                 .my-page__box
                   p.my-page__box_midashi
@@ -87,5 +85,3 @@
                     | 特筆事項:
                   p.my-page__box_txt
                     = child.special_notes
-                = link_to '編集', edit_users_child_path(child.id), class:"btn btn_size_m btn_color_orange my-page___btn_position"
-                = link_to '削除', users_user_path(child.id), method: :delete, "data-confirm" => 'Are you sure?',  class:"btn btn_size_m btn_color_gray my-page___btn_position2"

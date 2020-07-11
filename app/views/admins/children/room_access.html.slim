@@ -6,7 +6,7 @@
               table.table.table_theme_main border="1"
                 caption.txt_size_m
                   = Date.today.strftime('%Y年%m月%d日(%a)')
-                  = link_to 'お知らせメール(一括送信)', admins_room_access_mail_all_path, class: "btn_color_yellow btn room-access__mail_btn"
+                  = link_to 'お知らせメール(一括送信)', admins_room_access_mail_all_path, data: { confirm: "入室メールを送信しますか？"}, class: "btn_color_yellow btn room-access__mail_btn"
                 thead
                   tr.table__thead_theme_main
                     th

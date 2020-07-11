@@ -1,0 +1,6 @@
+お問い合わせ
+件名: <%= @contact.subject %>
+
+本文: <%= @contact.text %>
+
+<%= image_tag Refile.backends['store'].directory + '/' + @contact.image_id %>

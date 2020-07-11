@@ -35,11 +35,13 @@ Rails.application.routes.draw do
     resources :rooms, only: [:new, :create]
     get 'top' => 'home#top', as: 'top'
     resources :children, only: [:index,:show]
+    resources :contacts, only: [:new,:create,:index, :show]
     get 'room_access' => 'children#room_access', as: 'room_access'
     put 'room_access/enter' => 'children#enter', as: 'enter'
     put 'room_access/leave' => 'children#leave', as: 'leave'
     get 'room_access/mail' => 'children#mail', as: 'room_access_children_mail'
     get 'room_access/mail_all' => 'children#mail_all', as: 'room_access_mail_all'
+    resources :users, only: [:show, :index]
   end
   # 管理者
   namespace :users do
@@ -48,5 +50,6 @@ Rails.application.routes.draw do
     post 'children/new' => 'children#create', as: 'new_child'
     patch 'users/:id/edit' => 'users#update', as: 'edit_user'
     resources :users
+    resources :contacts, only: [:index, :show]
   end
 end

@@ -1,0 +1,38 @@
+.container
+  .row
+    section.admin-page
+              h3.midashi.txt_size_l.admin-page__midashi
+                | ユーザー一覧
+              table.table.table_theme_simple.table-hover border="1"
+                caption.txt_size_m
+                thead.table__thead_theme_main
+                  tr
+                    th
+                      | 名前
+                    th
+                      | メールアドレス
+                    th
+                      | 住所
+                    th
+                      | 電話番号
+                    th
+                      | 詳細
+                  - @users.each do |user|
+                    tbody
+                      tr
+                        td
+                          = user.full_name
+                          |(
+                          = user.full_name_kana
+                          |)
+                        td
+                          = user.email
+                        td
+                          = user.full_address
+                        td
+                          = user.phone_number
+                        td
+                          = link_to '詳細', admins_user_path(user.id), class:"txt_color_blue"
+
+              .text-center
+                = paginate @users, class: "paginate"
