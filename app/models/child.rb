@@ -1,6 +1,7 @@
 class Child < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :family, optional: true
+  has_many :children, dependent: :destroy
   validates :school_class, presence: true,format: {with: /\A[0-9]+\z/, message: "半角数字のみが使えます"}
   validates :grade, presence: true
   validates :first_name, presence: true

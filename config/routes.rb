@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     get 'room_access/mail' => 'children#mail', as: 'room_access_children_mail'
     get 'room_access/mail_all' => 'children#mail_all', as: 'room_access_mail_all'
     resources :users, only: [:show, :index]
+    resources :plans, only: [:show, :index]
   end
   # 管理者
   namespace :users do
@@ -51,5 +52,6 @@ Rails.application.routes.draw do
     patch 'users/:id/edit' => 'users#update', as: 'edit_user'
     resources :users
     resources :contacts, only: [:index, :show]
+    resources :plans
   end
 end

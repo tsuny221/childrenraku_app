@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_011153) do
+ActiveRecord::Schema.define(version: 2020_07_12_060645) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 2020_07_11_011153) do
     t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_filename"
+    t.string "image_content_type"
     t.index ["room_id"], name: "index_contacts_on_room_id"
   end
 
@@ -69,6 +71,16 @@ ActiveRecord::Schema.define(version: 2020_07_11_011153) do
     t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "date"
+    t.integer "attendance"
+    t.string "comment"
+    t.integer "child_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_plans_on_child_id"
   end
 
   create_table "rooms", force: :cascade do |t|

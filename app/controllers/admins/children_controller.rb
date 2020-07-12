@@ -1,6 +1,6 @@
 class Admins::ChildrenController < ApplicationController
    before_action :authenticate_admin!
-  before_action :current_room_family
+  before_action :current_room_families
   def index
     @children = Child.order(grade: "DESC").where(family_id: @families).page(params[:page])
   end
@@ -60,7 +60,7 @@ class Admins::ChildrenController < ApplicationController
   def child_params
     params.require(:child).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :grade, :school_class, :gender, :allergy, :special_notes, :room_access)
   end
-  def current_room_family
+  def current_room_families
     @room = current_admin.room
     @families = Family.where(room_id: @room.id)
   end
