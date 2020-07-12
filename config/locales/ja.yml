@@ -68,8 +68,7 @@ ja:
       contact:
         subject: 件名
         text: 本文
-        image_id: 画像
-        file: ファイル
+        image: ファイル
         created_at: 登録日時
         updated_at: 更新日時
         remember_me: ログインを記憶する

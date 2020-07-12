@@ -4,8 +4,8 @@ class PlanCollection
   extend ActiveModel::Translation
   include ActiveModel::AttributeMethods
   include ActiveModel::Validations
-  PLAN_NUM = 1  # 同時にユーザーを作成する数
-  attr_accessor :collection  # ここに作成したユーザーモデルが格納される
+  PLAN_NUM = 1 # 同時にユーザーを作成する数
+  attr_accessor :collection # ここに作成したユーザーモデルが格納される
 
   # 初期化メソッド
   def initialize(attributes = [])
@@ -14,11 +14,12 @@ class PlanCollection
         Plan.new(
           date: value['date'],
           attendance: value['attendance'],
-          comment: value['coment']
+          comment: value['coment'],
+          child_id: value['child_id']
         )
       end
     else
-      self.collection = PLAN_NUM.times.map{ Plan.new }
+      self.collection = PLAN_NUM.times.map { Plan.new }
     end
   end
 
@@ -35,12 +36,12 @@ class PlanCollection
         # バリデーションを全てかけたいからsave!ではなくsaveを使用
         is_success = false unless result.save
       end
-      # バリデーションエラーがあった時は例外を発生させてロールバックさせる
+      #バリデーションエラーがあった時は例外を発生させてロールバックさせる
       raise ActiveRecord::RecordInvalid unless is_success
     end
-    rescue
-      p 'エラー'
-    ensure
-      return is_success
-  end
+  rescue
+    p 'エラー'
+  ensure
+    return is_success
+   end
 end

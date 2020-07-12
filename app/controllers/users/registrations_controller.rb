@@ -19,7 +19,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @room = Room.find_by(id: params[:user][:room_id])
-    super do　# yieldを利用して書き換え
+    super do
+      # yieldを利用して書き換え
       if resource.persisted?
         family = Family.new
         family.room_id = @room.id
@@ -27,7 +28,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
         resource.update!(family_id: family.id)
       end
     end
-  end# ユーザーを作成した後にfamilyを作成　save!で念のためバリデーションをかけたりしたときにエラーを吐くようにしている
+  end
+  # ユーザーを作成した後にfamilyを作成　save!で念のためバリデーションをかけたりしたときにエラーを吐くようにしている
 
   #   @room = Room.find_by(id: params[:user][:room_id])
   #   # パラメータから@roomを再度探す
@@ -98,9 +100,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-   def after_sign_up_path_for(resource)
-     users_top_path
-   end
+  def after_sign_up_path_for(resource)
+    users_top_path
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

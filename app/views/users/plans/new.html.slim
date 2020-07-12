@@ -1,8 +1,8 @@
 
 = form_with model: @plans, url:  users_plans_path, html: { method: :post } do |f|
-      = f.collection_select :child, @children.map, :id, :full_name, {class: "form__item_select"}
+      = f.collection_select :child_id, @children.map, :id, :full_name, {class: "form__item_select"}
       = render "layouts/errors", obj: @plans
-      = @plans.collection.each do |plan|
+      - @plans.collection.each do |plan|
         = fields_for 'plans[]', plan do |f|
           = month_calendar do |date|
             = date

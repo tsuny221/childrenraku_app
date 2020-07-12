@@ -10,6 +10,5 @@ class HomeController < ApplicationController
   end
 
   def login_select
-
   end
 end

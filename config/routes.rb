@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     post 'users/sign_in' => 'users/sessions#create', as: 'user_session'
     delete 'users/sign_out' => 'users/sessions#destroy', as: 'destroy_user_session'
     get 'users/sign_up' => 'users/registrations#new', as: 'new_user_registration'
-    post 'users' => 'users/registrations#create', as: 'user_registration'
+    post 'users/sign_up' => 'users/registrations#create', as: 'user_registration'
     get 'users/password/new' => 'users/passwords#new', as: 'new_user_password'
     get 'users/invitation/accept' => 'users/invitations#edit', as: 'accept_user_invitation'
     get 'users/invitation/new' => 'users/invitations#new', as: 'new_user_invitation'
@@ -34,8 +34,8 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :rooms, only: [:new, :create]
     get 'top' => 'home#top', as: 'top'
-    resources :children, only: [:index,:show]
-    resources :contacts, only: [:new,:create,:index, :show]
+    resources :children, only: [:index, :show]
+    resources :contacts, only: [:new, :create, :index, :show]
     get 'room_access' => 'children#room_access', as: 'room_access'
     put 'room_access/enter' => 'children#enter', as: 'enter'
     put 'room_access/leave' => 'children#leave', as: 'leave'
@@ -52,6 +52,11 @@ Rails.application.routes.draw do
     patch 'users/:id/edit' => 'users#update', as: 'edit_user'
     resources :users
     resources :contacts, only: [:index, :show]
-    resources :plans
+    resources :plans do
+      collection do
+          post :update_plan
+          put :update_plan
+       end
+    end
   end
 end

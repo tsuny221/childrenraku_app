@@ -1,2 +1,5 @@
-= month_calendar do |date|
-  = date
+- @plans.each do |plan|
+          = month_calendar do |date|
+            = plan.date
+            = plan.attendance
+            = plan.comment
