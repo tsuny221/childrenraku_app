@@ -1,17 +1,25 @@
+.container
+  .row
+    .form
+        h2.form__midashi
+          | 予定表入力
+        = form_with model: @plans, url:  users_plans_path, html: { method: :post } do |f|
 
-= form_with model: @plans, url:  users_plans_path, html: { method: :post } do |f|
-      = f.collection_select :child_id, @children.map, :id, :full_name, {class: "form__item_select"}
-      = render "layouts/errors", obj: @plans
-      - @plans.collection.each do |plan|
-        = fields_for 'plans[]', plan do |f|
-          = month_calendar do |date|
-            = date
-            .field
-              = f.label :attendance, class: "form__label"
-              = f.select :attendance, Plan.attendances.keys.map,{class: "form__item_select"}
-              = f.hidden_field :date, value: date
-            .field
-              = f.label :comment, class: "form__label"
-              = f.text_field :comment, autofocus: true, autocomplete: "name", class: "form__item_input_s"
-      .actions
-            = f.submit "登録", class: "form__btn"
+            = f.label "児童の選択", class:"form__label"
+            = f.collection_select :child_id, @children.map, :id, :full_name,{},{class: "form__item_select"}
+            - @plans.collection.each do |plan|
+              = fields_for 'plans[]', plan do |f|
+                = month_calendar do |date|
+                  .text-left.date__txt_size
+                    = date.day
+                  .field.text-left
+                    - f.label :attendance
+                    = f.select :attendance, Plan.attendances.keys.map
+                    = f.hidden_field :date, value: date
+                  .field.text-left
+                    - f.label :comment
+
+                    = f.text_field :comment, autofocus: true, autocomplete: "name", class: "form__textarea_s"
+
+            .actions
+                  = f.submit "登録", class: "form__btn"

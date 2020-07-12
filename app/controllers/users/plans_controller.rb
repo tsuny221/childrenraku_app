@@ -13,16 +13,16 @@ class Users::PlansController < ApplicationController
   end
 
   def create
-    @child = Child.find_by(id: params[:plan_collection][:child_id])
-    @plans = PlanCollection.new(plans_params)
-    @plans.collection.each do |plan|
-      plan.child_id = @child.id
-    end
-    if @plans.save
-      redirect_to users_plans_path
-    else
-      render :new
-    end
+      @child = Child.find_by(id: params[:plan_collection][:child_id])
+      @plans = PlanCollection.new(plans_params)
+        @plans.collection.each do |plan|
+          plan.child_id = @child.id
+        end
+        if @plans.save
+          redirect_to users_plans_path
+        else
+          render :new
+        end
   end
 
   def destroy
