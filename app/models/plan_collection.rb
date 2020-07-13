@@ -12,9 +12,9 @@ class PlanCollection
     if attributes.present?
       self.collection = attributes.map do |value|
         Plan.new(
-          date: value['date'],
+          start_time: value['start_time'],
           attendance: value['attendance'],
-          comment: value['coment'],
+          comment: value['comment'],
           child_id: value['child_id']
         )
       end

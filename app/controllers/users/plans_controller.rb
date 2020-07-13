@@ -1,12 +1,18 @@
 class Users::PlansController < ApplicationController
+  before_action :authenticate_user!
   before_action :current_user_children
   def index
-    @plans = Plan.where(child_id: @children).page(params[:page])
+     @plans = Plan.all
   end
 
   def new
     @plans = PlanCollection.new
+    unless params[:start_date].present?
+    @start_date = Date.today
+    else
+    @start_date = params[:start_date].to_date
   end
+end
 
   def show
     @plan = Plan.find(params[:id])
@@ -25,14 +31,13 @@ class Users::PlansController < ApplicationController
         end
   end
 
-  def destroy
-    @plan = Plan.find(params[:id])
-    @blog.destroy
-    redirect_to users_plans_path, notice: "削除しました"
-  end
-
   def edit
     @plan = Plan.find(params[:id])
+    if @plans.update
+        redirect_to users_plans_path
+    else
+          render :new
+     end
   end
 
   def update

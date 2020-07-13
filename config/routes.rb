@@ -52,11 +52,6 @@ Rails.application.routes.draw do
     patch 'users/:id/edit' => 'users#update', as: 'edit_user'
     resources :users
     resources :contacts, only: [:index, :show]
-    resources :plans do
-      collection do
-          post :update_plan
-          put :update_plan
-       end
-    end
+    resources :plans
   end
 end
