@@ -1,5 +1,23 @@
- = month_calendar events: @plans do |date, plans|
-  = date.day
-  - plans.each do |plan|
-            = plan.attendance
-            = plan.comment
+.container
+  .row
+    section.admin-page
+        h2.form__midashi.plan__info
+          | 予定表
+          = link_to '新規入力', new_users_plan_path, class:'btn btn_size_m btn_color_yellow plan__btn_theme_new' ,start_date: params[:start_today]
+
+        - @children.each do |child|
+          .child__plan__cont
+              .txt_size_m
+                span.plan__child-name.marker= child.full_name
+                = link_to '編集', edit_users_plan_path(child.id), class:'btn btn_color_orange' ,start_date: params[:start_today]
+              = month_calendar events: child.plans do |date, plans|
+                .text-left.date__txt_size
+                  = date.day
+                - plans.each do |plan|
+                      - if plan.attendance == '出席'
+                        .plan__date_txt.txt_color_blue
+                              = plan.attendance
+                      - else
+                        .plan__date_txt
+                              = plan.attendance
+                      = plan.comment

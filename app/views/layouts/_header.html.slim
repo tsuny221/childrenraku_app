@@ -5,7 +5,7 @@ header#header.navbar.navbar-fixed-top.top_bg
             = link_to admins_top_path do
               = image_tag src="logo.png", class: "logo header__logo_img"
           - elsif user_signed_in?
-            = link_to users_top_path do
+            = link_to users_plans_path do
               = image_tag src="logo.png", class: "logo header__logo_img"
           - else
             = link_to root_path do

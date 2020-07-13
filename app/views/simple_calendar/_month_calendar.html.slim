@@ -1,11 +1,13 @@
 
       .simple-calendar
         .calendar-heading
-          = link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view
-          span.calendar-title
-            = t('date.month_names')[start_date.month]
+          = link_to t('simple_calendar.previous', default: '<前月'), calendar.url_for_previous_view,class:"txt_color_blue"
+          span.calendar-title.calendar-title.txt_size_l
             = start_date.year
-          = link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view
+            | 年
+            = t('date.month_names')[start_date.month]
+
+          = link_to t('simple_calendar.next', default: '次月>'), calendar.url_for_next_view,class:"txt_color_blue"
         table.table.table-striped
           thead
             tr

@@ -2,7 +2,12 @@ class Users::PlansController < ApplicationController
   before_action :authenticate_user!
   before_action :current_user_children
   def index
-     @plans = Plan.all
+     @plans = Plan.where(child_id:@children.ids)
+     unless params[:start_date].present?
+    @start_date = Date.today
+    else
+    @start_date = params[:start_date].to_date
+  end
   end
 
   def new
@@ -32,27 +37,30 @@ end
   end
 
   def edit
-    @plan = Plan.find(params[:id])
-    if @plans.update
-        redirect_to users_plans_path
-    else
-          render :new
-     end
+    @child = Child.find_by(id: params[:id])
+    @plans = Plan.where(child_id: @child.id)
+
   end
 
   def update
-    @plan = Plan.find(params[:id])
-    if @plan.update(plans_params)
+    @child = Child.find_by(id: params[:id])
+    @plans = Plan.where(child_id: @child.id)
+    @plans = params[:plans]
+    if @plans.update_all(params[:plans])
       redirect_to users_plans_path, notice: "編集しました"
     else
       render :edit
-    end
   end
+end
 
   private
 
   def plans_params
     params.require(:plans)
+  end
+
+  def plan_params
+    params.require(:plans).permit!
   end
 
   def current_user_children

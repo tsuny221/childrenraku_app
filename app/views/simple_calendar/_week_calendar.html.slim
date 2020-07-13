@@ -2,23 +2,27 @@
 
 .simple-calendar
   .calendar-heading
-    = link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view
+    = link_to t('simple_calendar.previous', default: '＜前の週'), calendar.url_for_previous_view,class:"txt_color_blue"
     - if calendar.number_of_weeks == 1
-      span.calendar-title
-        | Week
-        = calendar.week_number
+      span.calendar-title.txt_size_l
+        = start_date.year
+        | 年
+        = start_date.month
+        | 月
     - else
-      span.calendar-title
-        | Week
-        = calendar.week_number
-        |  -
+      span.calendar-title.txt_size_l
+        = start_date.year
+        | 年
+        = start_date.month
+        | 月
         = calendar.end_week
-    = link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view
+    = link_to t('simple_calendar.next', default: '次の週＞'), calendar.url_for_next_view,class:"txt_color_blue"
   table.table.table-striped
     thead
       tr
         - date_range.slice(0, 7).each do |day|
           th
+            = day.day
             = t('date.abbr_day_names')[day.wday]
     tbody
       - date_range.each_slice(7) do |week|
