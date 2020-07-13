@@ -1,10 +1,14 @@
 .container
   .row
-    section.admin-page.plan__index
+    section.plan__index
         h2.midashi.txt_size_l.admin-page__midashi
           | 予定表一覧
         - @children.each do |child|
           .plan__flex
+              .plan__cont1
+                .btn_theme_main.txt_color_white
+                  = child.grade
+                  | 年
               .plan__cont1
                 .marker= child.full_name
               .plan__cont2

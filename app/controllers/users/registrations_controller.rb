@@ -11,8 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @room.present?
       super
     else
-      render 'rooms/check'
       flash[:alert] = "ルームキーが見つかりません"
+      render 'rooms/check'
      end
   end
 

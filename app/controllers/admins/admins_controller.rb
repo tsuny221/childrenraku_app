@@ -18,8 +18,21 @@ class Admins::AdminsController < ApplicationController
     else
       render :edit
     end
-
   end
+  def confirm
+     @admin = current_admin
+  end
+   def hide
+        @admin = Admin.find(params[:id])
+        #is_deletedカラムにフラグを立てる(defaultはfalse)
+        @room = current_admin.room
+        @room.destroy
+        @admin.update(is_deleted: true)
+        #ログアウトさせる
+        reset_session
+        flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+        redirect_to root_path
+    end
   private
   def admin_params
     params.require(:admin).permit(:name, :email, :password)

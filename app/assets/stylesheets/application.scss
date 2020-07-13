@@ -671,6 +671,7 @@ caption {
 .form__textarea_s {
   width: 100%;
 }
+/*simple_calendarの上書き*/
 /*一行目以外対象*/
 .plan__flex:not(:nth-child(2)) {
   .plan__cont1 {
@@ -696,12 +697,12 @@ caption {
 }
 .plan__cont1 {
   text-align: center;
-  flex-basis: 10%;
-  padding-top: 65px;
+  flex-basis: 7%;
+  padding-top: 80px;
   margin-right: 5px;
 }
 .plan__cont2 {
-  flex-basis: 90%;
+  flex-basis: 93%;
 }
 .child__plan__cont {
   margin-bottom: 10%;
@@ -716,6 +717,13 @@ caption {
   position: absolute;
   right: 10px;
   bottom: -80px;
+}
+/*------------退会確認画面-------------*/
+.confirm__cont {
+  margin: 20% 0px;
+}
+.confirm__btn {
+  margin: 20px;
 }
 /*------------------------------スマホ版-----------------------------*/
 @media (max-width: 1200px) {

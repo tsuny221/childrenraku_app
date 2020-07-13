@@ -1,0 +1,13 @@
+.container
+  - if admin_signed_in? && @admin.id == current_admin.id
+  .row.confirm__cont
+    h3.text-center 本当に退会しますか？
+    p.txt_size_s.text-center
+      | 退会すると、会員登録情報や
+      br
+      | これまでの履歴やユーザー情報が閲覧できなくなります。
+      br
+      | 退会する場合は、「退会する」をクリックして下さい。
+    .form.text-center
+      = link_to "退会する", admins_hide_path(current_admin), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-lg btn-danger"
+      = link_to "退会しない", admins_admin_path(current_admin), class: "btn btn-lg btn-success confirm__btn"

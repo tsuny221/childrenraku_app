@@ -89,3 +89,7 @@
                     = child.special_notes
                 = link_to '編集', edit_users_child_path(child.id), class:"btn btn_size_m btn_color_orange my-page___btn_position"
                 = link_to '削除', users_user_path(child.id), method: :delete, "data-confirm" => 'Are you sure?',  class:"btn btn_size_m btn_color_gray my-page___btn_position2"
+        .my-page__cont
+            h3.marker.txt_size_l
+             | 退会
+            = link_to '退会', users_confirm_path, class: "btn btn-lg btn-danger my-page__btn"

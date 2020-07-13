@@ -46,6 +46,8 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :index]
     resources :admins, only: [:show, :edit, :update]
     patch 'admins/:id/edit' => 'admins#update', as: 'edit_admin'
+    get '/confirm' => 'admins#confirm', as: 'confirm'
+    put '/:id/hide' => 'admins#hide', as: 'hide'
     resources :plans, only: [:show, :index]
   end
   # 管理者
@@ -55,6 +57,8 @@ Rails.application.routes.draw do
     post 'children/new' => 'children#create', as: 'new_child'
     patch 'users/:id/edit' => 'users#update', as: 'edit_user'
     resources :users
+    get '/confirm' => 'users#confirm', as: 'confirm'
+    put '/:id/hide' => 'users#hide', as: 'hide'
     resources :contacts, only: [:index, :show]
     resources :plans
   end
