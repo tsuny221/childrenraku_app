@@ -17,7 +17,9 @@ header#header.navbar.navbar-fixed-top.top_bg
               li.nav_list = link_to '予定表',  admins_plans_path, class:"header__nav_txt txt_color_yellow"
               li.nav_list = link_to '連絡網', new_admins_contact_path, class:"header__nav_txt txt_color_yellow"
               li.nav_list = link_to '児童名簿', admins_children_path,class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to 'ユーザー管理', admins_users_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to admins_admin_path(current_admin), class:"header__nav_txt txt_color_yellow" do
+                i.fas.fa-user-cog
+                | 管理者
               li.nav_list = link_to 'ログアウト', destroy_user_session_path, method: :delete,  class:"header__nav_txt txt_color_yellow"
           - elsif user_signed_in?
             ul.nav.navbar-nav.navbar-right.header__nav_bg

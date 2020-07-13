@@ -32,7 +32,9 @@ Rails.application.routes.draw do
   resources :inquiries, only: [:create]
   # 共通
   namespace :admins do
-    resources :rooms, only: [:new, :create]
+    resources :rooms, only: [:new, :create, :edit , :update]
+    patch 'rooms/:id/edit' => 'rooms#update', as: 'edit_room'
+    post 'rooms/new' => 'rooms#create', as: 'new_room'
     get 'top' => 'home#top', as: 'top'
     resources :children, only: [:index, :show]
     resources :contacts, only: [:new, :create, :index, :show]
@@ -42,6 +44,8 @@ Rails.application.routes.draw do
     get 'room_access/mail' => 'children#mail', as: 'room_access_children_mail'
     get 'room_access/mail_all' => 'children#mail_all', as: 'room_access_mail_all'
     resources :users, only: [:show, :index]
+    resources :admins, only: [:show, :edit, :update]
+    patch 'admins/:id/edit' => 'admins#update', as: 'edit_admin'
     resources :plans, only: [:show, :index]
   end
   # 管理者

@@ -1,5 +1,6 @@
 class Admins::UsersController < ApplicationController
   before_action :authenticate_admin!
+  before_action :room_check
   before_action :current_room
   def show
     @user = User.find(params[:id])

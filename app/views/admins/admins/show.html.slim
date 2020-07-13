@@ -1,0 +1,44 @@
+.container
+  .row
+    section
+        h2.midashi.txt_size_xl
+          | 管理者ページ
+        .my-page__cont
+          h3.marker.txt_size_l
+           | ルーム情報
+          .my-page__user_cont
+            .my-page__box
+                p.my-page__box_midashi
+                 | ルーム名:
+                p.my-page__box_txt
+                  = @room.name
+            .my-page__box
+                p.my-page__box_midashi
+                  | ルームキー:
+                p.my-page__box_txt
+                  = @room.key
+            = link_to '編集', edit_admins_room_path(@room.id), class:"btn btn_size_m btn_color_orange my-page___btn_position"
+        .my-page__cont
+          h3.marker.txt_size_l
+           | 管理者情報
+          .my-page__user_cont
+            .my-page__box
+                p.my-page__box_midashi
+                  | 名称:
+                p.my-page__box_txt
+                  = @admin.name
+            .my-page__box
+                p.my-page__box_midashi
+                  | メールアドレス:
+                p.my-page__box_txt
+                  = @admin.email
+            = link_to '編集', edit_admins_admin_path(@admin.id), class:"btn btn_size_m btn_color_orange my-page___btn_position"
+
+          .my-page__cont
+            h3.marker.txt_size_l
+             | ユーザー情報
+            = link_to 'ユーザー一覧へ', admins_users_path, class: "btn btn_size_m btn_color_yellow btn_theme_edit my-page__btn"
+          my-page__cont
+            h3.marker.txt_size_l
+             | 退会・ルームの削除
+            = link_to '退会', edit_admins_admin_path(@admin.id), class:"btn btn_size_m btn_color_orange my-page___btn_position"

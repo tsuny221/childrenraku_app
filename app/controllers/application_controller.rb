@@ -27,4 +27,11 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
+
+  def room_check
+    unless current_admin.room.present?
+      @room = Room.new
+      render 'admins/rooms/new'
+    end
+  end
 end

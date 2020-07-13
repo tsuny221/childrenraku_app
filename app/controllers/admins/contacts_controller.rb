@@ -1,5 +1,6 @@
 class Admins::ContactsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :room_check
   before_action :current_room
   def new
     @contact = Contact.new
