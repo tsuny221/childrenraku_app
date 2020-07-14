@@ -1,0 +1,23 @@
+a.btn.btn_theme_main data-target="#modal1" data-toggle="modal" type="button"
+    i.fas.fa-search
+        | 検索
+#modal1.modal.fade aria-hidden="true" aria-labelledby="label1" role="dialog" tabindex="-1"
+     .modal-dialog role="document"
+      .modal-content
+        .modal-header
+            button.close aria-label="Close" data-dismiss="modal" type="button"
+                span aria-hidden="true"  ×
+            h3#label1.modal-title 連絡網検索
+        .modal-body
+                = search_form_for q, url: admins_contacts_path do |f|
+                            .search
+                                .field
+                                    = f.label :subject, 'キーワード検索',class:"form__label"
+                                    = f.search_field :subject_or_text_cont,class:"form__item_input"
+                                .field
+                                    = f.label :subject, '日付検索',class:"form__label"
+                                    = f.date_field :created_at_gteq,class:"form__item_input_s"
+                                    = f.date_field :created_at_lteq_end_of_day,class:"form__item_input_s"
+                                    /end_of_dayで時間部分関係なく範囲検索できる(ransack.rbにconfig記載)
+                                .action
+                                    = f.submit '検索',class:"form__btn"

@@ -1,7 +1,8 @@
 class Users::ContactsController < ApplicationController
   before_action :current_room
   def index
-    @contacts = Contact.where(room_id: @room).page(params[:page]).reverse_order
+    @q = Contact.where(room_id: @room).page(params[:page]).reverse_order.ransack(params[:q])
+    @contacts = @q.result(distinct: true)
   end
 
   def show

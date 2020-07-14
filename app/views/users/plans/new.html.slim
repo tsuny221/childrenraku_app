@@ -3,7 +3,7 @@
     .form
         h2.form__midashi
           | 予定表入力
-        = form_with model: @plans, url:  users_plans_path, html: { method: :post } do |f|
+        = form_with model: @plans, url:  users_plans_path, local: true do |f|
 
             = f.label "児童の選択", class:"form__label"
             = f.collection_select :child_id, @children.map, :id, :full_name,{},{class: "form__item_select"}

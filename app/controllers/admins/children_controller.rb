@@ -4,7 +4,8 @@ class Admins::ChildrenController < ApplicationController
   before_action :current_room_families
 
   def index
-    @children = Child.order(grade: "DESC").where(family_id: @families).page(params[:page])
+    @q = Child.order(grade: "DESC").where(family_id: @families).page(params[:page]).ransack(params[:q])
+    @children =@q.result(distinct: true)
   end
 
   def show
@@ -15,7 +16,8 @@ class Admins::ChildrenController < ApplicationController
   end
 
   def room_access
-    @children = Child.order(grade: "DESC").where(family_id: @families).page(params[:page])
+    @q = Child.order(grade: "DESC").where(family_id: @families).page(params[:page]).ransack(params[:q])
+    @children =@q.result(distinct: true)
     @child = Child.find_by(id: params[:id])
   end
 

@@ -4,7 +4,7 @@
       h2.form__midashi
         | ユーザー情報編集
       .form__cont
-        = form_for(@user, url: users_edit_user_path(@user)) do |f|
+        = form_with model: @user, url: users_user_path(@user), local: true do |f|
           = render "/layouts/errors", obj: @user
           .field
             = f.label :first_name, class: "form__label"

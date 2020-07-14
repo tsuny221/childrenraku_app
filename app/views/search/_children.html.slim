@@ -1,0 +1,24 @@
+a.btn.btn_theme_main data-target="#modal1" data-toggle="modal" type="button"
+    i.fas.fa-search
+        | 検索
+#modal1.modal.fade aria-hidden="true" aria-labelledby="label1" role="dialog" tabindex="-1"
+     .modal-dialog role="document"
+      .modal-content
+        .modal-header
+            button.close aria-label="Close" data-dismiss="modal" type="button"
+                span aria-hidden="true"  ×
+            h3#label1.modal-title 児童検索
+        .modal-body
+                = search_form_for q, url: admins_children_path do |f|
+                            .search
+                                .field
+                                    = f.label :first_name, '児童検索(名前・クラス）',class:"form__label"
+                                    = f.search_field :first_name_or_last_name_or_first_name_kana_or_last_name_kana_or_school_class_cont,class:"form__item_input"
+                                .field
+                                    = f.label :gender, '性別',class:"form__label"
+                                    = f.select :gender_eq, [['男', 1], ['女', 2], ['その他', 3]], { include_blank: '選択してください'},{class: "form__item_select"}
+                                .field
+                                    = f.label :grade, '学年',class:"form__label"
+                                    = f.select :grade_eq, Child.grades.keys.map, { include_blank: '選択してください'},{class: "form__item_select"}
+                                .action
+                                    = f.submit '検索',class:"form__btn"

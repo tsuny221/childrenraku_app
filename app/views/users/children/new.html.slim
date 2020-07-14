@@ -4,7 +4,7 @@
         h2.form__midashi
           | お子様の情報登録
         .form__cont
-          = form_with model: @child, url: users_new_child_path, local: true do |f|
+          = form_with model: @child, url: users_children_path, local: true do |f|
             = render "/layouts/errors", obj: @child
             .field
               = f.label :first_name, class: "form__label"

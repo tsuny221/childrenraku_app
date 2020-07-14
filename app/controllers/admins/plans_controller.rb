@@ -14,6 +14,7 @@ class Admins::PlansController < ApplicationController
   def current_room_families_children
     @room = current_admin.room
     @families = Family.where(room_id: @room.id)
-    @children = Child.where(family_id: @families)
+    @q = Child.where(family_id: @families).ransack(params[:q])
+    @children =@q.result(distinct: true)
   end
 end

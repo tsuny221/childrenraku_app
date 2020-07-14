@@ -8,6 +8,7 @@ class Child < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :last_name, presence: true
   validates :last_name_kana, presence: true
+  enum gender: { 男: 1, 女: 2, その他: 3 }
   enum grade: { '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6 }
   enum room_access: { 入室: true, 退室: false }
   def full_name
@@ -17,5 +18,5 @@ class Child < ApplicationRecord
   def full_name_kana
     "#{last_name_kana} #{first_name_kana}"
   end
-  enum gender: { 男: 1, 女: 2, その他: 3 }
+
 end

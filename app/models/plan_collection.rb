@@ -43,6 +43,7 @@ class PlanCollection
     p 'エラー'
   ensure
     return is_success
+
    end
 
    def update

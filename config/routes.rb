@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'users/sign_up' => 'users/registrations#new', as: 'new_user_registration'
     post 'users/sign_up' => 'users/registrations#create', as: 'user_registration'
     get 'users/password/new' => 'users/passwords#new', as: 'new_user_password'
+    post 'users/password/new' => 'users/passwords#new', as: 'user_password'
     get 'users/invitation/accept' => 'users/invitations#edit', as: 'accept_user_invitation'
     get 'users/invitation/new' => 'users/invitations#new', as: 'new_user_invitation'
     put 'users/invitation/new' => 'users/invitations#update', as: ''
@@ -21,23 +22,34 @@ Rails.application.routes.draw do
     get 'admins/sign_up' => 'admins/registrations#new', as: 'new_admin_registration'
     post 'admins/sign_up' => 'admins/registrations#create', as: 'admin_registration'
     get 'admins/password/new' => 'admins/passwords#new', as: 'new_admin_password'
+    post 'admins/password/new' => 'admins/passwords#new', as: 'admin_password'
   end
 
   root 'home#top'
-  get 'inquiries' => 'home#top', as: '/'
   get 'about' => 'home#about', as: 'about'
   get 'signup/select' => 'home#signup_select', as: 'signup_select'
   get 'login/select' => 'home#login_select', as: 'login_select'
   get 'rooms/check' => 'rooms#check', as: 'check'
-  resources :inquiries, only: [:create]
+  resources :inquiries, only: [:create] do
+    collection do
+      post :confirm
+    end
+  end
+  #get 'inquiries/confirm' => 'home#top', as: '/'
   # 共通
   namespace :admins do
     resources :rooms, only: [:new, :create, :edit , :update]
-    patch 'rooms/:id/edit' => 'rooms#update', as: 'edit_room'
-    post 'rooms/new' => 'rooms#create', as: 'new_room'
+    # patch 'rooms/:id/edit' => 'rooms#update', as: 'edit_room'
+    # post 'rooms/new' => 'rooms#create', as: 'new_room'
     get 'top' => 'home#top', as: 'top'
     resources :children, only: [:index, :show]
-    resources :contacts, only: [:new, :create, :index, :show]
+    # post 'contacts/confirm' => 'contacts#confirm', as: 'contacts_confirm'
+    # get 'contacts/confirm' => 'contacts#new', as: 'new_contacts_confirm'
+    resources :contacts, only: [:new, :create, :index, :show] do
+      collection do
+        post :confirm
+      end
+    end
     get 'room_access' => 'children#room_access', as: 'room_access'
     put 'room_access/enter' => 'children#enter', as: 'enter'
     put 'room_access/leave' => 'children#leave', as: 'leave'
@@ -45,7 +57,7 @@ Rails.application.routes.draw do
     get 'room_access/mail_all' => 'children#mail_all', as: 'room_access_mail_all'
     resources :users, only: [:show, :index]
     resources :admins, only: [:show, :edit, :update]
-    patch 'admins/:id/edit' => 'admins#update', as: 'edit_admin'
+    # patch 'admins/:id/edit' => 'admins#update', as: 'edit_admin'
     get '/confirm' => 'admins#confirm', as: 'confirm'
     put '/:id/hide' => 'admins#hide', as: 'hide'
     resources :plans, only: [:show, :index]
@@ -54,12 +66,13 @@ Rails.application.routes.draw do
   namespace :users do
     get 'top' => 'home#top', as: 'top'
     resources :children
-    post 'children/new' => 'children#create', as: 'new_child'
-    patch 'users/:id/edit' => 'users#update', as: 'edit_user'
+    #post 'children/new' => 'children#create', as: 'new_child'
+    #patch 'users/:id/edit' => 'users#update', as: 'edit_user'
     resources :users
     get '/confirm' => 'users#confirm', as: 'confirm'
     put '/:id/hide' => 'users#hide', as: 'hide'
     resources :contacts, only: [:index, :show]
     resources :plans
   end
+  # ユーザー
 end

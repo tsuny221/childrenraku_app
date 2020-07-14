@@ -11,7 +11,7 @@
               | 入退室管理
             = image_tag src="access.jpg", class: "admin-top__img"
 
-          = link_to root_path, class: "btn btn_color_green admin-top__btn" do
+          = link_to admins_plans_path, class: "btn btn_color_green admin-top__btn" do
             p.txt_color_white
               | 予定表
             = image_tag src="calender.jpg", class: "admin-top__img"
@@ -27,6 +27,6 @@
             p.txt_color_gray
               | 児童名簿
 
-          = link_to root_path, class: "btn btn_color_yellow admin-top__btn2" do
+          = link_to admins_users_path, class: "btn btn_color_yellow admin-top__btn2" do
             p.txt_color_gray
               | ユーザー一覧

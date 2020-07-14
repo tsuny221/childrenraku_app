@@ -9,7 +9,8 @@ class Admins::UsersController < ApplicationController
   end
 
   def index
-    @users = User.where(room_id: @room.id).page(params[:page]).reverse_order
+    @q = User.where(room_id: @room.id).page(params[:page]).reverse_order.ransack(params[:q])
+    @users = @q.result(distinct: true)
   end
 
   def user_params

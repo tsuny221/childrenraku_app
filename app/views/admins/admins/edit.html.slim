@@ -4,7 +4,7 @@
       h2.form__midashi
         | 管理者情報編集
       .form__cont
-        = form_for @admin, url: edit_admins_admin_path(@admin.id) do |f|
+        = form_for @admin, url: admins_admin_path(@admin.id) do |f|
           = render "layouts/errors", obj: @admin
           .field
             = f.label :name, class: "form__label"

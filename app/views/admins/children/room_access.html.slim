@@ -1,6 +1,7 @@
 .container
   .row
     section.admin-page
+              = render 'search/room_accesses', q: @q
               h3.midashi.txt_size_l.admin-page__midashi
                 | 入退室管理
               table.table.table_theme_main border="1"
@@ -9,13 +10,13 @@
                   = link_to 'お知らせメール(一括送信)', admins_room_access_mail_all_path, data: { confirm: "入室メールを送信しますか？"}, class: "btn_color_yellow btn room-access__mail_btn"
                 thead
                   tr.table__thead_theme_main
-                    th
+                    th.sort = sort_link(@q, :grade)
                       | 学年
-                    th
+                    th.sort = sort_link(@q, :school_class)
                       | クラス
-                    th
+                    th.sort = sort_link(@q, :first_name)
                       | 児童名
-                    th
+                    th.sort = sort_link(@q, :room_access)
                       | 入退室
                     th
                       | お知らせメール

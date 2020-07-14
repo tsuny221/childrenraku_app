@@ -1,22 +1,27 @@
 .container
   .row
     section.admin-page
+              = render 'search/children', q: @q
               h3.midashi.txt_size_l.admin-page__midashi
                 | 児童名簿
+
               table.table.table_theme_simple border="1"
                 caption.txt_size_m
-                  = Date.today.strftime('%Y年')
+                  = Date.today.strftime('%Y')
+                  | 年度
                 thead.table__thead_theme_simple
+                  tr
+
                   tr
                     th
                       |チェック
-                    th
+                    th.sort = sort_link(@q, :grade)
                       | 学年
-                    th
+                    th.sort = sort_link(@q, :school_class)
                       | クラス
-                    th
+                    th.sort = sort_link(@q, :first_name)
                       | 児童名
-                    th
+                    th.sort = sort_link(@q, :gender)
                       | 性別
                     th
                       | 詳細

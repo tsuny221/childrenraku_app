@@ -41,10 +41,11 @@ body {
   line-height: normal;
 }
 a {
+  color: #5c6567;
   text-decoration: none;
 }
 a:hover {
-  color: #333;
+  color: #5c6567;
   text-decoration: none;
 }
 
@@ -68,6 +69,9 @@ table {
   background-color: transparent;
 }
 /*------------全ページ共通-------------*/
+.text_bold {
+  font-weight: bold;
+}
 .txt_size_xs {
   font-size: 12px;
 }
@@ -94,7 +98,12 @@ table {
 .txt_color_gray {
   color: #5c6567;
 }
+.txt_color_red {
+  color: #eb4444;
+}
 .btn {
+  color: #fff;
+  font-weight: bold;
   display: inline-block;
   text-decoration: none;
   border-radius: 4px;
@@ -104,6 +113,7 @@ table {
   transition: 0.3s ease-out;
 }
 .btn:hover {
+  color: #fff;
   cursor: pointer;
   text-decoration: none;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.12), 0 3px 20px 0 rgba(0, 0, 0, 0.12),
@@ -111,17 +121,14 @@ table {
 }
 .btn_size_s {
   font-size: 10px;
-  font-weight: 700;
   padding: 10px 10px;
 }
 .btn_size_m {
   font-size: 15px;
-  font-weight: 700;
   padding: 10px 10px;
 }
 .btn_size_l {
   font-size: 20px;
-  font-weight: 700;
   padding: 20px 40px;
 }
 .btn_theme_signup {
@@ -130,6 +137,7 @@ table {
   background: -webkit-linear-gradient(left, #fffe32, #ffd627);
 }
 .btn_theme_signup:hover {
+  color: #333;
   background: #ccb100;
 }
 .btn_color_orange {
@@ -163,17 +171,24 @@ table {
 .btn_color_blue:hover {
   background-color: #0080a1;
 }
-
+.btn_color_red {
+  color: #fff;
+  background-color: #eb4444;
+}
 .btn_color_yellow {
   background-color: #ffc605;
   color: #fff;
 }
+.btn_color_yellow:hover {
+  background: #e0a500;
+}
 .btn_color_gray {
   background-color: #ddd;
-  color: #fff;
+  color: #5c6567;
 }
 .btn_color_gray:hover {
   background-color: #ccc;
+  color: #5c6567;
 }
 
 .midashi {
@@ -418,7 +433,10 @@ textarea:focus {
 .form__btn:active {
   border: 0px;
 }
-
+input:read-only,
+textarea:read-only {
+  background-color: #ddd;
+}
 /*------------管理者かユーザーか選択ボタン-------------*/
 .user-select {
   text-align: center;
@@ -432,12 +450,15 @@ textarea:focus {
   font-size: 25px;
 }
 .user-select__btn {
-  width: 300px;
   color: #5c6567;
+  width: 300px;
   display: inline-block;
   border-radius: 15px;
   margin: 20px 50px;
   padding: 10px 50px;
+}
+.user-select__btn:hover {
+  color: #5c6567;
 }
 .user-select__icon {
   margin-top: 30px;
@@ -664,7 +685,9 @@ caption {
 }
 
 /*-------------予定表--------------------*/
-
+.plan__index {
+  padding: 5% 0px;
+}
 .date__txt_size {
   font-size: 20px;
 }
@@ -674,7 +697,7 @@ caption {
 }
 /*simple_calendarの上書き*/
 /*一行目以外対象*/
-.plan__flex:not(:nth-child(2)) {
+.plan__flex:not(:nth-child(4)) {
   .plan__cont1 {
     padding-top: 10px;
   }
@@ -730,6 +753,24 @@ caption {
 .form__link {
   text-align: center;
 }
+/*------------検索機能(ransack)-------------*/
+.search {
+  margin: 20px;
+}
+.sort a:hover {
+  border-bottom: solid 1px #5c6567;
+}
+.search__field {
+}
+.search__label {
+  margin-right: 20px;
+}
+.search__input {
+}
+.search__btn {
+  padding: 0px 5px;
+}
+
 /*------------------------------スマホ版-----------------------------*/
 @media (max-width: 1200px) {
   /*------------共通-------------*/

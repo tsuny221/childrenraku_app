@@ -30,9 +30,11 @@ end
           plan.child_id = @child.id
         end
         if @plans.save
-          redirect_to users_plans_path
+        redirect_to users_plans_path
+        flash[:alert] = "登録が完了しました。"
         else
           render :new
+          flash[:alert] = "既に登録済みです。変更する際には編集を行ってください。"
         end
   end
 

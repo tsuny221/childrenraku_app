@@ -1,15 +1,16 @@
 .container
   .row
     section.admin-page
+              = render 'search/user_contacts', q: @q
               h3.midashi.txt_size_l.admin-page__midashi
                 | 連絡網一覧
               table.table.table_theme_simple border="1"
                 caption.txt_size_m
                 thead.table__thead_theme_simple
                   tr
-                    th
+                    th.sort = sort_link(@q, :created_at)
                       | 日付
-                    th
+                    th.sort = sort_link(@q, :subject)
                       | 件名
                   - @contacts.each do |contact|
                     tbody.table__tbody_theme_simple

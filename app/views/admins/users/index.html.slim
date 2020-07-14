@@ -1,6 +1,7 @@
 .container
   .row
     section.admin-page
+              = render 'search/users', q: @q
               h3.midashi.txt_size_l.admin-page__midashi
                 | ユーザー一覧
               table.table.table_theme_simple.table-hover border="1"
@@ -20,12 +21,12 @@
                   - @users.each do |user|
                     tbody
                       tr
-                        td
+                        td.sort = sort_link(@q, :first_name)
                           = user.full_name
                           |(
                           = user.full_name_kana
                           |)
-                        td
+                        td.
                           = user.email
                         td
                           = user.full_address
@@ -36,3 +37,6 @@
 
               .text-center
                 = paginate @users, class: "paginate"
+
+              .contact__midashi
+                 = link_to '戻る', admins_admin_path(current_admin),class:"btn btn_color_gray"
