@@ -235,8 +235,9 @@ table {
   text-align: center;
 }
 .main-visual__img {
-  width: 560px;
+  width: 400px;
   height: 400px;
+  margin-right: 20px;
 }
 .main-visual__txt {
   line-height: normal;
@@ -724,6 +725,10 @@ caption {
 }
 .confirm__btn {
   margin: 20px;
+}
+/*------------deviseのsharedのビュー変更-------------*/
+.form__link {
+  text-align: center;
 }
 /*------------------------------スマホ版-----------------------------*/
 @media (max-width: 1200px) {
