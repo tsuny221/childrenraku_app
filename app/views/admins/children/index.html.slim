@@ -4,61 +4,63 @@
               = render 'search/children', q: @q
               h3.midashi.txt_size_l.admin-page__midashi
                 | 児童名簿
+              - unless @children.present?
+                p.text-center 児童が登録されていません
+              - else
+                table.table.table_theme_simple border="1"
+                  .txt_size_m.admin__caption
+                      .caption_left
+                          = Date.today.strftime('%Y')
+                          | 年度
+                      .caption_right
+                          | 児童数
+                          = Child.where(family_id: @families).count
+                          | 人
+                          | (女
+                          = @girl.count
+                          |男
+                          = @boy.count
+                          | )　
+                          | 世帯数
+                          =@families.count
+                          | 世帯
+                  thead.table__thead_theme_simple
+                    tr
 
-              table.table.table_theme_simple border="1"
-                .txt_size_m.admin__caption
-                    .caption_left
-                        = Date.today.strftime('%Y')
-                        | 年度
-                    .caption_right
-                        | 児童数
-                        = Child.where(family_id: @families).count
-                        | 人
-                        | (女
-                        = @girl.count
-                        |男
-                        = @boy.count
-                        | )　
-                        | 世帯数
-                        =@families.count
-                        | 世帯
-                thead.table__thead_theme_simple
-                  tr
+                    tr
+                      th
+                        |チェック
+                      th.sort = sort_link(@q, :grade)
+                        | 学年
+                      th.sort = sort_link(@q, :school_class)
+                        | クラス
+                      th.sort = sort_link(@q, :first_name)
+                        | 児童名
+                      th.sort = sort_link(@q, :gender)
+                        | 性別
+                      th
+                        | 詳細
+                    - @children.each do |child|
+                      tbody.table__tbody_theme_simple
 
-                  tr
-                    th
-                      |チェック
-                    th.sort = sort_link(@q, :grade)
-                      | 学年
-                    th.sort = sort_link(@q, :school_class)
-                      | クラス
-                    th.sort = sort_link(@q, :first_name)
-                      | 児童名
-                    th.sort = sort_link(@q, :gender)
-                      | 性別
-                    th
-                      | 詳細
-                  - @children.each do |child|
-                    tbody.table__tbody_theme_simple
-
-                      tr
-                        td
-                         input type="checkbox"
-                        td
-                          = child.grade
-                          | 年
-                        td
-                          = child.school_class
-                          | 組
-                        td
-                          = child.full_name
-                          |(
-                          = child.full_name_kana
-                          |)
-                        td
-                          = child.gender
-                        td
-                          = link_to '詳細', admins_child_path(child.id), class:"txt_color_blue"
+                        tr
+                          td
+                          input type="checkbox"
+                          td
+                            = child.grade
+                            | 年
+                          td
+                            = child.school_class
+                            | 組
+                          td
+                            = child.full_name
+                            |(
+                            = child.full_name_kana
+                            |)
+                          td
+                            = child.gender
+                          td
+                            = link_to '詳細', admins_child_path(child.id), class:"txt_color_blue"
 
               .text-center
                 = paginate @children, class: "paginate"

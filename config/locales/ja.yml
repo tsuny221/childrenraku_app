@@ -21,8 +21,8 @@ ja:
         last_name_kana: フリガナ
         first_name_kana: フリガナ
         email: メールアドレス
-        phone_number: 電話番号
-        postcode: 郵便番号
+        phone_number: 電話番号（ハイフンなし）
+        postcode: 郵便番号（ハイフンなし）
         address: 住所
         profile_image: プロフィール画像
         password: パスワード
@@ -41,8 +41,8 @@ ja:
       child:
         last_name: 苗字
         first_name: 名前
-        last_name_kana: フリガナ
-        first_name_kana: フリガナ
+        last_name_kana: フリガナ（全角カナ)
+        first_name_kana: フリガナ（全角カナ)
         grade: 学年
         school_class: クラス（半角数字）
         gender: 性別
@@ -60,7 +60,7 @@ ja:
       inquiry:
         name: お名前
         email: メール
-        phone_number: 電話番号
+        phone_number: 電話番号(ハイフンなし)
         message: お問い合わせ内容
         created_at: 登録日時
         updated_at: 更新日時

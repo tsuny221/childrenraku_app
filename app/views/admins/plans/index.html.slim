@@ -1,27 +1,30 @@
 .container
   .row
     section.plan__index
-         = render 'search/plans', q: @q
-         h2.midashi.txt_size_l.admin-page__midashi
+          = render 'search/plans', q: @q
+          h2.midashi.txt_size_l.admin-page__midashi
             | 予定表一覧
-         - @children.each do |child|
-              .plan__flex
-                .plan__cont1
-                  .btn_theme_main.txt_color_white
-                    = child.grade
-                    | 年
-                .plan__cont1
-                  .marker= child.full_name
-                .plan__cont2
-                  = week_calendar events: child.plans do |date, plans|
-                   .text-left.date__txt_size
-                      - plans.each do |plan|
-                          - if plan.attendance == '出席'
-                              .plan__date_txt.txt_color_blue
-                                  = plan.attendance
-                          - else
-                              .plan__date_txt
-                                  = plan.attendance
-                          .txt_size_s= plan.comment
-         .text-center
-            = paginate @children, class: "paginate"
+          - unless @children.present?
+            p.text-center 児童が登録されていません
+          - else
+            - @children.each do |child|
+                  .plan__flex
+                    .plan__cont1
+                      .btn_theme_main.txt_color_white
+                        = child.grade
+                        | 年
+                    .plan__cont1
+                      .marker= child.full_name
+                    .plan__cont2
+                      = week_calendar events: child.plans do |date, plans|
+                      .text-left.date__txt_size
+                          - plans.each do |plan|
+                              - if plan.attendance == '出席'
+                                  .plan__date_txt.txt_color_blue
+                                      = plan.attendance
+                              - else
+                                  .plan__date_txt
+                                      = plan.attendance
+                              .txt_size_s= plan.comment
+          .text-center
+              = paginate @children, class: "paginate"

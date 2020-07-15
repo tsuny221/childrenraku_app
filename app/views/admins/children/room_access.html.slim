@@ -4,49 +4,53 @@
               = render 'search/room_accesses', q: @q
               h3.midashi.txt_size_l.admin-page__midashi
                 | 入退室管理
-              table.table.table_theme_main border="1"
-                .txt_size_m.admin__caption
-                    .caption_left
-                       = Date.today.strftime('%Y年%m月%d日(%a)')
-                       = link_to 'お知らせメール(一括送信)', admins_room_access_mail_all_path, data: { confirm: "入室メールを送信しますか？"}, class: "btn_color_yellow btn room-access__mail_btn"
-                    .caption_right id="emter_count"
-                        = render 'admins/children/enter_count', enter: @enter
-                        | 総児童数
-                        = Child.where(family_id: @families).count
-                        | 人
-                thead
-                  tr.table__thead_theme_main
-                    th.sort = sort_link(@q, :grade)
-                      | 学年
-                    th.sort = sort_link(@q, :school_class)
-                      | クラス
-                    th.sort = sort_link(@q, :first_name)
-                      | 児童名
-                    th.sort = sort_link(@q, :room_access)
-                      | 入退室
-                    th
-                      | お知らせメール
-                    th
-                      | 出欠予定
-                tbody
-                  - @children.each do |child|
-                    tr.table__tbody_theme_main
-                      td
-                        = child.grade
-                        | 年
-                      td
-                        = child.school_class
-                        | 組
-                      td
-                        = child.full_name
-                      td id="room_access_#{child.id}"
-                        = render 'admins/children/room_access_update', child: child
-                      td id="mail_#{child.id}"
-                        = render 'admins/children/mail', child: child
-                      td
-                        - @plans.each do |plan|
-                          - if plan.child_id == child.id
-                            = plan.attendance
+              - unless @children.present?
+                p.text-center 児童が登録されていません
+              - else
+                table.table.table_theme_main border="1"
+                  .txt_size_m.admin__caption
+                      .caption_left
+                        = Date.today.strftime('%Y年%m月%d日(%a)')
+                        = link_to 'お知らせメール(一括送信)', admins_room_access_mail_all_path, data: { confirm: "入室メールを送信しますか？"}, class: "btn_color_yellow btn room-access__mail_btn"
+                      .caption_right id="emter_count"
+                          = render 'admins/children/enter_count', enter: @enter
+                          | 総児童数
+                          = Child.where(family_id: @families).count
+                          | 人
+                  thead
+                    tr.table__thead_theme_main
+                      th.sort = sort_link(@q, :grade)
+                        | 学年
+                      th.sort = sort_link(@q, :school_class)
+                        | クラス
+                      th.sort = sort_link(@q, :first_name)
+                        | 児童名
+                      th.sort = sort_link(@q, :room_access)
+                        | 入退室
+                      th
+                        | お知らせメール
+                      th
+                        | 出欠予定
+                  tbody
+                    - @children.each do |child|
+                      tr.table__tbody_theme_main
+                        td
+                          = child.grade
+                          | 年
+                        td
+                          = child.school_class
+                          | 組
+                        td
+                          = child.full_name
+                        td id="room_access_#{child.id}"
+                          = render 'admins/children/room_access_update', child: child
+                        td id="mail_#{child.id}"
+                          = render 'admins/children/mail', child: child
+                        td
+                          - @plans.each do |plan|
+                            - if plan.child_id == child.id
+                              = plan.attendance
+                          /今日の日付の予定を全て取り出し、each文で回して、その中でもchildに結びつく結果のみ表示している
 
               .text-center
                 = paginate @children, class: "paginate"

@@ -5,9 +5,9 @@
           | 予定表
         = @child.full_name
         = form_with model: @plans, url: users_plan_path, method: :put, local: true do |f|
+            /= render "layouts/errors", obj: @plans
             = month_calendar events: @child.plans do |date, plans|
               .text-left.date__txt_size
-
                 = date.day
                 - plans.each do |plan|
                   = fields_for "plans[]", plan do |f|
