@@ -61,7 +61,7 @@ end
   private
 
    def plans_params
-      params.permit(plans: [:attendance, :comment])[:plans]
+      params.permit(plans: [:attendance, :comment, :start_time])[:plans]
     end
 
   def plan_params

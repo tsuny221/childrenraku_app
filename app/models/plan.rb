@@ -4,6 +4,4 @@ class Plan < ApplicationRecord
   #同じ子どもで同じ日時の予定を二回以上作成できない
   validates :child_id, presence: true
   enum attendance: { 出席: 1, 欠席: 2, 保留: 3 }
-
-
 end

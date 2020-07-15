@@ -26,6 +26,8 @@
                       | 入退室
                     th
                       | お知らせメール
+                    th
+                      | 出欠予定
                 tbody
                   - @children.each do |child|
                     tr.table__tbody_theme_main
@@ -41,3 +43,10 @@
                         = render 'admins/children/room_access_update', child: child
                       td id="mail_#{child.id}"
                         = render 'admins/children/mail', child: child
+                      td
+                        - @plans.each do |plan|
+                          - if plan.child_id == child.id
+                            = plan.attendance
+
+              .text-center
+                = paginate @children, class: "paginate"

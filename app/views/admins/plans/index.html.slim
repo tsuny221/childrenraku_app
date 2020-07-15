@@ -23,3 +23,5 @@
                               .plan__date_txt
                                   = plan.attendance
                           .txt_size_s= plan.comment
+         .text-center
+            = paginate @children, class: "paginate"

@@ -6,8 +6,8 @@ class Admins::ChildrenController < ApplicationController
   def index
     @q = Child.order(grade: "DESC").where(family_id: @families).page(params[:page]).ransack(params[:q])
     @children =@q.result(distinct: true)
-    @boy = @children.where(gender: 1)
-    @girl = @children.where(gender: 2)
+    @boy = Child.where(family_id: @families).where(gender: 1)
+    @girl = Child.where(family_id: @families).where(gender: 2)
   end
 
   def show
@@ -20,10 +20,11 @@ class Admins::ChildrenController < ApplicationController
   def room_access
     @q = Child.order(grade: "DESC").where(family_id: @families).page(params[:page]).ransack(params[:q])
     @children =@q.result(distinct: true)
-    @enter = @children.where(room_access: 1)
-    @leave = @children.where(room_access: 0)
-    @child = Child.find_by(id: params[:id])
+    @enter = Child.where(family_id: @families).where(room_access: 1)
+    @leave = Child.where(family_id: @families).where(room_access: 0)
+    @plans = Plan.where(start_time: Date.today.beginning_of_day)
   end
+
 
   def enter
     @child = Child.find_by(id: params[:child][:id])
