@@ -3,5 +3,4 @@ class Admins::HomeController < ApplicationController
   before_action :room_check
   def top
   end
-
 end

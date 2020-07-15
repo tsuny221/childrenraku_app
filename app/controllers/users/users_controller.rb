@@ -15,7 +15,7 @@ class Users::UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       redirect_to users_user_path(@user)
-      flash[:notice] = "ユーザー情報を編集いたしました。"
+      flash[:success] = "ユーザー情報を編集しました。"
     else
       render :edit
     end
@@ -25,20 +25,22 @@ class Users::UsersController < ApplicationController
     @user = current_user
     @child = Child.find_by(id: params[:id])
     @child.destroy
-    flash[:success] = "お子様の情報を削除いたしました"
+    flash[:notice] = "お子様の情報を削除しました"
     redirect_to users_user_path(@user)
   end
+
   def confirm
-     @user = current_user
+    @user = current_user
   end
+
   def hide
-        @user = User.find(params[:id])
-        #is_deletedカラムにフラグを立てる(defaultはfalse)
-        @user.update(is_deleted: true)
-        #ログアウトさせる
-        reset_session
-        flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
-        redirect_to root_path
+    @user = User.find(params[:id])
+    # is_deletedカラムにフラグを立てる(defaultはfalse)
+    @user.update(is_deleted: true)
+    # ログアウトさせる
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
     end
 
   def user_params

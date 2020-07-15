@@ -10,11 +10,12 @@ class Admins::RoomsController < ApplicationController
     @room.admin_id = current_admin.id
     if @room.save
       redirect_to admins_top_path
-      flash[:notice] = "ルームの作成が完了しました"
+      flash[:success] = "ルームの作成が完了しました"
     else
       render :new
     end
   end
+
   def edit
     @room = current_admin.room
   end
@@ -23,7 +24,7 @@ class Admins::RoomsController < ApplicationController
     @room = current_admin.room
     if @room.update(room_params)
       redirect_to admins_admin_path(current_admin)
-      flash[:notice] = "ルームの編集が完了しました"
+      flash[:success] = "ルームの編集が完了しました"
     else
       render :edit
     end

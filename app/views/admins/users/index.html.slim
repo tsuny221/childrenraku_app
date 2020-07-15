@@ -4,44 +4,47 @@
               = render 'search/users', q: @q
               h3.midashi.txt_size_l.admin-page__midashi
                 | ユーザー一覧
-              table.table.table_theme_simple.table-hover border="1"
-                .txt_size_m.admin__caption
-                    .caption_left
-                    .caption_right
-                        | 世帯数
-                        = @families.count
-                        | 世帯　
-                        | 保護者数
-                        = User.where(room_id: @room.id).count
-                        | 人
-                thead.table__thead_theme_main
-                  tr
-                    th
-                      | 名前
-                    th
-                      | メールアドレス
-                    th
-                      | 住所
-                    th
-                      | 電話番号
-                    th
-                      | 詳細
-                  - @users.each do |user|
-                    tbody
-                      tr
-                        td.sort = sort_link(@q, :first_name)
-                          = user.full_name
-                          |(
-                          = user.full_name_kana
-                          |)
-                        td.
-                          = user.email
-                        td
-                          = user.full_address
-                        td
-                          = user.phone_number
-                        td
-                          = link_to '詳細', admins_user_path(user.id), class:"txt_color_blue"
+              - unless @users.present?
+                p.text-center 児童が登録されていません
+              - else
+                table.table.table_theme_simple.table-hover border="1"
+                  .txt_size_m.admin__caption
+                      .caption_left
+                      .caption_right
+                          | 世帯数
+                          = @families.count
+                          | 世帯　
+                          | 保護者数
+                          = User.where(room_id: @room.id).count
+                          | 人
+                  thead.table__thead_theme_main
+                    tr
+                      th
+                        | 名前
+                      th
+                        | メールアドレス
+                      th
+                        | 住所
+                      th
+                        | 電話番号
+                      th
+                        | 詳細
+                    - @users.each do |user|
+                      tbody
+                        tr
+                          td.sort = sort_link(@q, :first_name)
+                            = user.full_name
+                            |(
+                            = user.full_name_kana
+                            |)
+                          td.
+                            = user.email
+                          td
+                            = user.full_address
+                          td
+                            = user.phone_number
+                          td
+                            = link_to '詳細', admins_user_path(user.id), class:"txt_color_blue"
 
               .text-center
                 = paginate @users, class: "paginate"

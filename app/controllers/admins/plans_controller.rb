@@ -11,10 +11,11 @@ class Admins::PlansController < ApplicationController
   def plan_params
     params.require(:plan).permit(:start_date, :comnet, :attendant)
   end
+
   def current_room_families_children
     @room = current_admin.room
     @families = Family.where(room_id: @room.id)
     @q = Child.where(family_id: @families).page(params[:page]).ransack(params[:q])
-    @children =@q.result(distinct: true)
+    @children = @q.result(distinct: true)
   end
 end

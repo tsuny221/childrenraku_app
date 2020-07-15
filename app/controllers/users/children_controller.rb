@@ -11,7 +11,7 @@ class Users::ChildrenController < ApplicationController
     @child.family_id = current_user.family_id
     if @child.save
       redirect_to users_user_path(current_user)
-      flash[:notice] = "お子様の情報を登録完了いたしました。"
+      flash[:success] = "お子様の情報を登録しました。"
     else
       render :new
     end
@@ -34,7 +34,7 @@ class Users::ChildrenController < ApplicationController
     @child = Child.find(params[:id])
     if @child.update(child_params)
       redirect_to users_user_path(current_user)
-      flash[:notice] = "お子様の情報を編集完了いたしました。"
+      flash[:success] = "お子様の情報を編集しました。"
     else
       render :edit
     end

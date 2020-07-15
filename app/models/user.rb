@@ -3,13 +3,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, invite_for: 24.hours
 
-  validates :first_name,presence:true
-	validates :last_name,presence:true
-	validates :first_name_kana,presence:true, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: "全角カタカナのみで入力して下さい"}
-	validates :last_name_kana,presence:true, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: "全角カタカナのみで入力して下さい"}
-	validates :postcode, format: {with: /\A\d{7}\z/}
-	validates :address,presence:true
-  validates :phone_number,presence:true, format: {with: /\A\d{10,11}\z/}
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :first_name_kana, presence: true, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: "全角カタカナのみで入力して下さい" }
+  validates :last_name_kana, presence: true, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: "全角カタカナのみで入力して下さい" }
+  validates :postcode, format: { with: /\A\d{7}\z/ }
+  validates :address, presence: true
+  validates :phone_number, presence: true, format: { with: /\A[0-9]+\z/, message: "半角数字のみで入力してください" }
 
   belongs_to :room, optional: true
   belongs_to :family, optional: true
@@ -27,6 +27,6 @@ class User < ApplicationRecord
   end
 
   def active_for_authentication?
-    super && (self.is_deleted == false)
+    super && (is_deleted == false)
   end
 end

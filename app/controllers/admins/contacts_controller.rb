@@ -5,25 +5,27 @@ class Admins::ContactsController < ApplicationController
   def new
     @contact = Contact.new
   end
+
   def confirm
     @contact = Contact.new(contact_params)
     render :new if @contact.invalid?
   end
+
   def create
-      @contact = Contact.new(contact_params)
-      @contact.room_id = @room.id
-      @users = User.where(room_id: @room.id)
-      render :new and return if params[:back] || !@contact.save
-      @users.each do |user|
-        ContactMailer.with(user: user).send_mail(@contact).deliver_now
-      end
-      redirect_to admins_contacts_path
-      flash[:success] = "連絡網を送信いたしました。"
+    @contact = Contact.new(contact_params)
+    @contact.room_id = @room.id
+    @users = User.where(room_id: @room.id)
+    render(:new) && return if params[:back] || !@contact.save
+    @users.each do |user|
+      ContactMailer.with(user: user).send_mail(@contact).deliver_now
+    end
+    redirect_to admins_contacts_path
+    flash[:success] = "連絡網を送信いたしました。"
   end
 
   def index
     @q = Contact.where(room_id: @room).page(params[:page]).reverse_order.ransack(params[:q])
-    @contacts =@q.result(distinct: true)
+    @contacts = @q.result(distinct: true)
   end
 
   def show

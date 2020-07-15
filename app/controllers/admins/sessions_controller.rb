@@ -28,7 +28,7 @@ class Admins::SessionsController < Devise::SessionsController
   def reject_admin
     @admin = Admin.find_by(email: params[:admin][:email].downcase)
     if @admin
-      if (@admin.valid_password?(params[:admin][:password]) && (@admin.active_for_authentication? == false))
+      if @admin.valid_password?(params[:admin][:password]) && (@admin.active_for_authentication? == false)
         flash[:danger] = "退会済みです。"
         redirect_to new_admin_session_path
       end

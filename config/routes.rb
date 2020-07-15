@@ -35,10 +35,10 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-  #get 'inquiries/confirm' => 'home#top', as: '/'
+  # get 'inquiries/confirm' => 'home#top', as: '/'
   # 共通
   namespace :admins do
-    resources :rooms, only: [:new, :create, :edit , :update]
+    resources :rooms, only: [:new, :create, :edit, :update]
     # patch 'rooms/:id/edit' => 'rooms#update', as: 'edit_room'
     # post 'rooms/new' => 'rooms#create', as: 'new_room'
     get 'top' => 'home#top', as: 'top'
@@ -66,8 +66,8 @@ Rails.application.routes.draw do
   namespace :users do
     get 'top' => 'home#top', as: 'top'
     resources :children
-    #post 'children/new' => 'children#create', as: 'new_child'
-    #patch 'users/:id/edit' => 'users#update', as: 'edit_user'
+    # post 'children/new' => 'children#create', as: 'new_child'
+    # patch 'users/:id/edit' => 'users#update', as: 'edit_user'
     resources :users
     get '/confirm' => 'users#confirm', as: 'confirm'
     put '/:id/hide' => 'users#hide', as: 'hide'

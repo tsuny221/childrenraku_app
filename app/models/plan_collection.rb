@@ -36,14 +36,12 @@ class PlanCollection
         # バリデーションを全てかけたいからsave!ではなくsaveを使用
         is_success = false unless result.save
       end
-      #バリデーションエラーがあった時は例外を発生させてロールバックさせる
+      # バリデーションエラーがあった時は例外を発生させてロールバックさせる
       raise ActiveRecord::RecordInvalid unless is_success
     end
   rescue
     p 'エラー'
   ensure
     return is_success
-
    end
-
 end

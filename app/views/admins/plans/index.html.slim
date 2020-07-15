@@ -17,14 +17,14 @@
                       .marker= child.full_name
                     .plan__cont2
                       = week_calendar events: child.plans do |date, plans|
-                      .text-left.date__txt_size
+                        .text-left.date__txt_size
                           - plans.each do |plan|
-                              - if plan.attendance == '出席'
-                                  .plan__date_txt.txt_color_blue
-                                      = plan.attendance
-                              - else
-                                  .plan__date_txt
-                                      = plan.attendance
-                              .txt_size_s= plan.comment
+                                    - if plan.attendance == '出席'
+                                        .plan__date_txt.txt_color_blue
+                                            = plan.attendance
+                                    - else
+                                        .plan__date_txt
+                                            = plan.attendance
+                                    .txt_size_s= plan.comment
           .text-center
               = paginate @children, class: "paginate"

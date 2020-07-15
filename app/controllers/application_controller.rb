@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
-  #CSRF対策(クロスサイトリクエストフォージェリ)
-
+  # CSRF対策(クロスサイトリクエストフォージェリ)
 
   protected
 
@@ -32,17 +31,18 @@ class ApplicationController < ActionController::Base
   end
 
   def room_check
-    unless current_admin.room.present?
+    if current_admin.room.blank?
       @room = Room.new
       render 'admins/rooms/new'
     end
   end
-  #ルームを作成したかどうかチェック
+
+  # ルームを作成したかどうかチェック
   def child_check
-    unless Child.find_by(family_id: current_user.family_id).present?
+    if Child.find_by(family_id: current_user.family_id).blank?
       @child = Child.new
       render 'users/children/new'
     end
   end
-  #児童情報を作成したかどうかチェック
+  # 児童情報を作成したかどうかチェック
 end

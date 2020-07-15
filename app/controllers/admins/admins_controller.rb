@@ -5,35 +5,41 @@ class Admins::AdminsController < ApplicationController
     @admin = current_admin
     @room = @admin.room
   end
-   def edit
+
+  def edit
     @admin = current_admin
     @room = @admin.room
-  end
-   def update
+ end
+
+  def update
     @admin = current_admin
     @room = @admin.room
     if @admin.update(admin_params)
       redirect_to admins_admin_path(@admin.id)
-      flash[:notice] = "管理者情報を編集いたしました。"
+      flash[:success] = "管理者情報を編集いたしました。"
     else
       render :edit
     end
-  end
+ end
+
   def confirm
-     @admin = current_admin
+    @admin = current_admin
   end
-   def hide
-        @admin = Admin.find(params[:id])
-        #is_deletedカラムにフラグを立てる(defaultはfalse)
-        @room = current_admin.room
-        @room.destroy
-        @admin.update(is_deleted: true)
-        #ログアウトさせる
-        reset_session
-        flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
-        redirect_to root_path
-    end
+
+  def hide
+    @admin = Admin.find(params[:id])
+    # is_deletedカラムにフラグを立てる(defaultはfalse)
+    @room = current_admin.room
+    @room.destroy
+    @admin.update(is_deleted: true)
+    # ログアウトさせる
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+   end
+
   private
+
   def admin_params
     params.require(:admin).permit(:name, :email, :password)
   end
