@@ -6,6 +6,7 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :room, dependent: :destroy
+
   def active_for_authentication?
     super && (is_deleted == false)
   end
