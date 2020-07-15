@@ -534,7 +534,10 @@ textarea:read-only {
   text-align: center;
   padding-top: 30px;
 }
-
+.admin__caption {
+  display: flex;
+  justify-content: space-between;
+}
 /*------------入退室管理ページ-------------*/
 
 .btn__theme_mail {

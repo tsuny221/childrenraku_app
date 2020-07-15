@@ -5,9 +5,15 @@
               h3.midashi.txt_size_l.admin-page__midashi
                 | 入退室管理
               table.table.table_theme_main border="1"
-                caption.txt_size_m
-                  = Date.today.strftime('%Y年%m月%d日(%a)')
-                  = link_to 'お知らせメール(一括送信)', admins_room_access_mail_all_path, data: { confirm: "入室メールを送信しますか？"}, class: "btn_color_yellow btn room-access__mail_btn"
+                .txt_size_m.admin__caption
+                    .caption_left
+                       = Date.today.strftime('%Y年%m月%d日(%a)')
+                       = link_to 'お知らせメール(一括送信)', admins_room_access_mail_all_path, data: { confirm: "入室メールを送信しますか？"}, class: "btn_color_yellow btn room-access__mail_btn"
+                    .caption_right id="emter_count"
+                        = render 'admins/children/enter_count', enter: @enter
+                        | 総児童数
+                        = Child.where(family_id: @families).count
+                        | 人
                 thead
                   tr.table__thead_theme_main
                     th.sort = sort_link(@q, :grade)

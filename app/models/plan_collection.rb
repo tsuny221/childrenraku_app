@@ -46,19 +46,4 @@ class PlanCollection
 
    end
 
-   def update
-    is_success = true
-    ActiveRecord::Base.transaction do
-      collection.each do |result|
-        # バリデーションを全てかけたいからsave!ではなくsaveを使用
-        is_success = false unless result.update
-      end
-      #バリデーションエラーがあった時は例外を発生させてロールバックさせる
-      raise ActiveRecord::RecordInvalid unless is_success
-    end
-  rescue
-    p 'エラー'
-  ensure
-    return is_success
-   end
 end

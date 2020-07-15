@@ -72,7 +72,7 @@ Rails.application.routes.draw do
     get '/confirm' => 'users#confirm', as: 'confirm'
     put '/:id/hide' => 'users#hide', as: 'hide'
     resources :contacts, only: [:index, :show]
-    resources :plans
+    resources :plans, only: [:new, :index, :create, :edit, :update]
   end
   # ユーザー
 end

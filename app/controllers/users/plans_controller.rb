@@ -1,5 +1,6 @@
 class Users::PlansController < ApplicationController
   before_action :authenticate_user!
+  before_action :child_check
   before_action :current_user_children
   def index
      @plans = Plan.where(child_id:@children.ids)
@@ -19,10 +20,6 @@ class Users::PlansController < ApplicationController
   end
 end
 
-  def show
-    @plan = Plan.find(params[:id])
-  end
-
   def create
       @child = Child.find_by(id: params[:plan_collection][:child_id])
       @plans = PlanCollection.new(plans_params)
@@ -30,13 +27,13 @@ end
           plan.child_id = @child.id
         end
         if @plans.save
-        redirect_to users_plans_path
         flash[:alert] = "登録が完了しました。"
+        redirect_to users_plans_path
         else
-          render :new
           flash[:alert] = "既に登録済みです。変更する際には編集を行ってください。"
+          render :index
         end
-  end
+end
 
   def edit
     @child = Child.find_by(id: params[:id])
@@ -46,23 +43,29 @@ end
 
   def update
     @child = Child.find_by(id: params[:id])
-    @plans = Plan.where(child_id: @child.id)
-    @plans = params[:plans]
-    if @plans.update_all(params[:plans])
-      redirect_to users_plans_path, notice: "編集しました"
-    else
-      render :edit
+    if params[:plans].present?
+    @plans = plans_params.keys.each do |id|
+        plan = Plan.find(id)
+        plan.update_attributes(plans_params[id])
+        plan
+    end
+    flash[:alert] = "編集が完了しました。"
+    redirect_to users_plans_path
+
+  else
+  flash[:alert] = "まだ未作成です。新規作成してください。"
+  render :index
   end
 end
 
   private
 
-  def plans_params
-    params.require(:plans)
-  end
+   def plans_params
+      params.permit(plans: [:attendance, :comment])[:plans]
+    end
 
   def plan_params
-    params.require(:plans).permit!
+    params.require(:plans).permit(:attendance, :comment)
   end
 
   def current_user_children

@@ -1,5 +1,6 @@
 class Users::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :child_check
   def show
     @user = current_user
     @children = Child.where(family_id: @user.family_id)

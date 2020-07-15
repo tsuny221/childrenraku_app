@@ -1,5 +1,6 @@
 class Users::InvitationsController < Devise::InvitationsController
   before_action :authenticate_user!
+  before_action :child_check, only: [:new, :create]
   def new
     super
   end

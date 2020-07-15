@@ -1,5 +1,6 @@
 class Users::ContactsController < ApplicationController
   before_action :current_room
+  before_action :child_check
   def index
     @q = Contact.where(room_id: @room).page(params[:page]).reverse_order.ransack(params[:q])
     @contacts = @q.result(distinct: true)

@@ -1,7 +1,7 @@
 class Admins::UsersController < ApplicationController
   before_action :authenticate_admin!
   before_action :room_check
-  before_action :current_room
+  before_action :current_room_families
   def show
     @user = User.find(params[:id])
     @children = Child.where(family_id: @user.family_id)
@@ -17,7 +17,8 @@ class Admins::UsersController < ApplicationController
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postcode, :addresss, :phone_numeber)
   end
 
-  def current_room
+  def current_room_families
     @room = current_admin.room
+    @families = Family.where(room_id: @room.id)
   end
 end

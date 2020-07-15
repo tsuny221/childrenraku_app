@@ -4,7 +4,7 @@
       h2.form__midashi
         | ルームの作成
       .form__cont
-        = form_with model: @room ,url: admins_new_room_path, local: true do |f|
+        = form_with model: @room ,url: admins_rooms_path, local: true do |f|
           = render "layouts/errors", obj: @room
           .field
             = f.label :name, class: "form__label"

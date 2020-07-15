@@ -1,5 +1,6 @@
 class Users::ChildrenController < ApplicationController
   before_action :authenticate_user!
+  before_action :child_check, only: [:index, :show, :edit, :update]
   def new
     @child = Child.new
   end

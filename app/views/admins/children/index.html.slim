@@ -6,9 +6,22 @@
                 | 児童名簿
 
               table.table.table_theme_simple border="1"
-                caption.txt_size_m
-                  = Date.today.strftime('%Y')
-                  | 年度
+                .txt_size_m.admin__caption
+                    .caption_left
+                        = Date.today.strftime('%Y')
+                        | 年度
+                    .caption_right
+                        | 児童数
+                        = Child.where(family_id: @families).count
+                        | 人
+                        | (女
+                        = @girl.count
+                        |男
+                        = @boy.count
+                        | )　
+                        | 世帯数
+                        =@families.count
+                        | 世帯
                 thead.table__thead_theme_simple
                   tr
 

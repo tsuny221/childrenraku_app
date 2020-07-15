@@ -5,7 +5,15 @@
               h3.midashi.txt_size_l.admin-page__midashi
                 | ユーザー一覧
               table.table.table_theme_simple.table-hover border="1"
-                caption.txt_size_m
+                .txt_size_m.admin__caption
+                    .caption_left
+                    .caption_right
+                        | 世帯数
+                        = @families.count
+                        | 世帯　
+                        | 保護者数
+                        = User.where(room_id: @room.id).count
+                        | 人
                 thead.table__thead_theme_main
                   tr
                     th
