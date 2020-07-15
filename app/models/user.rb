@@ -14,6 +14,9 @@ class User < ApplicationRecord
   belongs_to :room, optional: true
   belongs_to :family, optional: true
   has_many :children, dependent: :destroy
+  has_many :group_users, dependent: :destroy
+  has_many :groups, through: :group_users
+
   def full_name
     "#{last_name} #{first_name}"
   end

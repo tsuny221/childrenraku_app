@@ -1,0 +1,36 @@
+.container
+  .row
+    section.admin-page
+              h3.midashi.txt_size_l.admin-page__midashi
+                | グループ一覧
+              .text-right.contact__midashi
+                  = link_to '連絡網一覧', admins_contacts_path,class:"btn btn_color_yellow contact__btn"
+                  = link_to '宛先グループ作成', new_admins_group_path,class:"btn btn_color_blue"
+              - unless @groups.present?
+                p.text-center グループはありません
+              - else
+
+                .panel-group id="Accordion"
+                  - @groups.each do |group|
+                    .panel.panel-default
+                      .panel-heading
+                        h3.collapsed.panel-title
+                          a data-parent="#Accordion" data-toggle="collapse" href="#accordion_#{group.id}"
+                            = group.name
+                      .panel-collapse.collapse id="accordion_#{group.id}"
+                          .panel-body
+                              h4 メンバー
+
+                              - group.group_users.each do |group_user|
+                                  p
+                                    = group_user.user.full_name
+                                    | (
+                                    = group_user.user.email
+                                    | )
+                              p.text-right= link_to '編集', edit_admins_group_path(group.id),class:"btn btn_color_orange text-right"
+
+
+              .text-center
+                = paginate @groups, class: "paginate"
+              .contact__midashi
+                  = link_to '戻る', new_admins_contact_path,class:"btn btn_color_gray"

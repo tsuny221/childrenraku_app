@@ -6,4 +6,5 @@ class Room < ApplicationRecord
   has_many :families, dependent: :destroy
   has_many :users, dependent: :destroy
   has_many :contacts, dependent: :destroy
+  has_many :groups, dependent: :destroy
 end

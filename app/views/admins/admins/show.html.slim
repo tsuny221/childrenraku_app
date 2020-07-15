@@ -4,7 +4,7 @@
         h2.midashi.txt_size_xl
           | 管理者ページ
         .my-page__cont
-          h3.marker.txt_size_l
+          h3.marker.txt_size_m
            | ルーム情報
           .my-page__user_cont
             .my-page__box
@@ -17,9 +17,9 @@
                   | ルームキー:
                 p.my-page__box_txt
                   = @room.key
-            = link_to '編集', edit_admins_room_path(@room.id), class:"btn btn_size_m btn_color_orange my-page___btn_position"
+            = link_to '編集', edit_admins_room_path(@room.id), class:"btn btn_color_orange my-page___btn_position"
         .my-page__cont
-          h3.marker.txt_size_l
+          h3.marker.txt_size_m
            | 管理者情報
           .my-page__user_cont
             .my-page__box
@@ -32,13 +32,13 @@
                   | メールアドレス:
                 p.my-page__box_txt
                   = @admin.email
-            = link_to '編集', edit_admins_admin_path(@admin.id), class:"btn btn_size_m btn_color_orange my-page___btn_position"
+            = link_to '編集', edit_admins_admin_path(@admin.id), class:"btn btn_color_orange my-page___btn_position"
 
           .my-page__cont
-            h3.marker.txt_size_l
+            h3.marker.txt_size_m
              | ユーザー情報
-            = link_to 'ユーザー一覧へ', admins_users_path, class: "btn btn_size_m btn_color_yellow btn_theme_edit my-page__btn"
+            = link_to 'ユーザー一覧へ', admins_users_path, class: "btn btn_color_yellow btn_theme_edit my-page__btn"
           my-page__cont
-            h3.marker.txt_size_l
+            h3.marker.txt_size_m
              | 退会・ルームの削除
             = link_to '退会', admins_confirm_path, class: "btn btn_color_red my-page__btn"

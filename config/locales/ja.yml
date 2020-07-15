@@ -50,13 +50,11 @@ ja:
         special_notes: 特筆事項
         created_at: 登録日時
         updated_at: 更新日時
-        remember_me: ログインを記憶する
       room:
         name: ルーム名
         key: ルームキー
         created_at: 登録日時
         updated_at: 更新日時
-        remember_me: ログインを記憶する
       inquiry:
         name: お名前
         email: メール
@@ -64,21 +62,22 @@ ja:
         message: お問い合わせ内容
         created_at: 登録日時
         updated_at: 更新日時
-        remember_me: ログインを記憶する
       contact:
         subject: 件名
         text: 本文
         image: ファイル
         created_at: 登録日時
         updated_at: 更新日時
-        remember_me: ログインを記憶する
       plan:
         attendance: 出欠
         comment: コメント
         child_id: 児童の選択
         created_at: 登録日時
         updated_at: 更新日時
-        remember_me: ログインを記憶する
+      group:
+        name: グループ名
+        created_at: 登録日時
+        updated_at: 更新日時
   date:
     abbr_day_names:
       - 日

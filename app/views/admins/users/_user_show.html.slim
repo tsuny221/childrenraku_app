@@ -1,11 +1,11 @@
 .container
   .row
     section
-        h3.midashi
+        h2.midashi.txt_size_xl
           = user.full_name
           | 様の詳細
         .my-page__cont
-          h3.marker.txt_size_l
+          h3.marker.txt_size_m
            | ユーザー情報
           .my-page__user_cont
             .my-page__box
@@ -32,7 +32,7 @@
                 p.my-page__box_txt
                   = @user.phone_number
         .my-page__cont
-            h3.marker.txt_size_l
+            h3.marker.txt_size_m
              | 家族情報
             - users.each do |user|
               .my-page__family_cont
@@ -50,7 +50,7 @@
                     p.my-page__box_txt
                       = user.email
         .my-page__cont
-          h3.marker.txt_size_l
+          h3.marker.txt_size_m
             | お子様の情報
           - children.each do |child|
               .my-page__children_cont
