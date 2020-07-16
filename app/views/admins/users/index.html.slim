@@ -3,7 +3,7 @@
     section.admin-page
               = render 'search/users', q: @q
               h3.midashi.txt_size_l.admin-page__midashi
-                | ユーザー一覧
+                | 会員一覧
               - unless @users.present?
                 p.text-center 児童が登録されていません
               - else

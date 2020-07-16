@@ -36,8 +36,10 @@
 
           .my-page__cont
             h3.marker.txt_size_m
-             | ユーザー情報
-            = link_to 'ユーザー一覧へ', admins_users_path, class: "btn btn_color_yellow btn_theme_edit my-page__btn"
+             | 会員情報
+            = link_to admins_users_path, class: "btn btn_color_yellow my-page__btn admin-top__btn2" do
+              .txt_color_gray
+                | 会員一覧
           my-page__cont
             h3.marker.txt_size_m
              | 退会・ルームの削除

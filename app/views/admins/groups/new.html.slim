@@ -12,7 +12,8 @@
               = f.text_field :name, autofocus: true, placeholder: 'グループ名を入力してください', class: "form__item_input"
             .field
               = f.label "メンバー", autofocus: true, class: "form__label"
-              = f.collection_check_boxes :user_ids, User.where(room_id: @room.id), :id, :last_name
+              = f.collection_check_boxes(:user_ids, User.where(room_id: @room.id), :id, :last_name) do |user|
+                    = user.label {user.check_box + user.object.full_name}
             .actions
               = f.submit "確認画面へ", autofocus: true, class: "form__btn"
       .contact__midashi

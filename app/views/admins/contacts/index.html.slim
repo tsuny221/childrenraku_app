@@ -13,6 +13,8 @@
                     tr
                       th.sort = sort_link(@q, :created_at)
                         | 日付
+                      th
+                        | 宛先
                       th.sort = sort_link(@q, :subject)
                         | 件名
                     - @contacts.each do |contact|
@@ -21,6 +23,14 @@
                         tr
                           td
                             = contact.created_at.to_s(:datetime_jp)
+                          td
+                            - if contact.group_id.present?
+                              - @groups.each do |group|
+                                - if group.id == contact.group_id
+                                  = group.name
+                            - else
+                              | 全員
+                              /roomに紐づく全てのgroupを取り出して、contactに一致するもののみ表示　空なら全員と表示
                           td
                             = link_to admins_contact_path(contact.id),class:"txt_color_blue" do
                               = contact.subject

@@ -14,28 +14,39 @@ class Admins::ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.room_id = @room.id
-    @users = User.where(room_id: @room.id)
     render(:new) && return if params[:back] || !@contact.save
-    @users.each do |user|
-      ContactMailer.with(user: user).send_mail(@contact).deliver_now
-    end
+     if @contact.group_id.present?
+      @group = Group.find_by(id: @contact.group_id)
+      @group.group_users.each do |group_user|
+        ContactMailer.with(user: group_user.user).send_mail(@contact).deliver_now
+      end
+    redirect_to admins_contacts_path
+    flash[:success] = "連絡網を送信いたしました。"
+    else
+      @users = User.where(room_id: @room.id)
+      @users.each do |user|
+        ContactMailer.with(user: user).send_mail(@contact).deliver_now
+      end
     redirect_to admins_contacts_path
     flash[:success] = "連絡網を送信いたしました。"
   end
+end
 
   def index
     @q = Contact.where(room_id: @room).page(params[:page]).reverse_order.ransack(params[:q])
     @contacts = @q.result(distinct: true)
+    @groups = Group.where(room_id: @room.id)
   end
 
   def show
     @contact = Contact.find(params[:id])
+    @group = Group.find_by(id: @contact.group_id)
   end
 
   private
 
   def contact_params
-    params.require(:contact).permit(:subject, :text, :image, :file, :room_id, :created_at)
+    params.require(:contact).permit(:subject, :text, :image, :file, :room_id,:group_id, :created_at)
   end
 
   def current_room

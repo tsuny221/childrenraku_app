@@ -10,6 +10,27 @@
              = @contact.created_at.to_s(:datetime_jp)
         .my-page__cont
           h4.marker.contact__midashi
+           |  宛先
+          - if @group.present?
+            .panel-group id="Accordion"
+              .panel.panel-default
+                .panel-heading
+                  h3.collapsed.panel-title
+                    a data-parent="#Accordion" data-toggle="collapse" href="#accordion_group"
+                      = @group.name
+                .panel-collapse.collapse id="accordion_group"
+                    .panel-body
+                        h4 メンバー
+                        - @group.group_users.each do |group_user|
+                            p
+                              = group_user.user.full_name
+                              | (
+                              = group_user.user.email
+                              | )
+          - else
+            p 全員
+        .my-page__cont
+          h4.marker.contact__midashi
             | 件名
           p.my-page__box_txt.my-page__user_cont
              = @contact.subject

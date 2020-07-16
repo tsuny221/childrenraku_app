@@ -452,6 +452,7 @@ textarea:focus {
 .form__btn:active {
   border: 0px;
 }
+select:disabled,
 input:read-only,
 textarea:read-only {
   background-color: #ddd;
