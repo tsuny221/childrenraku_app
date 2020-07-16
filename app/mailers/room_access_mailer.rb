@@ -3,6 +3,6 @@ class RoomAccessMailer < ApplicationMailer
     @user = params[:user]
     @room = params[:room]
     @child = params[:child]
-    mail(to: @user.email, subject: 'お子様が#{@room.name}へ入室しました。')
+    mail(to: @user.email, subject: "お子様が#{@room.name}へ入室しました")
   end
 end

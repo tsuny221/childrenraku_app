@@ -26,6 +26,7 @@ class Admins::ContactsController < ApplicationController
         ContactMailer.with(user: user).send_mail(@contact).deliver_now
       end
     end
+    ContactMailer.with(user:current_admin).send_mail(@contact).deliver_now
     redirect_to admins_contacts_path
     flash[:success] = "連絡網を送信いたしました。"
 end
