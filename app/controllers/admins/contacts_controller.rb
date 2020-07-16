@@ -20,16 +20,14 @@ class Admins::ContactsController < ApplicationController
       @group.group_users.each do |group_user|
         ContactMailer.with(user: group_user.user).send_mail(@contact).deliver_now
       end
-    redirect_to admins_contacts_path
-    flash[:success] = "連絡網を送信いたしました。"
     else
       @users = User.where(room_id: @room.id)
       @users.each do |user|
         ContactMailer.with(user: user).send_mail(@contact).deliver_now
       end
+    end
     redirect_to admins_contacts_path
     flash[:success] = "連絡網を送信いたしました。"
-  end
 end
 
   def index

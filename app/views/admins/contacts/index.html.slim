@@ -13,7 +13,7 @@
                     tr
                       th.sort = sort_link(@q, :created_at)
                         | 日付
-                      th
+                      th.sort = sort_link(@q, :group_id)
                         | 宛先
                       th.sort = sort_link(@q, :subject)
                         | 件名

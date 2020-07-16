@@ -16,6 +16,12 @@ class Admins::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postcode, :addresss, :phone_numeber)
   end
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to admins_users_path
+    flash[:notice] = "会員の削除が完了しました。"
+  end
 
   def current_room_families
     @room = current_admin.room

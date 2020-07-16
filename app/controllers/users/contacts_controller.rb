@@ -1,9 +1,15 @@
 class Users::ContactsController < ApplicationController
-  before_action :current_room
-  before_action :child_check
+  before_action :authenticate_user!, only: [:index, :show]
+  before_action :current_room, only: [:index, :show]
+  before_action :child_check, only: [:index, :show]
   def index
     @q = Contact.where(room_id: @room).page(params[:page]).reverse_order.ransack(params[:q])
     @contacts = @q.result(distinct: true)
+  end
+  def read
+    if ContactUser.create(contact_id: params[:id], user_id: current_user.id)
+      @contact_user = ContactUser.update(read: true)
+    end
   end
 
   def show

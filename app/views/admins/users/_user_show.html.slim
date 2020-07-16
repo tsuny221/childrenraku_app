@@ -28,9 +28,12 @@
                   = @user.full_address
             .my-page__box
                 p.my-page__box_midashi
-                  | 電話番号:
+                  | 電話番号:　　
                 p.my-page__box_txt
                   = @user.phone_number
+            .my-page__box
+                p.my-page__box_txt.text-right
+                  = link_to 'この会員を削除', admins_user_path(@user.id), method: :delete, "data-confirm" => '本当によろしいですか？',  class:"btn btn_color_red"
         .my-page__cont
             h3.marker.txt_size_m
              | 家族情報

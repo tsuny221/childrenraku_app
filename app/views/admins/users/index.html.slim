@@ -19,7 +19,7 @@
                           | 人
                   thead.table__thead_theme_main
                     tr
-                      th
+                      th.sort = sort_link(@q, :first_name)
                         | 名前
                       th
                         | メールアドレス
@@ -32,7 +32,7 @@
                     - @users.each do |user|
                       tbody
                         tr
-                          td.sort = sort_link(@q, :first_name)
+                          td
                             = user.full_name
                             |(
                             = user.full_name_kana

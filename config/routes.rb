@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     put 'room_access/leave' => 'children#leave', as: 'leave'
     get 'room_access/mail' => 'children#mail', as: 'room_access_children_mail'
     get 'room_access/mail_all' => 'children#mail_all', as: 'room_access_mail_all'
-    resources :users, only: [:show, :index]
+    resources :users, only: [:show, :index, :destroy]
     resources :admins, only: [:show, :edit, :update]
     # patch 'admins/:id/edit' => 'admins#update', as: 'edit_admin'
     get '/confirm' => 'admins#confirm', as: 'confirm'
@@ -72,7 +72,11 @@ Rails.application.routes.draw do
     resources :users
     get '/confirm' => 'users#confirm', as: 'confirm'
     put '/:id/hide' => 'users#hide', as: 'hide'
-    resources :contacts, only: [:index, :show]
+    resources :contacts, only: [:index, :show] do
+      collection do
+        get :read
+      end
+    end
     resources :plans, only: [:new, :index, :create, :edit, :update]
   end
   # ユーザー
