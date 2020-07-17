@@ -898,6 +898,10 @@ caption {
   .main-visual__txt {
     font-size: 25px;
   }
+  .intro__img {
+    width: 100%;
+    object-fit: cover;
+  }
   /*------------ー機能紹介-------------*/
   .intro__txt_box {
     flex-basis: 100%;
