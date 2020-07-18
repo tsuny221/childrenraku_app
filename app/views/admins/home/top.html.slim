@@ -9,17 +9,17 @@
           = link_to admins_room_access_path, class: "btn btn_color_dark-blue admin-top__btn" do
             p.txt_color_white
               | 入退室管理
-            = image_tag src="access.jpg", class: "admin-top__img"
+            = image_tag asset_path("access.jpg"), class: "admin-top__img"
 
           = link_to admins_plans_path, class: "btn btn_color_green admin-top__btn" do
             p.txt_color_white
               | 予定表
-            = image_tag src="calender.jpg", class: "admin-top__img"
+            = image_tag asset_path("calender.jpg"), class: "admin-top__img"
 
           = link_to new_admins_contact_path, class: "btn btn_color_blue admin-top__btn" do
             p.txt_color_white
               | 連絡網
-            = image_tag src="contact.jpg", class: "admin-top__img"
+            = image_tag asset_path("contact.jpg"), class: "admin-top__img"
 
           .admin_top_select2
 

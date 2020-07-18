@@ -43,6 +43,7 @@
           h4.marker.contact__midashi
             | 画像
           p.my-page__box_txt.my-page__user_cont
-             = attachment_image_tag(@contact, :image, :fill, 300, 300, class: "product_img_s")
+            = link_to attachment_url(@contact,:image),class:"product_img_s txt_color_blue" do
+              = @contact.image_filename
         .contact__midashi
           = link_to '戻る', admins_contacts_path,class:"btn btn_color_gray"

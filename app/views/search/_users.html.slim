@@ -7,12 +7,12 @@ a.btn.btn_theme_main data-target="#modal1" data-toggle="modal" type="button"
         .modal-header
             button.close aria-label="Close" data-dismiss="modal" type="button"
                 span aria-hidden="true"  ×
-            h3#label1.modal-title ユーザー検索
+            h3#label1.modal-title 会員検索
         .modal-body
                 = search_form_for q, url: admins_users_path do |f|
                             .search
                                 .field
-                                    = f.label :first_name, 'ユーザー検索(名前）',class:"form__label"
+                                    = f.label :first_name, '会員検索(名前）',class:"form__label"
                                     = f.search_field :first_name_or_last_name_or_first_name_kana_or_last_name_kana_cont,class:"form__item_input"
                                 .action
                                     = f.submit '検索',class:"form__btn"

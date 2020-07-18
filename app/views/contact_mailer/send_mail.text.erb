@@ -2,3 +2,4 @@
 件名: <%= @contact.subject %>
 
 本文: <%= @contact.text %>
+<%= link_to '既読にする', read_users_contacts_url(@contact.id, @user.id) %>

@@ -63,6 +63,7 @@ ja:
         created_at: 登録日時
         updated_at: 更新日時
       contact:
+        group_id: 宛先
         subject: 件名
         text: 本文
         image: ファイル

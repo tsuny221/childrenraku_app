@@ -457,6 +457,9 @@ input:read-only,
 textarea:read-only {
   background-color: #ddd;
 }
+.hidden {
+  display: none;
+}
 /*------------管理者かユーザーか選択ボタン-------------*/
 .user-select {
   text-align: center;

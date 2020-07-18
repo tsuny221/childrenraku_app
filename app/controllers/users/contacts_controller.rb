@@ -7,7 +7,7 @@ class Users::ContactsController < ApplicationController
     @contacts = @q.result(distinct: true)
   end
   def read
-    if ContactUser.create(contact_id: params[:id], user_id: current_user.id)
+    if ContactUser.create(contact_id: params[:id], user_id: current_user)
       @contact_user = ContactUser.update(read: true)
     end
   end
@@ -19,7 +19,7 @@ class Users::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:subject, :text, :image, :file, :room_id)
+    params.require(:contact).permit(:subject, :text, :image, :file, :room_id, :image_cache_id )
   end
 
   def current_room
