@@ -154,11 +154,42 @@ table {
   border-radius: 30px;
   color: #5c6567;
   background: -webkit-linear-gradient(left, #fffe32, #ffd627);
+  position: relative;
+  overflow: hidden;
 }
 .btn_theme_signup:hover {
   color: #333;
   background: #ccb100;
 }
+.btn_theme_signup:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background-image: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 75%
+  );
+  -webkit-animation: shine 2s infinite;
+  animation: shine 2s infinite;
+}
+@-webkit-keyframes shine {
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes shine {
+  100% {
+    left: 100%;
+  }
+}
+
 .btn_color_orange {
   color: #fff;
   background-color: #ff6900;
@@ -233,6 +264,27 @@ table {
 }
 .page_space {
   padding: 8% 0px;
+}
+
+/*------------フェードイン-------------*/
+.fadein_right {
+  opacity: 0;
+  transform: translate(50px, 0);
+  transition: all 1000ms;
+}
+.fadein_bottom {
+  opacity: 0;
+  transform: translate(0, 50px);
+  transition: all 1000ms;
+}
+.fadein_left {
+  opacity: 0;
+  transform: translate(-50px, 0);
+  transition: all 1000ms;
+}
+.fadein.scrollin {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 /*------------ヘッダー-------------*/
 
@@ -901,14 +953,19 @@ caption {
   .main-visual__txt {
     font-size: 25px;
   }
+  /*------------ー機能紹介-------------*/
   .intro__img {
     width: 100%;
     object-fit: cover;
   }
-  /*------------ー機能紹介-------------*/
+
   .intro__txt_box {
     flex-basis: 100%;
+    margin-bottom: 10%;
+    position: absolute;
+    top: -10px;
   }
+
   /*--------------ユーザー選択-------------------*/
   .user-select__btn {
     width: 200px;

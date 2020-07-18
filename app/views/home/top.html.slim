@@ -4,7 +4,7 @@
       section.main-visual
         .main-visual__cont
           .main-visual_left
-            = image_tag asset_path("PC.png"), class: "main-visual__img"
+            = image_tag asset_path("PC.png"), class: "main-visual__img fadein"
           .main-visual_right
             h2.txt_color_white.main-visual__txt
               | 出欠確認や連絡網をスムーズに
@@ -16,12 +16,12 @@
 .container
   .row
     section.point
-      h3.point__midashi
+      h3.point__midashi.fadein.fadein_bottom
         = image_tag asset_path("logo-blue.png"), class: "point__logo"
         | は、保育者の事務業務をICTで省力化し、
         br
         | 保育・教育の質向上を支援するツールです。
-      .point__cont
+      .point__cont.fadein.fadein_bottom
         .point__box
           .point__detail
             p.txt_size_s
@@ -60,17 +60,15 @@
     .row
       section.intro
         .intro__box
-          .intro__txt_box
+          .intro__txt_box.fadein.fadein_left
             p.txt_color_blue.intro__count 01
             p.txt_size_l
               span.marker 入退室管理
-            p.txt_size_m
-                | 子どもが登所した際に入室、退室をクリックするだけで切り替えが可能。
-                br
-                | 入室時退室時に保護者へメールを送ることが可能です。
-          = image_tag asset_path("access.jpg"), class: "intro__img"
+            p.txt_size_m.font-weight-normal
+                | 子どもが登所した際に入室、退室をクリックするだけで切り替えが可能。入室時退室時に保護者へメールを送ることが可能です。
+          = image_tag asset_path("enter.jpg"), class: "intro__img"
         .intro__box
-            .intro__txt_box
+            .intro__txt_box.fadein.fadein_right
               p.txt_color_blue.intro__count 02
               p.txt_size_l
                 span.marker 予定表管理
@@ -78,9 +76,9 @@
                 | フォームから提出された児童ごとの予定表をまとめて確認できます。
                 br
                 |その日の出欠も表示できます。
-            = image_tag asset_path("calender.png"), class: "intro__img"
+            = image_tag asset_path("calender2.jpg"), class: "intro__img"
         .intro__box
-            .intro__txt_box
+            .intro__txt_box.fadein.fadein_left
               p.txt_color_blue.intro__count 03
               p.txt_size_l
                 span.marker 連絡網
@@ -88,9 +86,9 @@
                 | 日々の連絡を一括で行えます。
                 br
                 | メールアドレスを全員分登録する手間もなく、施設に属する保護者へ連絡がスムーズに行えます。
-            = image_tag asset_path("contact.jpg"), class: "intro__img"
+            = image_tag asset_path("contact2.jpg"), class: "intro__img"
         .intro__box
-            .intro__txt_box
+            .intro__txt_box.fadein.fadein_right
               p.txt_color_blue.intro__count 04
               p.txt_size_l
                 span.marker 児童名簿
@@ -98,10 +96,10 @@
                 | 保護者が登録した児童の一覧を表示できます。
                 br
                 | 表示した一覧は印刷して児童名簿としても使用できます。
-            = image_tag asset_path("children.png"), class: "intro__img"
+            = image_tag asset_path("children2.jpg"), class: "intro__img"
 .container
   .row
-    section.catch-copy
+    section.catch-copy.fadein.fadein_bottom
       h2.catch-copy__midashi 体験してみませんか？
       p.txt_size_m 新規登録ですぐに使用できます
       = link_to "いますぐ新規登録", signup_select_path, class: "btn btn_size_l btn_theme_signup"
