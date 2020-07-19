@@ -20,7 +20,7 @@
                 p.my-page__box_midashi
                   | メールアドレス:
                 p.my-page__box_txt
-                  = @user.email
+                  = mail_to user.email,user.email, class: "txt_color_blue"
             .my-page__box
                 p.my-page__box_midashi
                   | 住所:

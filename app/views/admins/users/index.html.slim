@@ -37,8 +37,8 @@
                             |(
                             = user.full_name_kana
                             |)
-                          td.
-                            = user.email
+                          td
+                            = mail_to user.email,user.email, class: "txt_color_blue"
                           td
                             = user.full_address
                           td
