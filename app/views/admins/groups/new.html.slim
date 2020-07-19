@@ -15,6 +15,6 @@
               = f.collection_check_boxes(:user_ids, User.where(room_id: @room.id), :id, :last_name) do |user|
                     = user.label {user.check_box + user.object.full_name}
             .actions
-              = f.submit "確認画面へ", autofocus: true, class: "form__btn"
+              = f.submit "登録", autofocus: true, class: "form__btn"
       .contact__midashi
              = link_to '戻る', admins_groups_path,class:"btn btn_color_gray"

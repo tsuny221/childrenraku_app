@@ -39,7 +39,7 @@ class Admins::ChildrenController < ApplicationController
     @child = Child.find_by(id: params[:child][:id])
     @users = User.where(family_id: @child.family_id)
     @users.each do |user|
-      RoomAccessMailer.with(user: user, child: @child, room: @room).enter_mail.deliver_now
+      RoomAccessMailer.with(user: user, child: @child, room: @room).enter_mail.deliver_later
     end
   end
 
@@ -49,7 +49,7 @@ class Admins::ChildrenController < ApplicationController
       @children.each do |child|
         @users = User.where(family_id: child.family_id)
         @users.each do |user|
-          RoomAccessMailer.with(user: user, child: child, room: @room).enter_mail.deliver_now
+          RoomAccessMailer.with(user: user, child: child, room: @room).enter_mail.deliver_later
         end
       end
       redirect_to admins_room_access_path

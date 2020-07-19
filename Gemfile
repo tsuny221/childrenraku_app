@@ -77,6 +77,9 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'simple_calendar', '~> 2.0'
 gem 'ransack'
+gem 'delayed_job_active_record'
+gem "daemons"
+gem 'capistrano3-delayed-job', '~> 1.0'
 
 gem 'dotenv-rails'
 group :production do

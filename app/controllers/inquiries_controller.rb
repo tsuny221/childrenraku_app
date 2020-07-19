@@ -7,7 +7,7 @@ class InquiriesController < ApplicationController
   def create
     @inquiry = Inquiry.new(inquiry_params)
     render('home/top') && return if params[:back] || !@inquiry.save
-    InquiryMailer.send_mail(@inquiry).deliver_now
+    InquiryMailer.send_mail(@inquiry).deliver_later
     redirect_to root_path
     flash[:notice] = "お問い合わせありがとうございました。"
 end

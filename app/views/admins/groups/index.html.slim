@@ -21,11 +21,11 @@
                           .panel-body
                               h4 メンバー
 
-                              - group.group_users.each do |group_user|
+                              - group.users.each do |user|
                                   p
-                                    = group_user.user.full_name
+                                    = user.full_name
                                     | (
-                                    = group_user.user.email
+                                    = user.email
                                     | )
                               p.text-right= link_to '編集', edit_admins_group_path(group.id),class:"btn btn_color_orange text-right"
 
