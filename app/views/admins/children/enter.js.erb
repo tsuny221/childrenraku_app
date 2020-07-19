@@ -1,2 +1,4 @@
 $("#room_access_<%= @child.id %>").html("<%= j(render partial: 'admins/children/room_access_update', locals: { child: @child }) %>");
 $("#mail_<%= @child.id %>").html("<%= j(render partial: 'admins/children/mail', locals: { child: @child }) %>");
+
+$("#child-count").html("<%= j(render partial: "admins/children/children_count", locals: { enter: @enter, children: @children }) %>")

@@ -2,6 +2,7 @@ class Admins::ChildrenController < ApplicationController
   before_action :authenticate_admin!
   before_action :room_check
   before_action :current_room_families
+  before_action :children_enter, only: [:enter, :leave]
 
   def index
     @q = Child.order(grade: "DESC").where(family_id: @families).page(params[:page]).ransack(params[:q])
@@ -21,20 +22,15 @@ class Admins::ChildrenController < ApplicationController
     @q = Child.order(grade: "DESC").where(family_id: @families).page(params[:page]).ransack(params[:q])
     @children = @q.result(distinct: true)
     @enter = Child.where(family_id: @families).where(room_access: 1)
-    @leave = Child.where(family_id: @families).where(room_access: 0)
     @plans = Plan.where(start_time: Date.today.beginning_of_day)
   end
 
   def enter
-    @child = Child.find_by(id: params[:child][:id])
-    # ここ要注意パラメータよくみようchildの中に引き渡されている
     @child.update(room_access: true)
     # redirect_to admins_room_access_path(@child)
   end
 
   def leave
-    @child = Child.find_by(id: params[:child][:id])
-    # ここ要注意パラメータよくみようchildの中に引き渡されている
     @child.update(room_access: false)
     # redirect_to admins_room_access_path(@child)
   end
@@ -63,7 +59,7 @@ class Admins::ChildrenController < ApplicationController
       @child = Child.find_by(id: params[:id])
       render :room_access
       flash[:alert] = "入室している児童がいません。"
-  end
+    end
   end
 
   private
@@ -75,5 +71,11 @@ class Admins::ChildrenController < ApplicationController
   def current_room_families
     @room = current_admin.room
     @families = Family.where(room_id: @room.id)
+  end
+
+  def children_enter
+    @child = Child.find_by(id: params[:child][:id])
+    @enter = Child.where(family_id: @families).where(room_access: 1)
+    @children = Child.where(family_id: @families)
   end
 end

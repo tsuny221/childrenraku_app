@@ -765,7 +765,20 @@ caption {
 .contact__btn {
   margin-right: 10px;
 }
-
+.contact__flex {
+  display: flex;
+  justify-content: space-around;
+}
+.border_color_blue {
+  border-bottom: solid 5px #44beeb;
+}
+.border_color_red {
+  border-bottom: solid 5px #eb4444;
+}
+.contact__midashi2 {
+  margin: 20px;
+  display: inline-block;
+}
 /*-------------予定表--------------------*/
 .plan__index {
   padding: 5% 0px;

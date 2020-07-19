@@ -1,5 +1,9 @@
-お問い合わせ
+連絡網
+
+<%=@user.first_name %>様
+
 件名: <%= @contact.subject %>
 
 本文: <%= @contact.text %>
-<%= link_to '既読にする', read_users_contacts_url(@contact.id, @user.id) %>
+
+<%= link_to '既読にする', read_users_contact_url(@contact.id, @user.id) %>

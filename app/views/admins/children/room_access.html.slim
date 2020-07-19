@@ -12,13 +12,8 @@
                       .caption_left
                         = Date.today.strftime('%Y年%m月%d日(%a)')
                         = link_to 'お知らせメール(一括送信)', admins_room_access_mail_all_path, data: { confirm: "入室メールを送信しますか？"}, class: "btn_color_yellow btn room-access__mail_btn"
-                      .caption_right id="ajaxreload"
-                          | 出席児童数
-                          = @enter.count
-                          | 人
-                          | 総児童数
-                          = Child.where(family_id: @families).count
-                          | 人
+                      .caption_right id="child-count"
+                        = render "admins/children/children_count", { enter: @enter, children: Child.where(family_id: @families) }
                   thead
                     tr.table__thead_theme_main
                       th.sort = sort_link(@q, :grade)

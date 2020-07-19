@@ -3,25 +3,25 @@
     section.contact-show
         h3.midashi.txt_size_l.admin-page__midashi
           | 連絡網詳細
-        .my-page__cont
+        .contact__cont
           h4.marker.contact__midashi
            | 送信日時
-          p.my-page__box_txt.my-page__user_cont
+          p.contact__box_txt.contact__user_cont
              = @contact.created_at.to_s(:datetime_jp)
-        .my-page__cont
+        .contact__cont
           h4.marker.contact__midashi
             | 件名
-          p.my-page__box_txt.my-page__user_cont
+          p.contact__box_txt.contact__user_cont
              = @contact.subject
-        .my-page__cont
+        .contact__cont
           h4.marker.contact__midashi
             | 本文
-          p.my-page__box_txt.my-page__user_cont
+          p.contact__box_txt.contact__user_cont
              = @contact.text
-        .my-page__cont
+        .contact__cont
           h4.marker.contact__midashi
             | 画像
-          p.my-page__box_txt.my-page__user_cont
+          p.contact__box_txt.contact__user_cont
              = link_to attachment_url(@contact,:image),class:"product_img_s txt_color_blue" do
               = @contact.image_filename
 

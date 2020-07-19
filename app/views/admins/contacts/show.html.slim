@@ -3,12 +3,12 @@
     section.contact-show
         h3.midashi.txt_size_l.admin-page__midashi
           | 連絡網詳細
-        .my-page__cont
+        .contact__cont
           h4.marker.contact__midashi
            | 送信日時
-          p.my-page__box_txt.my-page__user_cont
+          p.contact__box_txt.contact__user_cont
              = @contact.created_at.to_s(:datetime_jp)
-        .my-page__cont
+        .contact__cont
           h4.marker.contact__midashi
            |  宛先
           - if @group.present?
@@ -21,29 +21,48 @@
                 .panel-collapse.collapse id="accordion_group"
                     .panel-body
                         h4 メンバー
-                        - @group.group_users.each do |group_user|
+                        - @group.users.each do |user|
                             p
-                              = group_user.user.full_name
+                              = user.full_name
                               | (
-                              = group_user.user.email
+                              = user.email
                               | )
           - else
             p 全員
-        .my-page__cont
+        .contact__cont
           h4.marker.contact__midashi
             | 件名
-          p.my-page__box_txt.my-page__user_cont
+          p.contact__box_txt.contact__user_cont
              = @contact.subject
-        .my-page__cont
+        .contact__cont
           h4.marker.contact__midashi
             | 本文
-          p.my-page__box_txt.my-page__user_cont
+          p.contact__box_txt.contact__user_cont
              = @contact.text
-        .my-page__cont
+        .contact__cont
           h4.marker.contact__midashi
             | 画像
-          p.my-page__box_txt.my-page__user_cont
+          p.contact__box_txt.contact__user_cont
             = link_to attachment_url(@contact,:image),class:"product_img_s txt_color_blue" do
               = @contact.image_filename
+        .contact__flex
+          .contact__box
+            h4.midashi.contact__midashi2.border_color_blue
+              | 既読者一覧
+            - @read_users.each do |user|
+                li
+                  = user.full_name
+                  | (
+                  = mail_to user.email, user.email, class: "txt_color_blue"
+                  | )
+          .contact__box
+            h4.midashi.contact__midashi2.border_color_red
+              | 未読者一覧
+            - @noread_users.each do |user|
+                li.txt_color_red
+                  = user.full_name
+                  | (
+                  = mail_to user.email, user.email, class: "txt_color_blue"
+                  | )
         .contact__midashi
           = link_to '戻る', admins_contacts_path,class:"btn btn_color_gray"

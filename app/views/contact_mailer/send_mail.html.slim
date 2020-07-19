@@ -1,0 +1,17 @@
+h3 連絡網
+
+p
+  = @user.full_name
+  |様
+
+p ------------------------------------------------
+p
+  = @contact.subject
+
+p
+  = @contact.text
+
+p
+  = link_to '既読にする', read_users_contact_url(@contact.id, user_id: @user.id)
+
+p -----------------------------------------------

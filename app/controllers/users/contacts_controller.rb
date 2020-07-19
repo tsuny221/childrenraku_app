@@ -7,8 +7,11 @@ class Users::ContactsController < ApplicationController
     @contacts = @q.result(distinct: true)
   end
   def read
-    if ContactUser.create(contact_id: params[:id], user_id: current_user)
-      @contact_user = ContactUser.update(read: true)
+    if ContactUser.create(contact_id: params[:id], user_id: params[:user_id], read: true).valid?
+    else
+      @contact = Contact.find(params[:id])
+      flash[:notice] = "既に既読済みです。"
+      render :show
     end
   end
 
@@ -25,4 +28,5 @@ class Users::ContactsController < ApplicationController
   def current_room
     @room = current_user.room
   end
+
 end

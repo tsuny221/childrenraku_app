@@ -26,7 +26,7 @@ class Admins::ContactsController < ApplicationController
         ContactMailer.with(user: user).send_mail(@contact).deliver_now
       end
     end
-    ContactMailer.with(user:current_admin).send_mail(@contact).deliver_now
+    #ContactMailer.with(user:current_admin).send_mail(@contact).deliver_now
     redirect_to admins_contacts_path
     flash[:success] = "連絡網を送信いたしました。"
 end
@@ -38,8 +38,15 @@ end
   end
 
   def show
+    @users = User.where(room_id: @room.id)
     @contact = Contact.find(params[:id])
     @group = Group.find_by(id: @contact.group_id)
+    @read_users = @contact.users
+    if @group.present?
+    @noread_users = @group.users.where.not(id: @contact.users.ids)
+    else
+    @noread_users = @users.where.not(id: @contact.users.ids)
+    end
   end
 
   private
