@@ -103,4 +103,7 @@ Rails.application.configure do
   authentication: 'plain',
   enable_starttls_auto: true
 }
+host = 'childrenraku.work'
+    Rails.application.routes.default_url_options[:host] = host
+    #devise の招待メール用
 end
