@@ -71,7 +71,7 @@ Rails.application.configure do
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
-  config.i18n.fallbacks = true
+  config.i18n.fallbacks = [I18n.default_locale]
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
@@ -91,4 +91,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address: 'smtp.gmail.com',
+  domain: 'gmail.com',
+  port: 587,
+  user_name: ENV['MAIL_USERNAME'],#送信先となるメールアドレスのアドレスを入れる
+  password: ENV['MAIL_PASSWORD'],#送信先となるメールアドレスのパスワードを入れる
+  authentication: 'plain',
+  enable_starttls_auto: true
+}
+  host = 'http://childrenraku.work'
+    Rails.application.routes.default_url_options[:host] = host
+    #devise の招待メール用
 end
