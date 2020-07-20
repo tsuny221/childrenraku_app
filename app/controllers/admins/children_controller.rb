@@ -19,6 +19,7 @@ class Admins::ChildrenController < ApplicationController
   end
 
   def room_access
+    # 入退室管理ページ
     @q = Child.order(grade: "DESC").where(family_id: @families).page(params[:page]).ransack(params[:q])
     @children = @q.result(distinct: true)
     @enter = Child.where(family_id: @families).where(room_access: 1)
@@ -27,11 +28,13 @@ class Admins::ChildrenController < ApplicationController
 
   def enter
     @child.update(room_access: true)
+    # 非同期化
     # redirect_to admins_room_access_path(@child)
   end
 
   def leave
     @child.update(room_access: false)
+    # 非同期化
     # redirect_to admins_room_access_path(@child)
   end
 

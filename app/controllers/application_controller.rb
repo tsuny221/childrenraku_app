@@ -36,7 +36,6 @@ class ApplicationController < ActionController::Base
       render 'admins/rooms/new'
     end
   end
-
   # ルームを作成したかどうかチェック
   def child_check
     if Child.find_by(family_id: current_user.family_id).blank?

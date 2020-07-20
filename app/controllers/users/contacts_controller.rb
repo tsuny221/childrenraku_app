@@ -7,6 +7,7 @@ class Users::ContactsController < ApplicationController
     @contacts = @q.result(distinct: true)
   end
   def read
+    # 既読機能
     if ContactUser.create(contact_id: params[:id], user_id: params[:user_id], read: true).valid?
     else
       @contact = Contact.find(params[:id])
