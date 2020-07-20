@@ -31,3 +31,5 @@
             = f.text_area :special_notes, autofocus: true, class: "form__item_textarea"
           .actions
             = f.submit "登録", class: "form__btn"
+      .contact__midashi
+                        = link_to '戻る', users_user_path(current_user.id),class:"btn btn_color_gray"

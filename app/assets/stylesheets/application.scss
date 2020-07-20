@@ -926,6 +926,7 @@ caption {
   .form__btn {
     font-size: 15px;
   }
+
   /*----------フッター------------*/
   footer {
     padding-left: 10px;
@@ -985,7 +986,8 @@ caption {
   }
   /*------------テーブルなどのスクロール機能-------------*/
   .scroll-table,
-  .plan__cont2 {
+  .plan__cont2,
+  .simple-calendar {
     display: block;
     overflow-x: scroll;
     white-space: nowrap;

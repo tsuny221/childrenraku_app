@@ -28,3 +28,5 @@
             = f.email_field :email, autofocus: true, autocomplete: "email", class: "form__item_input"
           .actions
             = f.submit "登録", class: "form__btn"
+      .contact__midashi
+                  = link_to '戻る', users_user_path(current_user.id),class:"btn btn_color_gray"

@@ -3,7 +3,7 @@
     section.admin-page
               = render 'search/user_contacts', q: @q
               h3.midashi.txt_size_l.admin-page__midashi
-                | 連絡網一覧
+                | 連絡網一覧（既読済）
               - unless @contacts.present?
                 p.text-center 連絡網はありません
               - else
