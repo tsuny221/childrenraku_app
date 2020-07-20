@@ -7,7 +7,7 @@
               - unless @children.present?
                 p.text-center 児童が登録されていません
               - else
-                table.table.table_theme_simple border="1"
+                table.table.table_theme_simple.scroll-table border="1"
                   .txt_size_m.admin__caption
                       .caption_left
                           = Date.today.strftime('%Y')
