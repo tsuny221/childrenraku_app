@@ -39,6 +39,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-delayed-job', '~> 1.0'
 end
 
 group :development do
@@ -79,7 +84,7 @@ gem 'simple_calendar', '~> 2.0'
 gem 'ransack'
 gem 'delayed_job_active_record'
 gem "daemons"
-gem 'capistrano3-delayed-job', '~> 1.0'
+
 
 gem 'dotenv-rails'
 group :production do
