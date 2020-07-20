@@ -3,7 +3,8 @@ class Users::ContactsController < ApplicationController
   before_action :current_room, only: [:index, :show]
   before_action :child_check, only: [:index, :show]
   def index
-    @q = current_user.contacts.page(params[:page]).reverse_order.ransack(params[:q])
+    @groups = current_user.groups
+    @q = Contact.where(group_id: @groups.ids).or(Contact.where(group_id: nil)).page(params[:page]).reverse_order.ransack(params[:q])
     @contacts = @q.result(distinct: true)
   end
   def read
@@ -23,7 +24,7 @@ class Users::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:subject, :text, :image, :file, :room_id, :image_cache_id )
+    params.require(:contact).permit(:subject, :text, :image, :file, :room_id, :group_id)
   end
 
   def current_room
