@@ -798,6 +798,9 @@ caption {
 .form__textarea_s {
   width: 100%;
 }
+.calendar-title {
+  font-size: 23px;
+}
 /*simple_calendarの上書き*/
 /*一行目以外対象*/
 .plan__flex:not(:nth-child(4)) {
@@ -808,11 +811,11 @@ caption {
     .calendar-heading {
       display: none;
     }
-    table {
-      thead {
-        display: none;
-      }
-    }
+    // table {
+    //   thead {
+    //     display: none;
+    //   }
+    // }
   }
 }
 .simple-calendar .day {
@@ -964,6 +967,7 @@ caption {
   .txt_size_m {
     font-size: 15px;
   }
+
   .btn_size_l {
     font-size: 20px;
     padding: 15px 20px;
@@ -1076,6 +1080,23 @@ caption {
 
   .contact__flex {
     flex-direction: column;
+  }
+  /*-------------予定表--------------------*/
+  .plan__cont1 {
+    flex-basis: 15%;
+    padding-top: 80px;
+    margin-right: 5px;
+    font-size: 10px;
+  }
+  .plan__cont2 {
+    flex-basis: 100%;
+    font-size: 10px;
+  }
+  .date__txt_size {
+    font-size: 10px;
+  }
+  .calendar-title {
+    font-size: 18px;
   }
 }
 @media (max-width: 510px) {
