@@ -5,6 +5,7 @@
           | 予定表入力
         .txt_size_m
           span.plan__child-name.marker= @child.full_name
+        p.txt_color_red 月を移動すると現在入力中の内容は保存されませんので、ご注意ください。
         - unless @plan.present?
           = form_with model: @plans, url: users_plans_path, local: true do |f|
               - @plans.collection.each do |plan|

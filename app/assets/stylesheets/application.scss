@@ -298,14 +298,22 @@ table {
   margin: 10px 10px;
 }
 .header__nav_txt {
-  font-size: 20px;
+  margin-top: 6px;
+  font-size: 18px;
   font-weight: 700;
 }
+.header__nav_txt {
+  color: #fffe62;
+}
 .header__nav_txt:hover {
-  color: #c2c12b;
+  color: #fffe62;
+  opacity: 0.7;
 }
 .navbar-toggler {
   display: none;
+}
+.header__nav_icon {
+  margin-right: 3px;
 }
 /*------------フラッシュメッセージ-------------*/
 .alert {
@@ -513,6 +521,7 @@ textarea:read-only {
 .hidden {
   display: none;
 }
+
 /*------------管理者かユーザーか選択ボタン-------------*/
 .user-select {
   text-align: center;
@@ -885,6 +894,8 @@ caption {
     width: 130px;
   }
   .header__nav_txt {
+    padding: 0x;
+    margin: 0px;
     font-size: 15px;
     font-weight: 700;
   }
@@ -1034,8 +1045,11 @@ caption {
     right: 20px;
     border: none;
     background-color: transparent !important;
-    color: #5c6567;
+    color: #fffe62;
     outline: none;
+  }
+  .navbar-toggler:hover {
+    opacity: 0.7;
   }
   .navbar-toggler:after {
     content: " \f0c9";
@@ -1046,10 +1060,25 @@ caption {
     font-family: FontAwesome;
   }
   .header__nav_txt {
+    display: inline-block;
     text-align: center;
     color: #5c6567;
   }
-  .header__nav_bg {
-    background-color: #fff;
+  .navbar-nav > li > a {
+    margin: 10px;
+    border-radius: 15px;
+    border: 1px solid #fff;
+    color: #fff;
+  }
+  .navbar-nav > li > a:hover {
+    color: #fffe62;
+    border-color: #fffe62;
+    opacity: 1;
+  }
+  .container > .navbar-collapse {
+    margin: 0px;
+  }
+  #navbarList {
+    background-color: none;
   }
 }

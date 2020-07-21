@@ -11,7 +11,7 @@
                   .txt_size_m.admin__caption
                       .caption_left
                         = Date.today.strftime('%Y年%m月%d日(%a)')
-                        = link_to 'お知らせメール(一括送信)', admins_room_access_mail_all_path, data: { confirm: "入室メールを送信しますか？"}, class: "btn_color_yellow btn room-access__mail_btn"
+                        = link_to '入室メール(一括送信)', admins_room_access_mail_all_path, data: { confirm: "入室メールを送信しますか？"}, class: "btn_color_yellow btn room-access__mail_btn"
                       .caption_right id="child-count"
                         = render "admins/children/children_count", { enter: @enter, children: Child.where(family_id: @families) }
                   thead

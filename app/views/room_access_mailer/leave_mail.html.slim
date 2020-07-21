@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+  body
+    h1
+      = @user.full_name
+      | 様へお知らせです。
+    p
+      = @child.full_name
+      | 様が、
+      = @room.name
+      | を退室しました。

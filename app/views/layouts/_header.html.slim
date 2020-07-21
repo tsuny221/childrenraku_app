@@ -13,24 +13,34 @@ header#header.navbar.navbar-fixed-top.top_bg
         nav.collapse.navbar-collapse#navbarList
           - if admin_signed_in?
             ul.nav.navbar-nav.navbar-right.header__nav_bg
-              li.nav_list = link_to '入退室管理', admins_room_access_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to '予定表',  admins_plans_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to '連絡網', new_admins_contact_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to '児童名簿', admins_children_path,class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to admins_admin_path(current_admin), class:"header__nav_txt txt_color_yellow" do
+              li.nav_list = link_to '入退室管理', admins_room_access_path, class:"header__nav_txt"
+              li.nav_list = link_to '予定表',  admins_plans_path, class:"header__nav_txt"
+              li.nav_list = link_to '連絡網', new_admins_contact_path, class:"header__nav_txt"
+              li.nav_list = link_to '児童名簿', admins_children_path,class:"header__nav_txt"
+              li.nav_list = link_to admins_admin_path(current_admin), class:"header__nav_txt" do
                 i.fas.fa-user-cog
                 | 管理者
-              li.nav_list = link_to 'ログアウト', destroy_user_session_path, method: :delete,  class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to destroy_user_session_path, method: :delete,  class:"header__nav_txt" do
+                i.fas.fa-sign-out-alt
+                | ログアウト
           - elsif user_signed_in?
             ul.nav.navbar-nav.navbar-right.header__nav_bg
-              li.nav_list = link_to '予定管理', users_plans_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to '連絡網', users_contacts_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to 'マイページ', users_user_path(current_user.id), class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to 'ログアウト', destroy_user_session_path, method: :delete,  class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to users_plans_path, class:"header__nav_txt" do
+                i.far.fa-calendar-alt.header__nav_icon
+                |予定管理
+              li.nav_list = link_to users_contacts_path, class:"header__nav_txt" do
+                i.fas.fa-envelope.header__nav_icon
+                | 連絡網
+              li.nav_list = link_to users_user_path(current_user.id), class:"header__nav_txt" do
+                i.fas.fa-user
+                | マイページ
+              li.nav_list = link_to destroy_user_session_path, method: :delete,  class:"header__nav_txt" do
+                i.fas.fa-sign-out-alt
+                | ログアウト
           - else
             ul.nav.navbar-nav.navbar-right.header__nav_bg
-              li.nav_list = link_to 'About', about_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to 'ログイン', login_select_path, class:"header__nav_txt txt_color_yellow"
-              li.nav_list = link_to '新規登録', signup_select_path, class:"header__nav_txt txt_color_yellow"
+              li.nav_list = link_to 'About', about_path, class:"header__nav_txt"
+              li.nav_list = link_to 'ログイン', login_select_path, class:"header__nav_txt"
+              li.nav_list = link_to '新規登録', signup_select_path, class:"header__nav_txt"
         button.navbar-toggler data-toggle="collapse" data-target="#navbarList" aria-controls="navbarList" aria-expanded="false" aria-label="ナビゲーションの切替"
         /! ハンバーガーメニュー
