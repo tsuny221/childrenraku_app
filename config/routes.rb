@@ -77,7 +77,7 @@ Rails.application.routes.draw do
         get :read
       end
     end
-    resources :plans, only: [:new, :index, :create, :edit, :update]
+    resources :plans, only: [:new, :index, :create, :update]
   end
   # ユーザー
 end

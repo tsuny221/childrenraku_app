@@ -3,24 +3,42 @@
     .form
         h2.form__midashi
           | 予定表入力
-        = form_with model: @plans, url: users_plans_path, local: true do |f|
-            = render "layouts/errors", obj: @plans
-            = f.label "児童の選択", class:"form__label"
-            = f.collection_select :child_id, @children.map, :id, :full_name,{},{class: "form__item_select"}
-            - @plans.collection.each do |plan|
-              = fields_for 'plans[]', plan do |f|
-                = month_calendar do |date|
-                  .text-left.date__txt_size
-                    = date.day
-                  - if (@start_date.beginning_of_month..@start_date.end_of_month).cover?(date)
-                    .field.text-left
-                      - f.label :attendance
-                      = f.select :attendance, Plan.attendances.keys.map
-                      = f.hidden_field :start_time, value: date
-                    .field.text-left
-                      - f.label :comment
+        .txt_size_m
+          span.plan__child-name.marker= @child.full_name
+        - unless @plan.present?
+          = form_with model: @plans, url: users_plans_path, local: true do |f|
+              - @plans.collection.each do |plan|
+                = fields_for 'plans[]', plan do |f|
+                  = month_calendar do |date|
+                    .text-left.date__txt_size
+                      = date.day
+                    - if (@start_date.beginning_of_month..@start_date.end_of_month).cover?(date)
+                      .field.text-left
+                        - f.label :attendance
+                        = f.select :attendance, Plan.attendances.keys.map
+                        = f.hidden_field :start_time, value: date
+                        = f.hidden_field :child_id, value: @child.id
+                      .field.text-left
+                        - f.label :comment
 
-                      = f.text_field :comment, autofocus: true, autocomplete: "name", class: "form__textarea_s"
-
-            .actions
-                  = f.submit "登録", class: "form__btn"
+                        = f.text_field :comment, autofocus: true, autocomplete: "name", class: "form__textarea_s"
+              .actions
+                = f.submit "登録", class: "form__btn"
+              /start_dateの日に予定が存在しないのでcreateが働く
+        - else
+          = form_with model: @plans, url: users_plan_path(@plan), method: :put, local: true do |f|
+              = month_calendar events: @child.plans do |date, plans|
+                .text-left.date__txt_size
+                  = date.day
+                - if (@start_date.beginning_of_month..@start_date.end_of_month).cover?(date)
+                    - plans.each do |plan|
+                      = fields_for "plans[]", plan do |f|
+                            .field.text-left
+                              - f.label :attendance
+                              = f.select :attendance, Plan.attendances.keys.map
+                            .field.text-left
+                              - f.label :comment
+                              = f.text_field :comment, autofocus: true, autocomplete: "name", class: "form__textarea_s"
+              .actions
+                = f.submit "登録", class: "form__btn"
+                 /start_dateの日に予定が存在するのでupdateが働く

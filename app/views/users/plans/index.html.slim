@@ -3,17 +3,12 @@
     section.admin-page
         h2.form__midashi.plan__info
           | 予定表
-          = link_to '新規入力', new_users_plan_path, class:'btn btn_size_m btn_color_yellow plan__btn_theme_new' ,start_date: params[:start_today]
-        p.text-center
-          | 月ごとに予定表を作成できます。
-          br
-          | 新たに予定表を作成する場合は新規作成。既に作成済みの場合は編集を行ってください。
-
         - @children.each do |child|
           .child__plan__cont
               .txt_size_m
                 span.plan__child-name.marker= child.full_name
-                = link_to '編集', edit_users_plan_path(child.id), class:'btn btn_color_orange' ,start_date: params[:start_today]
+              = link_to '新規/編集', new_users_plan_path(child_id: child.id), class:'btn btn_color_orange', start_date: params[:start_today]
+              / 予定データがあるかどうかで新規登録編集両方行える
               = month_calendar events: child.plans do |date, plans|
                 .text-left.date__txt_size
                   = date.day
