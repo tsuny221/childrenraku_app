@@ -1072,6 +1072,11 @@ caption {
   #navbarList {
     background-color: none;
   }
+  /*-------------連絡網--------------------*/
+
+  .contact__flex {
+    flex-direction: column;
+  }
 }
 @media (max-width: 510px) {
   /*------------テーブルなどのスクロール機能-------------*/
