@@ -4,6 +4,10 @@
         h2.form__midashi.plan__info
           | 予定表
           = link_to '新規入力', new_users_plan_path, class:'btn btn_size_m btn_color_yellow plan__btn_theme_new' ,start_date: params[:start_today]
+        p.text-center
+          | 月ごとに予定表を作成できます。
+          br
+          | 新たに予定表を作成する場合は新規作成。既に作成済みの場合は編集を行ってください。
 
         - @children.each do |child|
           .child__plan__cont

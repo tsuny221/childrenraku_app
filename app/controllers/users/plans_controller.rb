@@ -2,23 +2,14 @@ class Users::PlansController < ApplicationController
   before_action :authenticate_user!
   before_action :child_check
   before_action :current_user_children
+  before_action :set_start_date, only: [:index, :new, :edit]
   def index
     @plans = Plan.where(child_id: @children.ids)
-    if params[:start_date].present?
-      @start_date = params[:start_date].to_date
-    else
-      @start_date = Date.today
-    end
   end
 
   def new
     @plans = PlanCollection.new
-    if params[:start_date].present?
-      @start_date = params[:start_date].to_date
-    else
-      @start_date = Date.today
-    end
-end
+  end
 
   def create
     @child = Child.find_by(id: params[:plan_collection][:child_id])
@@ -38,6 +29,7 @@ end
   def edit
     @child = Child.find_by(id: params[:id])
     @plans = Plan.where(child_id: @child.id)
+
   end
 
   def update
@@ -63,8 +55,15 @@ end
     params.permit(plans: [:attendance, :comment, :start_time])[:plans]
    end
 
-  def plan_params
-    params.require(:plans).permit(:attendance, :comment)
+  # def plan_params
+  #   params.require(:plans).permit(:attendance, :comment)
+  # end
+  def set_start_date
+    if params[:start_date].present?
+      @start_date = params[:start_date].to_date
+    else
+      @start_date = Date.today
+    end
   end
 
   def current_user_children

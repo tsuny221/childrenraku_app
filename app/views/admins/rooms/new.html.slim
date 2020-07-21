@@ -3,6 +3,10 @@
     .form
       h2.form__midashi
         | ルームの作成
+      p.text-center
+          | 施設や団体ごとにルームを作成します。
+          br
+          |ルームキーを会員に伝えることで、このルームに会員を招待することができます。
       .form__cont
         = form_with model: @room ,url: admins_rooms_path, local: true do |f|
           = render "layouts/errors", obj: @room

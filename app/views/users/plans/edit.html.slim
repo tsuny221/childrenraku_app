@@ -9,13 +9,14 @@
             = month_calendar events: @child.plans do |date, plans|
               .text-left.date__txt_size
                 = date.day
-                - plans.each do |plan|
-                  = fields_for "plans[]", plan do |f|
-                        .field.text-left
-                          - f.label :attendance
-                          = f.select :attendance, Plan.attendances.keys.map
-                        .field.text-left
-                          - f.label :comment
-                          = f.text_field :comment, autofocus: true, autocomplete: "name", class: "form__textarea_s"
+                - if (@start_date.beginning_of_month..@start_date.end_of_month).cover?(date)
+                  - plans.each do |plan|
+                    = fields_for "plans[]", plan do |f|
+                          .field.text-left
+                            - f.label :attendance
+                            = f.select :attendance, Plan.attendances.keys.map
+                          .field.text-left
+                            - f.label :comment
+                            = f.text_field :comment, autofocus: true, autocomplete: "name", class: "form__textarea_s"
             .actions
               = f.submit "登録", class: "form__btn"
