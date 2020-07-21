@@ -1,8 +1,8 @@
 - if child.room_access.present?
  = form_with(model: child, url: admins_room_access_children_mail_path(child), method: :get) do |f|
         = f.hidden_field :id, :value => child.id
-        = f.submit "送信(入室)", data: { confirm: "入室メールを送信しますか？"}, class: "btn_color_gray room-access__btn"
+        = f.submit "送信(入室)", data: { confirm: "入室メールを送信しますか？"}, class: "btn_color_gray room-access__btn focus_btn"
 - else
-        = form_with(model: child, url: admins_room_access_children_mail_path(child), method: :get) do |f|
+ = form_with(model: child, url: admins_room_access_children_mail_path(child), method: :get) do |f|
                 = f.hidden_field :id, :value => child.id
-                = f.submit "送信(退室)", data: { confirm: "退室メールを送信しますか？"}, class: "toggle btn_color_gray room-access__btn"
+                = f.submit "送信(退室)", data: { confirm: "退室メールを送信しますか？"}, class: "toggle btn_color_gray room-access__btn focus_btn"

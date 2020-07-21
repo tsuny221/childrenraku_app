@@ -994,15 +994,6 @@ caption {
     position: absolute;
     top: -10px;
   }
-  /*------------テーブルなどのスクロール機能-------------*/
-  .scroll-table,
-  .plan__cont2,
-  .simple-calendar {
-    display: block;
-    overflow-x: scroll;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
 
   /*--------------ユーザー選択-------------------*/
   .user-select__btn {
@@ -1080,5 +1071,16 @@ caption {
   }
   #navbarList {
     background-color: none;
+  }
+}
+@media (max-width: 510px) {
+  /*------------テーブルなどのスクロール機能-------------*/
+  .scroll-table,
+  .plan__cont2,
+  .simple-calendar {
+    display: block;
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
   }
 }
