@@ -1,1 +1,7 @@
-$("#mail_<%= @child.id %>").html("<%= j(render partial: 'admins/children/mail', locals: { child: @child }) %>").css('color', '#fff');
+$("#mail_<%= @child.id %>").html("<%= j(render partial: 'admins/children/mail', locals: { child: @child }) %>")
+$("#mail_<%= @child.id %> .focus_btn").css({
+        "color": "#fff",
+        "background-color": "	#e8e8e8",
+        "border": "#ccc 2px solid"
+    });
+<%# 一度押したボタンのみ透明化 %>

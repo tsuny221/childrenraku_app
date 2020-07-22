@@ -12,10 +12,10 @@
                       .caption_left
                       .caption_right
                           | 世帯数
-                          = @families.count
+                          = @families.size
                           | 世帯　
                           | 保護者数
-                          = User.where(room_id: @room.id).count
+                          = User.where(room_id: @room.id).size
                           | 人
                   thead.table__thead_theme_main
                     tr

@@ -14,15 +14,15 @@
                           | 年度
                       .caption_right
                           | 児童数
-                          = Child.where(family_id: @families).count
+                          = Child.where(family_id: @families).size
                           | 人
                           | (女
-                          = @girl.count
+                          = @girl.size
                           |男
-                          = @boy.count
+                          = @boy.size
                           | )　
                           | 世帯数
-                          =@families.count
+                          =@families.size
                           | 世帯
                   thead.table__thead_theme_simple
                     tr
