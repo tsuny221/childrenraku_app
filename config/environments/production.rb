@@ -91,7 +91,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { :Host => 'childrenraku.work' }
+  config.action_mailer.default_url_options = { :Host => 'http://childrenraku.work/' }
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -103,7 +103,7 @@ Rails.application.configure do
   authentication: 'plain',
   enable_starttls_auto: true
 }
-host = 'childrenraku.work'
+host = 'http://childrenraku.work/'
     Rails.application.routes.default_url_options[:host] = host
     #devise の招待メール用
 end
