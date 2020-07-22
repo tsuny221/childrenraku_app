@@ -11,6 +11,7 @@ set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "public/system", "tmp"
 set :delayed_job_workers, 1
 set :delayed_job_roles, [:app]
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
