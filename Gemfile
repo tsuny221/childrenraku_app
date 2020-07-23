@@ -85,7 +85,6 @@ gem 'ransack'
 gem 'delayed_job_active_record'
 gem "daemons"
 
-
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

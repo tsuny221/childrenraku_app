@@ -43,7 +43,7 @@ class Admins::ChildrenController < ApplicationController
     @users = User.where(family_id: @child.family_id)
     @users.each do |user|
       if @child.room_access == "入室"
-      RoomAccessMailer.with(user: user, child: @child, room: @room).enter_mail.deliver_later
+        RoomAccessMailer.with(user: user, child: @child, room: @room).enter_mail.deliver_later
       else
         RoomAccessMailer.with(user: user, child: @child, room: @room).leave_mail.deliver_later
       end
@@ -57,8 +57,8 @@ class Admins::ChildrenController < ApplicationController
         @users = User.where(family_id: child.family_id)
         @users.each do |user|
           RoomAccessMailer.with(user: user, child: child, room: @room).enter_mail.deliver_later
+        end
       end
-    end
       redirect_to admins_room_access_path
       flash[:success] = "入室メールを一括送信いたしました。"
     else

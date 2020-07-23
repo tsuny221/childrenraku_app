@@ -7,7 +7,7 @@ set :repo_url, "git@github.com:tsuny221/childrenraku_app.git"
 # アプリのアドレスは$ git remote -v コマンドで確認できます
 set :deploy_to, "/home/ec2-user/childrenraku_app"
 set :rbenv_ruby, '2.5.7'
-set :linked_files, %w{config/master.key .env}
+set :linked_files, %w(config/master.key .env)
 append :linked_dirs, "log", "public/system", "tmp"
 set :delayed_job_workers, 1
 set :delayed_job_roles, [:app]

@@ -16,7 +16,7 @@ class Admins::ContactsController < ApplicationController
     @contact.room_id = @room.id
     render(:new) && return if params[:back] || !@contact.save
     # 確認画面から戻れるようにする
-     if @contact.group_id.present?
+    if @contact.group_id.present?
       @group = Group.find_by(id: @contact.group_id)
       @group.group_users.each do |group_user|
         ContactMailer.with(user: group_user.user).send_mail(@contact).deliver_later
@@ -26,7 +26,7 @@ class Admins::ContactsController < ApplicationController
       @users.each do |user|
         ContactMailer.with(user: user).send_mail(@contact).deliver_later
       end
-    end
+   end
     # 管理者にもメール送信
     # ContactMailer.with(user:current_admin).send_mail(@contact).deliver_later
     redirect_to admins_contacts_path
@@ -45,16 +45,16 @@ end
     @group = Group.find_by(id: @contact.group_id)
     @read_users = @contact.users
     if @group.present?
-    @noread_users = @group.users.where.not(id: @contact.users.ids)
+      @noread_users = @group.users.where.not(id: @contact.users.ids)
     else
-    @noread_users = @users.where.not(id: @contact.users.ids)
+      @noread_users = @users.where.not(id: @contact.users.ids)
     end
   end
 
   private
 
   def contact_params
-    params.require(:contact).permit(:subject, :text, :image, :file, :room_id,:group_id, :created_at)
+    params.require(:contact).permit(:subject, :text, :image, :file, :room_id, :group_id, :created_at)
   end
 
   def current_room

@@ -61,7 +61,7 @@ Rails.application.routes.draw do
     get '/confirm' => 'admins#confirm', as: 'confirm'
     put '/:id/hide' => 'admins#hide', as: 'hide'
     resources :plans, only: [:show, :index]
-    resources :groups, only: [:new, :create,:index, :edit, :update]
+    resources :groups, only: [:new, :create, :index, :edit, :update]
   end
   # 管理者
   namespace :users do

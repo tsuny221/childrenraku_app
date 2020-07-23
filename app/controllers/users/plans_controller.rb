@@ -10,10 +10,10 @@ class Users::PlansController < ApplicationController
   def new
     @child = Child.find_by(id: params[:child_id])
     @plan = Plan.find_by(child_id: @child.id, start_time: @start_date.beginning_of_day)
-    unless @plan.present?
-      @plans = PlanCollection.new
-    else
+    if @plan.present?
       @plans = Plan.where(child_id: @child.id)
+    else
+      @plans = PlanCollection.new
     end
     # シンプルカレンダーのstart_dateとその子どもに紐づく予定が存在するかどうかで、更新と新規を切り替える
   end
@@ -28,9 +28,9 @@ class Users::PlansController < ApplicationController
   def update
     @child = Child.find_by(id: params[:id])
     @plans = plans_params.keys.each do |id|
-        plan = Plan.find(id)
-        plan.update_attributes(plans_params[id])
-        plan
+      plan = Plan.find(id)
+      plan.update_attributes(plans_params[id])
+      plan
     end
     flash[:success] = "編集が完了しました。"
     redirect_to users_plans_path

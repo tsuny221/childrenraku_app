@@ -7,6 +7,7 @@ class Users::ContactsController < ApplicationController
     @q = Contact.where(group_id: @groups.ids).or(Contact.where(group_id: nil)).page(params[:page]).reverse_order.ransack(params[:q])
     @contacts = @q.result(distinct: true)
   end
+
   def read
     # 既読機能
     if ContactUser.create(contact_id: params[:id], user_id: params[:user_id], read: true).valid?
@@ -30,5 +31,4 @@ class Users::ContactsController < ApplicationController
   def current_room
     @room = current_user.room
   end
-
 end

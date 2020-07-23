@@ -8,6 +8,7 @@ class Admins::GroupsController < ApplicationController
     @groups = @q.result(distinct: true)
     @group = Group.find_by(id: params[:group_id])
   end
+
   def new
     @group = Group.new
   end
@@ -22,6 +23,7 @@ class Admins::GroupsController < ApplicationController
       render :new
     end
   end
+
   def edit
     @group = Group.find(params[:id])
   end
@@ -29,7 +31,7 @@ class Admins::GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-       flash[:notice] = "グループを編集しました。"
+      flash[:notice] = "グループを編集しました。"
       redirect_to admins_groups_path
     else
       render :edit
@@ -37,9 +39,11 @@ class Admins::GroupsController < ApplicationController
   end
 
   private
+
   def group_params
-    params.require(:group).permit(:name, user_ids: [] )
+    params.require(:group).permit(:name, user_ids: [])
   end
+
   def current_room_families
     @room = current_admin.room
     @families = Family.where(room_id: @room.id)
