@@ -10,7 +10,7 @@ class Admins::EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @families = Family.where(room_id: @room.id)
-    @q = EventAttendance.order(grade: "DESC").where(event_id: @event.id).page(params[:page]).ransack(params[:q])
+    @q = EventAttendance.where(event_id: @event.id).page(params[:page]).ransack(params[:q])
     @event_attendances = @q.result(distinct: true)
 
     @attendance_members = EventParticipant.where(event_attendance_id: @event_attendances)
