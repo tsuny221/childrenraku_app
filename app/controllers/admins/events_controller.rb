@@ -12,8 +12,8 @@ class Admins::EventsController < ApplicationController
     @families = Family.where(room_id: @room.id)
     @q = EventAttendance.where(event_id: @event.id).page(params[:page]).ransack(params[:q])
     @event_attendances = @q.result(distinct: true)
-
-    @attendance_members = EventParticipant.where(event_attendance_id: @event_attendances)
+    byebug
+    @attendance_members = EventParticipant.where(event_attendance_id: @event_attendances.ids)
     @fathers = @attendance_members.where(relationship_name: 1).where.not(number_of_people: 0)
     @mothers = @attendance_members.where(relationship_name: 2).where.not(number_of_people: 0)
     @children = @attendance_members.where(relationship_name: 3).where.not(number_of_people: 0)
