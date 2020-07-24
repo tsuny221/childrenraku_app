@@ -777,6 +777,9 @@ caption {
   display: flex;
   justify-content: space-around;
 }
+.contact__user_cont {
+  margin-left: 20px;
+}
 .border_color_blue {
   border-bottom: solid 5px #44beeb;
 }
@@ -786,6 +789,9 @@ caption {
 .contact__midashi2 {
   margin: 20px;
   display: inline-block;
+}
+.group__btn_margin {
+  margin-right: 20px;
 }
 /*-------------予定表--------------------*/
 .plan__index {
@@ -847,6 +853,28 @@ caption {
   position: absolute;
   right: 10px;
   bottom: -80px;
+}
+
+/*-------------イベント--------------------*/
+.event-show {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.event__midashi {
+  margin: 30px 0px;
+}
+.event__btn {
+  margin-right: 10px;
+}
+.event__midashi2 {
+  margin: 20px;
+  display: inline-block;
+}
+.event-attendance__list {
+  list-style: none;
+}
+.event__user_cont {
+  margin-left: 20px;
 }
 /*------------退会確認画面-------------*/
 .confirm__cont {

@@ -27,7 +27,9 @@
                                     | (
                                     = user.email
                                     | )
-                              p.text-right= link_to '編集', edit_admins_group_path(group.id),class:"btn btn_color_orange text-right"
+                              p.text-right
+                                = link_to '編集', edit_admins_group_path(group.id),class:"btn btn_color_orange text-right group__btn_margin"
+                                = link_to '削除', admins_group_path(group.id),method: :delete, "data-confirm" => '本当によろしいですか？',  class:"btn btn_color_red text-right"
 
 
               .text-center

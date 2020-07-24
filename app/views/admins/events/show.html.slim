@@ -1,0 +1,99 @@
+.container
+  .row
+    section.event-show
+        h3.midashi.txt_size_l.admin-page__midashi
+          | イベント詳細
+        .event__cont
+          h4.marker.event__midashi
+           | 日時
+          p.event__box_txt.event__user_cont
+             = @event.start_time.to_s(:datetime_jp)
+        .event__cont
+          h4.marker.event__midashi
+            | タイトル
+          p.event__box_txt.event__user_cont
+             = @event.title
+        .event__cont
+          h4.marker.event__midashi
+            | イベント内容
+          p.event__box_txt.event__user_cont
+             = @event.explanation
+        .event__cont
+          h4.marker.event__midashi
+            | 編集・削除
+          p.event__box_txt.event__user_cont
+            = link_to '編集', edit_admins_event_path(@event.id),class:"btn btn_color_orange text-right group__btn_margin"
+            = link_to '削除', admins_event_path(@event.id),method: :delete, "data-confirm" => '本当によろしいですか？',  class:"btn btn_color_red text-right"
+        .event__cont
+          h4.marker.event__midashi
+            | 出欠回答一覧
+          - unless @event_attendances.present?
+                p.text-center 出欠回答がありません
+          - else
+                table.table.table_theme_simple.scroll-table border="1"
+                  .txt_size_m.admin__caption
+                      .caption_left
+                        | 集計：
+                        | 父
+                        = @fathers.size
+                        | 母
+                        = @mothers.size
+                        | 児童
+                        = @children.size
+                        | 未就学児
+                        = @infants.size
+                        | その他
+                        = @others.size
+                      .caption_right
+                          span.txt_color_red
+                            |出欠回答済　
+                            = @event_attendances.size
+                            |世帯
+                          |/
+                          = @families.size
+                          | 世帯　
+                          | 保護者数
+                          = User.where(room_id: @room.id).size
+                          | 人
+                  thead.table__thead_theme_simple
+
+                    tr
+                      th
+                        | 保護者の名前
+                      th.sort = sort_link(@q, :attendance)
+                        | 出欠
+                      th colspan ="5"
+                        | 人数内訳
+                      th
+                        | コメント
+
+                    - @event_attendances.each do |event_attendance|
+                      tbody.table__tbody_theme_simple
+                        tr
+                          td
+                            -  User.where(family_id: event_attendance.family_id).each do |user|
+                             li.event-attendance__list
+                              = user.full_name
+                          td
+                            = event_attendance.attendance
+                          - event_attendance.event_participants.each do |event_participant|
+                            td
+                              = event_participant.relationship_name
+                              = event_participant.number_of_people
+                              |人
+                          td
+                            = event_attendance.comment
+
+                .text-center
+                  = paginate @event_attendances, class: "paginate"
+        .event__cont
+          h4.marker.event__midashi
+            | 未回答者一覧
+          - User.where(family_id: @families).where.not(family_id: @event.event_attendances).each do |user|
+                  li.txt_color_red
+                    = user.full_name
+                    | (
+                    = mail_to user.email, user.email, class: "txt_color_blue"
+                    | )
+        .event__midashi
+          = link_to '戻る', admins_events_path,class:"btn btn_color_gray"

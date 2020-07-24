@@ -1,0 +1,12 @@
+.container
+  .row
+    section.admin-page
+        h3.midashi.txt_size_l.admin-page__midashi
+          | イベントカレンダー
+        p.text-right= link_to 'イベント新規作成', new_admins_event_path, class: "btn btn_color_yellow"
+        = month_calendar events: @events do |date, events|
+              .text-left.date__txt_size
+                  = date.day
+              - events.each do |event|
+                  = link_to admins_event_path(event.id), class:"txt_color_blue" do
+                      = event.title

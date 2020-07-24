@@ -4,6 +4,8 @@
           = render 'search/plans', q: @q
           h2.midashi.txt_size_l.admin-page__midashi
             | 予定表一覧
+          h2.text-right
+            = link_to 'イベントカレンダー', admins_events_path, class:"btn btn_color_yellow"
           - unless @children.present?
             p.text-center 児童が登録されていません
           - else
