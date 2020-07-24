@@ -44,7 +44,7 @@ ja:
         last_name_kana: フリガナ（全角カナ)
         first_name_kana: フリガナ（全角カナ)
         grade: 学年
-        school_class: クラス（半角数字）
+        school_class: クラス
         gender: 性別
         allergy: アレルギー
         special_notes: 特筆事項
@@ -77,6 +77,21 @@ ja:
         updated_at: 更新日時
       group:
         name: グループ名
+        created_at: 登録日時
+        updated_at: 更新日時
+      event:
+        start_time: 日程
+        title: イベント名
+        explanation: イベント詳細
+        created_at: 登録日時
+        updated_at: 更新日時
+      event_attendance:
+        attendance: 出欠
+        comment: コメント
+        created_at: 登録日時
+        updated_at: 更新日時
+      event_participant:
+        number_of_people: 出席人数
         created_at: 登録日時
         updated_at: 更新日時
   date:

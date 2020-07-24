@@ -1,0 +1,54 @@
+.container
+  .row
+    section.event-show
+        h3.midashi.txt_size_l.admin-page__midashi
+          | イベント詳細
+        .event__cont
+          h4.marker.event__midashi
+           | 日時
+          p.event__box_txt.event__user_cont
+             = @event.start_time.to_s(:datetime_jp)
+        .event__cont
+          h4.marker.event__midashi
+            | タイトル
+          p.event__box_txt.event__user_cont
+             = @event.title
+        .event__cont
+          h4.marker.event__midashi
+            | イベント内容
+          p.event__box_txt.event__user_cont
+             = @event.explanation
+        .event__cont
+          h4.marker.event__midashi
+            | 出欠回答一覧
+          - unless @event_attendance.present?
+                p.text-center
+                  | 出欠回答がありません
+                p.text-center = link_to "回答する",  new_users_event_event_attendance_path(@event.id), class:"btn btn_color_blue"
+          - else
+
+                table.table.table_theme_simple.scroll-table border="1"
+                  .txt_size_m.admin__caption
+                  thead.table__thead_theme_simple
+                    tr
+                      th
+                        | 出欠
+                      th colspan= "5"
+                        | 人数内訳
+                      th
+                        | コメント
+                  tbody.table__tbody_theme_simple
+                        tr
+                          td
+                            = @event_attendance.attendance
+                          - @event_attendance.event_participants.each do |event_participant|
+                            td
+                              = event_participant.relationship_name
+                              = event_participant.number_of_people
+                              |人
+                          td
+                            = @event_attendance.comment
+                .text-right
+                  = link_to "編集",  edit_users_event_event_attendance_path(@event.id), class:"btn btn_color_orange"
+        .event__midashi
+          = link_to '戻る', users_events_path,class:"btn btn_color_gray"

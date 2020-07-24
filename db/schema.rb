@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_085342) do
+ActiveRecord::Schema.define(version: 2020_07_24_083859) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -82,6 +82,36 @@ ActiveRecord::Schema.define(version: 2020_07_19_085342) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "event_attendances", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "family_id"
+    t.integer "attendance"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_attendances_on_event_id"
+    t.index ["family_id"], name: "index_event_attendances_on_family_id"
+  end
+
+  create_table "event_participants", force: :cascade do |t|
+    t.integer "event_attendance_id"
+    t.integer "number_of_people"
+    t.integer "relationship_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_attendance_id"], name: "index_event_participants_on_event_attendance_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer "room_id"
+    t.datetime "start_time"
+    t.string "explanation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.index ["room_id"], name: "index_events_on_room_id"
   end
 
   create_table "families", force: :cascade do |t|

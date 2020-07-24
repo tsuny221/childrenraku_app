@@ -12,13 +12,16 @@ a.btn.btn_theme_main data-target="#modal1" data-toggle="modal" type="button"
                 = search_form_for q, url: admins_plans_path do |f|
                             .search
                                 .field
-                                    = f.label :first_name, '児童検索(名前・クラス）',class:"form__label"
-                                    = f.search_field :first_name_or_last_name_or_first_name_kana_or_last_name_kana_or_school_class_cont,class:"form__item_input"
+                                    = f.label :first_name, '児童検索(名前）',class:"form__label"
+                                    = f.search_field :first_name_or_last_name_or_first_name_kana_or_last_name_kana_cont,class:"form__item_input"
+                                .field
+                                    = f.label :first_name, '児童検索(クラス）',class:"form__label"
+                                    = f.search_field :school_class_cont,class:"form__item_input"
                                 .field
                                     = f.label :gender, '性別',class:"form__label"
                                     = f.select :gender_eq, [['男', 1], ['女', 2], ['その他', 3]], { include_blank: '選択してください'},{class: "form__item_select"}
                                 .field
                                     = f.label :grade, '学年',class:"form__label"
-                                    = f.select :grade_eq ,Child.grades.keys.map, { include_blank: '選択してください'},{class: "form__item_select"}
+                                    = f.select :grade_eq, [['年少', 1], ['年中', 2], ['年長', 3], ['1年', 4], ['2年', 5], ['3年', 6], ['4年', 7], ['5年', 8], ['6年', 9]], { include_blank: '選択してください'}, {class: "form__item_select"}
                                 .action
                                     = f.submit '検索',class:"form__btn"
