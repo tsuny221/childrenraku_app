@@ -27,9 +27,8 @@
         .event__cont
           h4.marker.event__midashi
             | 出欠回答一覧
-          - unless @event_attendances.present?
-                p.text-center 出欠回答がありません
-          - else
+
+          - if @event_attendances.present?
                 table.table.table_theme_simple.scroll-table border="1"
                   .txt_size_m.admin__caption
                       .caption_left
@@ -86,14 +85,18 @@
 
                 .text-center
                   = paginate @event_attendances, class: "paginate"
-        .event__cont
-          h4.marker.event__midashi
-            | 未回答者一覧
-          - User.where(family_id: @families).where.not(family_id: @event.event_attendances).each do |user|
-                  li.txt_color_red
-                    = user.full_name
-                    | (
-                    = mail_to user.email, user.email, class: "txt_color_blue"
-                    | )
+
+          / .event__cont
+          /     h4.marker.event__midashi
+          /       | 未回答者一覧
+          /     - User.where(family_id: @families).where.not(family_id: @event_attendances).each do |user|
+
+          /             li.txt_color_red
+          /               = user.full_name
+          /               | (
+          /               = mail_to user.email, user.email, class: "txt_color_blue"
+          /               | )
+          - else @event_attendances.present?
+                p.text-center 出欠回答がありません
         .event__midashi
           = link_to '戻る', admins_events_path,class:"btn btn_color_gray"

@@ -9,9 +9,11 @@ class Users::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @event_attendance = EventAttendance.find_by(event_id: @event.id, family_id:  current_user.family_id)
+    @event_attendance = EventAttendance.find_by(event_id: @event.id, family_id: current_user.family_id)
   end
+
   private
+
   def current_room
     @room = current_user.room
   end

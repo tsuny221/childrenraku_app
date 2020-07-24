@@ -37,6 +37,7 @@ class Admins::GroupsController < ApplicationController
       render :edit
     end
   end
+
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
