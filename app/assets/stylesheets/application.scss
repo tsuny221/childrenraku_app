@@ -1010,6 +1010,10 @@ caption {
   .main-visual__txt {
     font-size: 25px;
   }
+  /*------------ー管理者共通-------------*/
+  .admin__caption {
+    flex-direction: column;
+  }
   /*------------ー機能紹介-------------*/
 
   .intro__img,

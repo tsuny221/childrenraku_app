@@ -8,7 +8,7 @@
           = render "layouts/errors", obj: @event_attendance
           .field
             = f.label :attendance, class: "form__label"
-            = f.select :attendance, EventAttendance.attendances.keys.map, {},{class: "form__item_select"}
+            = f.select :attendance, EventAttendance.attendances.keys.map, { include_blank: '選択してください'},{class: "form__item_select"}
           .field
               = f.fields_for :event_participants do |f|
                 = f.label :number_of_people, class: "form__label"

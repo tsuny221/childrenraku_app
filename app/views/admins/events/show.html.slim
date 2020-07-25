@@ -32,8 +32,9 @@
                 table.table.table_theme_simple.scroll-table border="1"
                   .txt_size_m.admin__caption
                       .caption_left
-                        | 集計：
-                        | 父
+                        | 出席人数：
+                        = @total
+                        | 人(父
                         = @fathers.size
                         | 母
                         = @mothers.size
@@ -43,6 +44,7 @@
                         = @infants.size
                         | その他
                         = @others.size
+                        |)
                       .caption_right
                           span.txt_color_red
                             |出欠回答済　
@@ -50,10 +52,7 @@
                             |世帯
                           |/
                           = @families.size
-                          | 世帯　
-                          | 保護者数
-                          = User.where(room_id: @room.id).size
-                          | 人
+                          | 世帯
                   thead.table__thead_theme_simple
 
                     tr

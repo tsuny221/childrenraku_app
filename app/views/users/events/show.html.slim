@@ -49,6 +49,6 @@
                           td
                             = @event_attendance.comment
                 .text-right
-                  = link_to "編集",  edit_users_event_event_attendance_path(@event.id), class:"btn btn_color_orange"
+                  = link_to "編集",  edit_users_event_event_attendance_path(@event.id, @event_attendance.id), class:"btn btn_color_orange"
         .event__midashi
           = link_to '戻る', users_events_path,class:"btn btn_color_gray"

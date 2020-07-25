@@ -16,21 +16,24 @@ class Users::EventAttendancesController < ApplicationController
       flash[:success] = "出欠回答を送信しました。"
       redirect_to users_event_path(@event.id)
     else
-      render :new
+      flash[:danger] = "出欠を選択してください。"
+      redirect_back(fallback_location:new_users_event_event_attendance_path)
+      #renderだとフォーム が増えていくバグが起きるため
     end
   end
 
   def edit
-    @event_attendance = EventAttendance.find_by(event_id: @event.id)
+    @event_attendance = EventAttendance.find_by(event_id: @event.id, family_id: current_user.family_id)
   end
 
   def update
-    @event_attendance = EventAttendance.find_by(event_id: @event.id)
+    @event_attendance = EventAttendance.find_by(event_id: @event.id, family_id: current_user.family_id)
     if @event_attendance.update(event_attendance_params)
       flash[:success] = "出欠回答を編集しました。"
       redirect_to users_event_path(@event.id)
     else
-      render :edit
+      flash[:danger] = "出欠を選択してください。"
+      redirect_back(fallback_location:edit_users_event_event_attendance_path)
     end
   end
 
