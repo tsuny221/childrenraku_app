@@ -8,6 +8,8 @@ class Users::PlansController < ApplicationController
   end
 
   def new
+    @room = current_user.room
+    @events = Event.where(room_id: @room.id)
     @child = Child.find_by(id: params[:child_id])
     @plan = Plan.find_by(child_id: @child.id, start_time: @start_date.beginning_of_day)
     if @plan.present?

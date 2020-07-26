@@ -10,9 +10,12 @@
           = form_with model: @plans, url: users_plans_path, local: true do |f|
               - @plans.collection.each do |plan|
                 = fields_for 'plans[]', plan do |f|
-                  = month_calendar do |date|
+                  = month_calendar events: @events do |date, events|
                     .text-left.date__txt_size
                       = date.day
+                    - events.each do |event|
+                       = event.title
+                       /イベントも表示
                     - if (@start_date.beginning_of_month..@start_date.end_of_month).cover?(date)
                       .field.text-left
                         - f.label :attendance
@@ -31,6 +34,7 @@
               = month_calendar events: @child.plans do |date, plans|
                 .text-left.date__txt_size
                   = date.day
+                  /イベントも表示
                 - if (@start_date.beginning_of_month..@start_date.end_of_month).cover?(date)
                     - plans.each do |plan|
                       = fields_for "plans[]", plan do |f|

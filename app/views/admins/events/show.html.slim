@@ -84,15 +84,17 @@
 
                 .text-center
                   = paginate @event_attendances, class: "paginate"
-                / .event__cont
-                /     h4.marker.event__midashi
-                /       | 未回答者一覧
-                /     - User.where(family_id: @families).where.not(family_id: @event_attendances).each do |user|
-                /             li.txt_color_red.event-attendance__list
-                /               = user.full_name
-                /               | (
-                /               = mail_to user.email, user.email, class: "txt_color_blue"
-                /               | )
+                .event__cont
+                    h4.marker.event__midashi
+                      | 未回答者一覧
+                    - @families.each do |family|
+                        - unless EventAttendance.where(family_id: family.id, event_id: @event.id).present?
+                            li.txt_color_red.event-attendance__list
+                            - family.users.each do |user|
+                              = user.full_name
+                              | (
+                              = mail_to user.email, user.email, class: "txt_color_blue"
+                              | )
           - else @event_attendances.present?
                 p.text-center 出欠回答がありません
         .event__midashi
