@@ -1,15 +1,14 @@
 class Users::PlansController < ApplicationController
   before_action :authenticate_user!
   before_action :child_check
-  before_action :current_user_children
+  before_action :current_user_room_children
   before_action :set_start_date, only: [:index, :new]
+  before_action :set_event, only: [:index, :new]
   def index
     @plans = Plan.where(child_id: @children.ids)
   end
 
   def new
-    @room = current_user.room
-    @events = Event.where(room_id: @room.id)
     @child = Child.find_by(id: params[:child_id])
     @plan = Plan.find_by(child_id: @child.id, start_time: @start_date.beginning_of_day)
     if @plan.present?
@@ -53,8 +52,13 @@ end
   end
   # シンプルカレンダーの現在の月の日付以外にフォームを表示しないため
 
-  def current_user_children
+  def set_event
+    @events = Event.where(room_id: @room.id)
+  end
+
+  def current_user_room_children
     @user = current_user
+    @room = @user.room
     @children = Child.where(family_id: @user.family_id)
   end
 end

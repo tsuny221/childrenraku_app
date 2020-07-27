@@ -95,6 +95,7 @@
                               | (
                               = mail_to user.email, user.email, class: "txt_color_blue"
                               | )
+                              / 未回答者を表示（roomに紐づく家族から、その家族に紐づく、回答が存在しないひとのみ表示）
           - else @event_attendances.present?
                 p.text-center 出欠回答がありません
         .event__midashi

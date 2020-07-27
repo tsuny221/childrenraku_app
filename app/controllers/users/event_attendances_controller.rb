@@ -17,8 +17,8 @@ class Users::EventAttendancesController < ApplicationController
       redirect_to users_event_path(@event.id)
     else
       flash[:danger] = "出欠を選択してください。"
-      redirect_back(fallback_location:new_users_event_event_attendance_path)
-      #renderだとフォーム が増えていくバグが起きるため
+      redirect_back(fallback_location: new_users_event_event_attendance_path)
+      # renderだとフォーム が増えていくバグが起きるため
     end
   end
 
@@ -33,7 +33,7 @@ class Users::EventAttendancesController < ApplicationController
       redirect_to users_event_path(@event.id)
     else
       flash[:danger] = "出欠を選択してください。"
-      redirect_back(fallback_location:edit_users_event_event_attendance_path)
+      redirect_back(fallback_location: edit_users_event_event_attendance_path)
     end
   end
 

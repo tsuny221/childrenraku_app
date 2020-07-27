@@ -13,16 +13,16 @@ class Admins::EventsController < ApplicationController
     @q = EventAttendance.where(event_id: @event.id).page(params[:page]).ransack(params[:q])
     @event_attendances = @q.result(distinct: true)
     @event_attendances_attend = @event_attendances.where(attendance: 1)
-    #イベントに紐づく出欠のうち出席のもののみ抽出
-    @attendance_members = EventParticipant.where(event_attendance_id:  @event_attendances_attend.ids)
-    #その出欠から人数内訳情報を引っ張っている
+    # イベントに紐づく出欠のうち出席のもののみ抽出
+    @attendance_members = EventParticipant.where(event_attendance_id: @event_attendances_attend.ids)
+    # その出欠から人数内訳情報を引っ張っている
     @fathers = @attendance_members.where(relationship_name: 1).where.not(number_of_people: 0)
     @mothers = @attendance_members.where(relationship_name: 2).where.not(number_of_people: 0)
     @children = @attendance_members.where(relationship_name: 3).where.not(number_of_people: 0)
     @infants = @attendance_members.where(relationship_name: 4).where.not(number_of_people: 0)
     @others = @attendance_members.where(relationship_name: 5).where.not(number_of_people: 0)
     @total = @fathers.size + @mothers.size + @children.size + @infants.size + @others.size
-    #そのイベントに紐づく出席人数内訳
+    # そのイベントに紐づく出席人数内訳
   end
 
   def new
