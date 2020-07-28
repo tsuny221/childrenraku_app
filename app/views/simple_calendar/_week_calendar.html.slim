@@ -1,7 +1,7 @@
 
 
 .simple-calendar
-  .calendar-heading
+  .calendar-heading.week-calendar-heading
     = link_to t('simple_calendar.previous', default: '＜前の週'), calendar.url_for_previous_view,class:"txt_color_blue"
     - if calendar.number_of_weeks == 1
       span.calendar-title

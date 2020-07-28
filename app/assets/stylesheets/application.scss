@@ -809,19 +809,14 @@ caption {
 }
 /*simple_calendarの上書き*/
 /*一行目以外対象*/
-.plan__flex:not(:nth-child(4)) {
+.plan__flex:not(:nth-child(5)) {
   .plan__cont1 {
-    padding-top: 10px;
+    padding-top: 30px;
   }
   .simple-calendar {
-    .calendar-heading {
+    .week-calendar-heading {
       display: none;
     }
-    // table {
-    //   thead {
-    //     display: none;
-    //   }
-    // }
   }
 }
 .simple-calendar .day {
@@ -834,7 +829,7 @@ caption {
 .plan__cont1 {
   text-align: center;
   flex-basis: 7%;
-  padding-top: 80px;
+  padding-top: 70px;
   margin-right: 5px;
 }
 .plan__cont2 {
@@ -1116,7 +1111,7 @@ caption {
   /*-------------予定表--------------------*/
   .plan__cont1 {
     flex-basis: 15%;
-    padding-top: 80px;
+    padding-top: 60px;
     margin-right: 5px;
     font-size: 10px;
   }
