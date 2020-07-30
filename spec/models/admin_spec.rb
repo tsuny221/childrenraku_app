@@ -1,34 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe Admin, type: :model do
+RSpec.describe 'Adminモデルのテスト', type: :model do
 
-  context "データが正しく保存される" do
-    before do
-      @admin = Admin.new
-      @admin.name = "admin"
-      @admin.email = "test@admin.com"
-      @admin.password = "111111"
-      @admin.password_confirmation = "111111"
-      @admin.save
+  describe 'バリデーションのテスト' do
+    let(:admin) { FactoryBot.create(:admin) }
+    subject { test_admin.valid? }
+    context 'nameカラム' do
+      let(:test_admin) { admin }
+      it '空欄でないこと' do
+        test_admin.name = ''
+        is_expected.to eq false;
+      end
     end
-    it "全て入力してあるので保存される" do
-      expect(@admin).to be_valid
+    describe 'アソシエーションのテスト' do
+    context 'Roomモデルとの関係' do
+      it '1:1となっている' do
+        expect(Admin.reflect_on_association(:room).macro).to eq :has_one
+      end
+     end
     end
   end
-
-  context "データが正しく保存されない" do
-    before do
-      @admin = Admin.new
-      @admin.name = ""
-      @admin.email = "test@admin.com"
-      @admin.password = "111111"
-      @admin.password_confirmation = "111111"
-      @admin.save
-    end
-    it "nameが入力されていないので保存されない" do
-      expect(@admin).to be_invalid
-      expect(@admin.errors[:name]).to include("を入力してください", "は2文字以上で入力してください")
-    end
-  end
-
 end
