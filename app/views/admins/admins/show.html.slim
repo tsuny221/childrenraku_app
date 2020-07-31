@@ -3,6 +3,7 @@
     section
         h2.midashi.txt_size_xl
           | 管理者ページ
+
         .my-page__cont
           h3.marker.txt_size_m
            | ルーム情報
@@ -38,11 +39,16 @@
 
           .my-page__cont
             h3.marker.txt_size_m
-             | 会員情報
+              = @room.name
+              | の会員情報
+              | /アルバム
             = link_to admins_users_path, class: "btn btn_color_yellow my-page__btn admin-top__btn2" do
               .txt_color_gray
                 | 会員一覧
-          my-page__cont
+            = link_to admins_users_path, class: "btn btn_color_green my-page__btn admin-top__btn2" do
+              .txt_color_gray
+                | アルバムを閲覧する
+          .my-page__cont
             h3.marker.txt_size_m
              | 退会・ルームの削除
             = link_to '退会', admins_confirm_path, class: "btn btn_color_red my-page__btn"
