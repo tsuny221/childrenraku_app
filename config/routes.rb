@@ -39,12 +39,8 @@ Rails.application.routes.draw do
   # 共通
   namespace :admins do
     resources :rooms, only: [:new, :create, :edit, :update]
-    # patch 'rooms/:id/edit' => 'rooms#update', as: 'edit_room'
-    # post 'rooms/new' => 'rooms#create', as: 'new_room'
     get 'top' => 'home#top', as: 'top'
     resources :children, only: [:index, :show]
-    # post 'contacts/confirm' => 'contacts#confirm', as: 'contacts_confirm'
-    # get 'contacts/confirm' => 'contacts#new', as: 'new_contacts_confirm'
     resources :contacts, only: [:new, :create, :index, :show] do
       collection do
         post :confirm
@@ -57,12 +53,12 @@ Rails.application.routes.draw do
     get 'room_access/mail_all' => 'children#mail_all', as: 'room_access_mail_all'
     resources :users, only: [:show, :index, :destroy]
     resources :admins, only: [:show, :edit, :update]
-    # patch 'admins/:id/edit' => 'admins#update', as: 'edit_admin'
     get '/confirm' => 'admins#confirm', as: 'confirm'
     put '/:id/hide' => 'admins#hide', as: 'hide'
     resources :plans, only: [:show, :index]
     resources :groups
     resources :events
+    resources :albums
   end
   # 管理者
   namespace :users do
@@ -82,6 +78,7 @@ Rails.application.routes.draw do
     resources :events do
       resources :event_attendances
     end
+    resources :albums
   end
   # ユーザー
 end

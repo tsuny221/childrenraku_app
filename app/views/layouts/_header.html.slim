@@ -34,6 +34,9 @@ header#header.navbar.navbar-fixed-top.top_bg
               li.nav_list = link_to users_contacts_path, class:"header__nav_txt" do
                 i.fas.fa-envelope.header__nav_icon
                 | 連絡網
+              li.nav_list = link_to users_albums_path, class:"header__nav_txt" do
+                i.fas.fa-images.header__nav_icon
+                | アルバム
               li.nav_list = link_to users_user_path(current_user.id), class:"header__nav_txt" do
                 i.fas.fa-user
                 | マイページ

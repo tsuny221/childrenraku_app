@@ -8,4 +8,5 @@ class Room < ApplicationRecord
   has_many :contacts, dependent: :destroy
   has_many :groups, dependent: :destroy
   has_many :events, dependent: :destroy
+  has_many :albums, dependent: :destroy
 end

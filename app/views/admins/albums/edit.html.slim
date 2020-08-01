@@ -1,0 +1,23 @@
+.container
+  .row.page_space
+    .form
+      h2.form__midashi
+        | アルバム編集
+      = form_with model: @album,url: admins_album_path, local: true  do |f|
+
+        .form__cont
+          .field
+            = f.label :name, class: "form__label"
+            = f.text_field :name, class: "form__item_input"
+          .field
+            = f.label :images, class: "form__label"
+            = f.file_field :images, multiple: true, class: "form__item_input"
+          .field
+            p 現在登録されている画像（削除するものはチェックしてください）
+            - @album.images.each do |image|
+              = f.check_box :image_ids, {:multiple => true}, image.id, false
+              = image_tag image, :size=>"100x100"
+          .actions
+            = f.submit  "更新", class:"form__btn"
+      .contact__midashi
+        = link_to '戻る', admins_albums_path,class:"btn btn_color_gray"

@@ -584,7 +584,7 @@ textarea:read-only {
   width: 250px;
   display: inline-block;
   border-radius: 15px;
-  margin: 8% 20px;
+  margin: 30px 30px;
   padding: 20px 50px;
 }
 .admin-top__btn2 {
@@ -899,7 +899,13 @@ caption {
 .search__btn {
   padding: 0px 5px;
 }
-
+/*------------アルバム-------------*/
+.album {
+  margin: 5% 0px;
+}
+.album__btn {
+  margin-right: 10px;
+}
 /*------------------------------スマホ版-----------------------------*/
 @media (max-width: 1200px) {
   /*------------共通-------------*/
@@ -920,10 +926,13 @@ caption {
     width: 130px;
   }
   .header__nav_txt {
-    padding: 0x;
+    padding-right: 5px !important;
     margin: 0px;
     font-size: 15px;
     font-weight: 700;
+  }
+  .header__nav_list {
+    margin: 10px 10px;
   }
   /*-----------メインビジュアル------------*/
   .main-visual__cont {
@@ -1044,6 +1053,7 @@ caption {
   .admin-top__btn {
     font-size: 13px;
     padding: 10px 0px;
+    margin: 20px;
     width: 100px;
   }
   .admin-top__btn2 {

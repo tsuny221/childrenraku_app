@@ -87,6 +87,7 @@ gem 'simple_calendar', '~> 2.0'
 gem 'ransack'
 gem 'delayed_job_active_record'
 gem "daemons"
+gem "aws-sdk-s3", require: false
 
 gem 'dotenv-rails'
 group :production do

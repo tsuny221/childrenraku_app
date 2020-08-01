@@ -25,3 +25,15 @@ $(window).scroll(function () {
     }
   });
 });
+
+$(function () {
+  // リストを非表示
+  $(".imagefadein").hide();
+  // 繰り返し処理
+  $(".imagefadein").each(function (i) {
+    // 遅延させてフェードイン
+    $(this)
+      .delay(500 * i)
+      .fadeIn(800);
+  });
+});

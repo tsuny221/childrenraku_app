@@ -4,7 +4,6 @@
       section.admin-top
           h3.txt_color_white.midashi
             | 使いたい機能を選択してください
-          .admin-top__cont
 
           = link_to admins_room_access_path, class: "btn btn_color_dark-blue admin-top__btn" do
             p.txt_color_white
@@ -21,12 +20,11 @@
               | 連絡網
             = image_tag asset_path("contact.jpg"), class: "admin-top__img"
 
-          .admin_top_select2
-
-          = link_to admins_children_path, class: "btn btn_color_yellow admin-top__btn2" do
-            p.txt_color_gray
+          = link_to admins_children_path, class: "btn btn_color_yellow admin-top__btn" do
+            p.txt_color_white
               | 児童名簿
-
-          = link_to admins_users_path, class: "btn btn_color_yellow admin-top__btn2" do
-            p.txt_color_gray
-              | 会員一覧
+            = image_tag asset_path("children.jpg"), class: "admin-top__img"
+          = link_to admins_admin_path(current_admin.id), class: "btn btn_color_gray admin-top__btn" do
+            p.txt_color_white
+              | 管理者機能
+            = image_tag asset_path("album.jpg"), class: "admin-top__img"

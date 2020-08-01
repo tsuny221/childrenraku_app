@@ -1,0 +1,10 @@
+.container
+  .row
+    section.admin-page
+      = render 'search/user_albums', q: @q
+      h2.txt_size_l
+        i.fas.fa-images
+        | アルバム
+      - @albums.each do |album|
+          - album.images.each do |image|
+                = image_tag(image, width:150, class: "imagefadein")
