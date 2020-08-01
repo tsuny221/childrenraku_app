@@ -17,4 +17,7 @@
               = link_to admins_album_path(album.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn_color_gray" do
                 i.fas.fa-trash
           - album.images.each do |image|
-                = image_tag(image, width:150)
+            = link_to image, "data-lightbox": image do
+                = image_tag image, width:150, class: "album__img imagefadein"
+      .text-center
+            = paginate @albums, class: "paginate"

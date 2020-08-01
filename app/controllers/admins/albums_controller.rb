@@ -16,6 +16,12 @@ class Admins::AlbumsController < ApplicationController
     @album = Album.new(album_params)
     @album.room_id = @room.id
     if @album.save
+    #   @album.images.each do |images|
+    #     tags = Vision.get_image_data(images)
+    #     tags.each do |tag|
+    #       @album.tags.create(name: tag)
+    #     end
+    #  end
       redirect_to admins_albums_path
     else
       render :new
@@ -34,8 +40,11 @@ class Admins::AlbumsController < ApplicationController
           image.purge
      end
     end
-    @album.update(album_params)
+    if @album.update(album_params)
     redirect_to admins_albums_path
+    else
+      render :edit
+    end
 
   end
 

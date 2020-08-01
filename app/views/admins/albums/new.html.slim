@@ -4,6 +4,7 @@
       h2.form__midashi
         | アルバム作成
       = form_with model: @album, url: admins_albums_path, local: true do |f|
+       = render "layouts/errors", obj: @album
        .form__cont
           .field
             = f.label :name, class: "form__label"
