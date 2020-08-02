@@ -909,6 +909,28 @@ caption {
 .album__img {
   margin: 5px;
 }
+#image-box-1 {
+  display: flex;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+.album__images__delete_btn {
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+}
+.album__images__delete_btn:hover {
+  color: #00c4cc;
+}
+.file_field {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  background: #fff;
+  font-size: 15px;
+}
 /*------------------------------スマホ版-----------------------------*/
 @media (max-width: 1200px) {
   /*------------共通-------------*/

@@ -4,15 +4,19 @@
       h2.form__midashi
         | アルバム作成
       = form_with model: @album, url: admins_albums_path, local: true do |f|
-       = render "layouts/errors", obj: @album
        .form__cont
+          = render "layouts/errors", obj: @album
           .field
             = f.label :name, class: "form__label"
             = f.text_field :name, class: "form__item_input"
           .field
-            = f.label :images, class: "form__label"
-            = f.file_field :images, multiple: true, class: "form__item_input"
+                  = f.label :images, class: "form__label"
+          .file_field
+              = f.file_field :images, multiple: true, id:"img-file"
+              #image-box-1
+                  .item-num-0#image-box__container
+
           .actions
             = f.submit "登録", class: "form__btn"
       .contact__midashi
-        = link_to '戻る', admins_albums_path,class:"btn btn_color_gray"
+           = link_to '戻る', admins_albums_path,class:"btn btn_color_gray"
