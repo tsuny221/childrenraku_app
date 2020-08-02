@@ -931,6 +931,11 @@ caption {
   background: #fff;
   font-size: 15px;
 }
+.tag,
+.check__box label {
+  margin-right: 5px;
+}
+
 /*------------------------------スマホ版-----------------------------*/
 @media (max-width: 1200px) {
   /*------------共通-------------*/

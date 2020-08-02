@@ -16,7 +16,7 @@
               #image-box-1
                   .item-num-0#image-box__container
 
-          .field
+          .field.check__box
             p 現在登録されている画像（削除するものはチェックしてください）
             - @album.images.each do |image|
               = f.check_box :image_ids, {:multiple => true}, image.id, false

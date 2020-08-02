@@ -14,5 +14,10 @@ a.btn.btn_theme_main data-target="#modal1" data-toggle="modal" type="button"
                                 .field
                                     = f.label :name, 'アルバム名',class:"form__label"
                                     = f.search_field :name_cont,class:"form__item_input"
+                            .search
+                                .field.check__box
+                                    = f.label :name, 'タグで検索',class:"form__label"
+                                    = f.collection_check_boxes :tags_name_eq_any, Tag.where(q.id).select(:name).distinct, :name, :name
+                                -#タグが重複しないようにラジオボタン で一覧表示
                                 .action
                                     = f.submit '検索',class:"form__btn"

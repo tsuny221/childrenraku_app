@@ -1,7 +1,7 @@
 .container
   .row
     section.admin-page
-      = render 'search/albums', {q: @q, q2: @q2}
+      = render 'search/albums', q: @q
       h2.form__midashi
         | アルバム
       p.text-right
@@ -20,6 +20,11 @@
             - album.images.each do |image|
               = link_to image, "data-lightbox": image do
                   = image_tag image, width:150, class: "album__img imagefadein"
+          p タグ一覧
+          - album.tags.select(:name).distinct.each do |tag|
+            span.label.label-default.tag
+              = tag.name
+          -#Tagがかぶらないように表示
       - else
         p.text-center アルバムが登録されていません
       .text-center

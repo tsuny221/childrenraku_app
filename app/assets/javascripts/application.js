@@ -38,18 +38,14 @@ $(function () {
       .delay(500 * i)
       .fadeIn(800);
   });
-});
 
-// 画像プレビュー
-$(function () {
+  // 画像プレビュー
   //DataTransferオブジェクトで、データを格納する箱を作る
   var dataBox = new DataTransfer();
   //querySelectorでfile_fieldを取得
   var file_field = document.querySelector("input[type=file]");
   //fileが選択された時に発火するイベント
   $("#img-file").change(function () {
-    //選択したfileのオブジェクトをpropで取得
-    var files = $('input[type="file"]').prop("files")[0];
     $.each(this.files, function (i, file) {
       //FileReaderのreadAsDataURLで指定したFileオブジェクトを読み込む
       var fileReader = new FileReader();
@@ -58,8 +54,6 @@ $(function () {
       dataBox.items.add(file);
       //DataTransferオブジェクトに入ったfile一覧をfile_fieldの中に代入
       file_field.files = dataBox.files;
-
-      var num = $(".item-image").length + 1 + i;
       fileReader.readAsDataURL(file);
       //読み込みが完了すると、srcにfileのURLを格納
       fileReader.onloadend = function () {
