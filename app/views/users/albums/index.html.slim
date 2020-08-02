@@ -5,7 +5,10 @@
       h2.txt_size_l
         i.fas.fa-images
         | アルバム
-      - @albums.each do |album|
-          - album.images.each do |image|
-              = link_to image, "data-lightbox": image do
-                = image_tag image, width:150, class: "album__img imagefadein"
+      - if @albums.present?
+        - @albums.each do |album|
+            - album.images.each do |image|
+                = link_to image, "data-lightbox": image do
+                  = image_tag image, width:150, class: "album__img imagefadein"
+      - else
+          p.text-center 写真が登録されていません
