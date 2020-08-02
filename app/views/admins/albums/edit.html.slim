@@ -10,8 +10,12 @@
             = f.label :name, class: "form__label"
             = f.text_field :name, class: "form__item_input"
           .field
-            = f.label :images, class: "form__label"
-            = f.file_field :images, multiple: true, class: "form__item_input"
+                  = f.label :images, class: "form__label"
+          .file_field
+              = f.file_field :images, multiple: true, id:"img-file"
+              #image-box-1
+                  .item-num-0#image-box__container
+
           .field
             p 現在登録されている画像（削除するものはチェックしてください）
             - @album.images.each do |image|

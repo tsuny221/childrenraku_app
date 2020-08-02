@@ -1,23 +1,26 @@
 .container
   .row
     section.admin-page
-      = render 'search/albums', q: @q
+      = render 'search/albums', {q: @q, q2: @q2}
       h2.form__midashi
         | アルバム
       p.text-right
         = link_to 'アルバム追加', new_admins_album_path, class: "btn btn_color_green"
-      - @albums.each do |album|
-         .album
-          .album__txt
-            .txt_color_blue.txt_size_m
-              = album.name
-            p
-              = link_to edit_admins_album_path(album.id), class: "btn btn_color_green album__btn" do
-                i.fas.fa-edit
-              = link_to admins_album_path(album.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn_color_gray" do
-                i.fas.fa-trash
-          - album.images.each do |image|
-            = link_to image, "data-lightbox": image do
-                = image_tag image, width:150, class: "album__img imagefadein"
+      - if @albums.present?
+        - @albums.each do |album|
+          .album
+            .album__txt
+              .txt_color_blue.txt_size_m
+                = album.name
+              p
+                = link_to edit_admins_album_path(album.id), class: "btn btn_color_green album__btn" do
+                  i.fas.fa-edit
+                = link_to admins_album_path(album.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn_color_gray" do
+                  i.fas.fa-trash
+            - album.images.each do |image|
+              = link_to image, "data-lightbox": image do
+                  = image_tag image, width:150, class: "album__img imagefadein"
+      - else
+        p.text-center アルバムが登録されていません
       .text-center
             = paginate @albums, class: "paginate"

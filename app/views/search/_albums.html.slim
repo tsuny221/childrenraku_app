@@ -12,7 +12,16 @@ a.btn.btn_theme_main data-target="#modal1" data-toggle="modal" type="button"
                 = search_form_for q, url: admins_albums_path do |f|
                             .search
                                 .field
-                                    = f.label :name, 'アルバム名',class:"form__label"
+                                    = f.label :name, 'アルバム名で検索',class:"form__label"
                                     = f.search_field :name_cont,class:"form__item_input"
+
+                                .action
+                                    = f.submit '検索',class:"form__btn"
+                = search_form_for q2, url: admins_albums_path do |f|
+                            .search
+                                .field
+                                    = f.label :name, 'タグで検索',class:"form__label"
+                                    = f.search_field :name_cont,class:"form__item_input"
+
                                 .action
                                     = f.submit '検索',class:"form__btn"

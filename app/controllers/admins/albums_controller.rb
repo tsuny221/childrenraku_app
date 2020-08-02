@@ -6,6 +6,8 @@ class Admins::AlbumsController < ApplicationController
   def index
     @q = Album.where(room_id: @room.id).page(params[:page]).ransack(params[:q])
     @albums = @q.result(distinct: true)
+    @q2 = Tag.where(album_id: @albums.ids).page(params[:page]).ransack(params[:q2], search_key: :q2)
+    @tags = @q2.result(distinct: true)
   end
 
   def new
@@ -16,8 +18,8 @@ class Admins::AlbumsController < ApplicationController
     @album = Album.new(album_params)
     @album.room_id = @room.id
     if @album.save
-      @album.images.each do |images|
-        tags = Vision.get_image_data(images)
+      @album.images.each do |image|
+        tags = Vision.get_image_data(image)
         tags.each do |tag|
           @album.tags.create(name: tag)
         end
