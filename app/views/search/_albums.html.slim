@@ -13,7 +13,7 @@ a.btn.btn_theme_main data-target="#modal1" data-toggle="modal" type="button"
                             .search
                                 .field
                                     = f.label :name, 'アルバム名で検索',class:"form__label"
-                                    = f.search_field :name_cont,class:"form__item_input"
+                                    = f.collection_select :name_cont,Album.where(room_id: @room.id),:name, :name, { include_blank: '選択してください'},{class:"form__item_input"}
 
                             .search
                                 .field.check__box
