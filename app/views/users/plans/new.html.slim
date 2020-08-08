@@ -14,7 +14,7 @@
                     .text-left.date__txt_size
                       = date.day
                     - events.each do |event|
-                       = event.title
+                       .txt_color_orange = event.title
                        /イベントも表示
                     - if (@start_date.beginning_of_month..@start_date.end_of_month).cover?(date)
                       .field.text-left
@@ -29,12 +29,17 @@
               .actions
                 = f.submit "登録", class: "form__btn"
               /start_dateの日に予定が存在しないのでcreateが働く
+              .contact__midashi
+                                = link_to '戻る', users_plans_path,class:"btn btn_color_gray"
         - else
           = form_with model: @plans, url: users_plan_path(@plan), method: :put, local: true do |f|
               = month_calendar events: @child.plans do |date, plans|
                 .text-left.date__txt_size
                   = date.day
-                  /イベントも表示
+                - @events.each do |event|
+                        - if event.start_time == date.beginning_of_day
+                          .txt_color_orange = event.title
+                          / イベントも表示
                 - if (@start_date.beginning_of_month..@start_date.end_of_month).cover?(date)
                     - plans.each do |plan|
                       = fields_for "plans[]", plan do |f|
@@ -47,5 +52,5 @@
               .actions
                 = f.submit "登録", class: "form__btn"
                  /start_dateの日に予定が存在するのでupdateが働く
-          .contact__midashi
-                            = link_to '戻る', users_plans_path,class:"btn btn_color_gray"
+              .contact__midashi
+                                = link_to '戻る', users_plans_path,class:"btn btn_color_gray"

@@ -12,7 +12,12 @@
               = month_calendar events: child.plans do |date, plans|
                 .text-left.date__txt_size
                   = date.day
+                - @events.each do |event|
+                        - if event.start_time == date.beginning_of_day
+                          .txt_color_orange = event.title
+                          / イベントも表示
                 - plans.each do |plan|
+
                       - if plan.attendance == '出席'
                         .plan__date_txt.txt_color_blue
                               = plan.attendance
