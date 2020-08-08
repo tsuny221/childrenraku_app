@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     get 'users/sign_up' => 'users/registrations#new', as: 'new_user_registration'
     post 'users/sign_up' => 'users/registrations#create', as: 'user_registration'
     get 'users/password/new' => 'users/passwords#new', as: 'new_user_password'
-    post 'users/password/new' => 'users/passwords#new', as: 'user_password'
+    post 'users/password' => 'users/passwords#create', as: 'user_password'
+    get 'users/password/edit' => 'users/passwords#edit', as: 'edit_user_password'
+    put 'users/password' => 'users/passwords#update', as: ''
     get 'users/invitation/accept' => 'users/invitations#edit', as: 'accept_user_invitation'
     get 'users/invitation/new' => 'users/invitations#new', as: 'new_user_invitation'
     put 'users/invitation/new' => 'users/invitations#update', as: ''
@@ -22,7 +24,9 @@ Rails.application.routes.draw do
     get 'admins/sign_up' => 'admins/registrations#new', as: 'new_admin_registration'
     post 'admins/sign_up' => 'admins/registrations#create', as: 'admin_registration'
     get 'admins/password/new' => 'admins/passwords#new', as: 'new_admin_password'
-    post 'admins/password/new' => 'admins/passwords#new', as: 'admin_password'
+    post 'admins/password' => 'admins/passwords#create', as: 'admin_password'
+    get 'admins/password/edit' => 'admins/passwords#edit', as: 'edit_admin_password'
+    put 'admins/password' => 'admins/passwords#update', as: ''
   end
 
   root 'home#top'

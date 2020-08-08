@@ -1,22 +1,23 @@
-h2
-  | Change your password
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = render "admins/shared/error_messages", resource: resource
-  = f.hidden_field :reset_password_token
-  .field
-    = f.label :password, "New password"
-    br
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-      br
-    = f.password_field :password, autofocus: true, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation, "Confirm new password"
-    br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Change my password"
-= render "admins/shared/links"
+.container
+  .row.page_space
+    .form
+      h2.form__midashi
+        | パスワード再発行
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+        = render "admins/shared/error_messages", resource: resource
+        = f.hidden_field :reset_password_token
+        .field
+          = f.label :password, class: "form__label"
+          - if @minimum_password_length
+            em
+              | (
+              = @minimum_password_length
+              |  文字以内)
+
+          = f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form__item_input"
+        .field
+          = f.label :password_confirmation, class: "form__label"
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: "form__item_input"
+        .actions
+          = f.submit "パスワード再発行", class: "form__btn"
+      = render "admins/shared/links"
