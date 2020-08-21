@@ -2,7 +2,7 @@
   .row
     section.admin-page
               = render 'search/children', q: @q
-              h3.midashi.txt_size_l.admin-page__midashi
+              h3.heading.txt_size_l.admin-page__heading
                 | 児童名簿
               - unless @children.present?
                 p.text-center 児童が登録されていません

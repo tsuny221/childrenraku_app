@@ -1,7 +1,7 @@
 .container
   .row.page_space
     .form
-      h2.form__midashi
+      h2.form__heading
         | イベント出欠回答
       .form__cont
         = form_with model: @event_attendance, url: users_event_event_attendances_path, local: true do |f|
@@ -21,5 +21,5 @@
 
           .actions
             = f.submit "作成", class: "form__btn"
-      .contact__midashi
+      .contact__heading
             = link_to '戻る', users_event_path(@event.id),class:"btn btn_color_gray"

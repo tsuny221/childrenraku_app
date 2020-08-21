@@ -1,7 +1,7 @@
 .container
   .row.page_space
     .form
-      h2.form__midashi
+      h2.form__heading
         | アルバム編集
       = form_with model: @album,url: admins_album_path, local: true  do |f|
         .form__cont
@@ -23,5 +23,5 @@
               = image_tag image, :size=>"100x100"
           .actions
             = f.submit  "更新", class:"form__btn"
-      .contact__midashi
+      .contact__heading
         = link_to '戻る', admins_albums_path,class:"btn btn_color_gray"

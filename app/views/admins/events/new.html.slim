@@ -1,7 +1,7 @@
 .container
   .row.page_space
     .form
-      h2.form__midashi
+      h2.form__heading
         | イベント作成
       .form__cont
         = form_with model: @event, url: admins_events_path, local: true do |f|
@@ -17,5 +17,5 @@
             = f.text_area :explanation, autofocus: true, class: "form__item_textarea"
           .actions
             = f.submit "作成", class: "form__btn"
-      .contact__midashi
+      .contact__heading
             = link_to '戻る', admins_events_path,class:"btn btn_color_gray"

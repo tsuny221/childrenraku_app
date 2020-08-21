@@ -1,9 +1,9 @@
 .container
   .row
     section.admin-page
-              h3.midashi.txt_size_l.admin-page__midashi
+              h3.heading.txt_size_l.admin-page__heading
                 | グループ一覧
-              .text-right.contact__midashi
+              .text-right.contact__heading
                   = link_to '連絡網一覧', admins_contacts_path,class:"btn btn_color_blue contact__btn"
                   = link_to '宛先グループ作成', new_admins_group_path,class:"btn btn_color_green"
               - unless @groups.present?
@@ -34,5 +34,5 @@
 
               .text-center
                 = paginate @groups, class: "paginate"
-              .contact__midashi
+              .contact__heading
                   = link_to '戻る', new_admins_contact_path,class:"btn btn_color_gray"

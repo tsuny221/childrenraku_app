@@ -1,7 +1,7 @@
 .container
   .row
     .form
-        h2.form__midashi
+        h2.form__heading
           | 予定表入力
         .txt_size_m
           span.plan__child-name.marker= @child.full_name
@@ -29,7 +29,7 @@
               .actions
                 = f.submit "登録", class: "form__btn"
               /start_dateの日に予定が存在しないのでcreateが働く
-              .contact__midashi
+              .contact__heading
                                 = link_to '戻る', users_plans_path,class:"btn btn_color_gray"
         - else
           = form_with model: @plans, url: users_plan_path(@plan), method: :put, local: true do |f|
@@ -52,5 +52,5 @@
               .actions
                 = f.submit "登録", class: "form__btn"
                  /start_dateの日に予定が存在するのでupdateが働く
-              .contact__midashi
+              .contact__heading
                                 = link_to '戻る', users_plans_path,class:"btn btn_color_gray"

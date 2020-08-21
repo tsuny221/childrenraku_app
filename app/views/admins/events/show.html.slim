@@ -1,31 +1,31 @@
 .container
   .row
     section.event-show
-        h3.midashi.txt_size_l.admin-page__midashi
+        h3.heading.txt_size_l.admin-page__heading
           | イベント詳細
         .event__cont
-          h4.marker.event__midashi
+          h4.marker.event__heading
            | 日時
           p.event__box_txt.event__user_cont
-             = @event.start_time.to_s(:datetime_jp)
+             = @event.start_time.to_s(:date_jp)
         .event__cont
-          h4.marker.event__midashi
+          h4.marker.event__heading
             | タイトル
           p.event__box_txt.event__user_cont
              = @event.title
         .event__cont
-          h4.marker.event__midashi
+          h4.marker.event__heading
             | イベント内容
           p.event__box_txt.event__user_cont
              = @event.explanation
         .event__cont
-          h4.marker.event__midashi
+          h4.marker.event__heading
             | 編集・削除
           p.event__box_txt.event__user_cont
             = link_to '編集', edit_admins_event_path(@event.id),class:"btn btn_color_orange text-right group__btn_margin"
             = link_to '削除', admins_event_path(@event.id),method: :delete, "data-confirm" => '本当によろしいですか？',  class:"btn btn_color_red text-right"
         .event__cont
-          h4.marker.event__midashi
+          h4.marker.event__heading
             | 出欠回答一覧
 
           - if @event_attendances.present?
@@ -85,7 +85,7 @@
                 .text-center
                   = paginate @event_attendances, class: "paginate"
                 .event__cont
-                    h4.marker.event__midashi
+                    h4.marker.event__heading
                       | 未回答者一覧
                     - @families.each do |family|
                         - unless EventAttendance.where(family_id: family.id, event_id: @event.id).present?
@@ -98,5 +98,5 @@
                               / 未回答者を表示（roomに紐づく家族から、その家族に紐づく、回答が存在しないひとのみ表示）
           - else @event_attendances.present?
                 p.text-center 出欠回答がありません
-        .event__midashi
+        .event__heading
           = link_to '戻る', admins_events_path,class:"btn btn_color_gray"

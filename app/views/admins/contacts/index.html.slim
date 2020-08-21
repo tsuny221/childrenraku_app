@@ -2,7 +2,7 @@
   .row
     section.admin-page
               = render 'search/contacts', q: @q
-              h3.midashi.txt_size_l.admin-page__midashi
+              h3.heading.txt_size_l.admin-page__heading
                 | 連絡網
               - unless @contacts.present?
                 p.text-center 連絡網はありません
@@ -37,5 +37,5 @@
 
               .text-center
                 = paginate @contacts, class: "paginate"
-              .contact__midashi
+              .contact__heading
                   = link_to '戻る', new_admins_contact_path,class:"btn btn_color_gray"

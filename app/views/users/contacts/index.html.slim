@@ -2,7 +2,7 @@
   .row
     section.admin-page
               = render 'search/user_contacts', q: @q
-              h3.midashi.txt_size_l.admin-page__midashi
+              h3.heading.txt_size_l.admin-page__heading
                 | 連絡網一覧
               - unless @contacts.present?
                 p.text-center 連絡網はありません

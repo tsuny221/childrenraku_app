@@ -2,7 +2,7 @@
   .row
     section.admin-page
               = render 'search/users', q: @q
-              h3.midashi.txt_size_l.admin-page__midashi
+              h3.heading.txt_size_l.admin-page__heading
                 | 会員一覧
               - unless @users.present?
                 p.text-center 児童が登録されていません
@@ -49,5 +49,5 @@
               .text-center
                 = paginate @users, class: "paginate"
 
-              .contact__midashi
+              .contact__heading
                  = link_to '戻る', admins_admin_path(current_admin),class:"btn btn_color_gray"

@@ -1,7 +1,7 @@
 .container
   .row
     section
-        h2.midashi.txt_size_xl
+        h2.heading.txt_size_xl
           = user.full_name
           | 様の詳細
         .my-page__cont
@@ -9,7 +9,7 @@
            | 会員情報
           .my-page__user_cont
             .my-page__box
-                p.my-page__box_midashi
+                p.my-page__box_heading
                  | 氏名:
                 p.my-page__box_txt
                   = @user.full_name
@@ -17,17 +17,17 @@
                   = @user.full_name_kana
                   |)
             .my-page__box
-                p.my-page__box_midashi
+                p.my-page__box_heading
                   | メールアドレス:
                 p.my-page__box_txt
                   = mail_to user.email,user.email, class: "txt_color_blue"
             .my-page__box
-                p.my-page__box_midashi
+                p.my-page__box_heading
                   | 住所:
                 p.my-page__box_txt
                   = @user.full_address
             .my-page__box
-                p.my-page__box_midashi
+                p.my-page__box_heading
                   | 電話番号:　　
                 p.my-page__box_txt
                   = @user.phone_number
@@ -40,7 +40,7 @@
             - users.each do |user|
               .my-page__family_cont
                   .my-page__box
-                    p.my-page__box_midashi
+                    p.my-page__box_heading
                       | 氏名:
                     p.my-page__box_txt
                       = user.full_name
@@ -48,7 +48,7 @@
                       = user.full_name_kana
                       |)
                   .my-page__box
-                    p.my-page__box_midashi
+                    p.my-page__box_heading
                       | メールアドレス:
                     p.my-page__box_txt
                       = user.email
@@ -58,7 +58,7 @@
           - children.each do |child|
               .my-page__children_cont
                 .my-page__box
-                  p.my-page__box_midashi
+                  p.my-page__box_heading
                     | 氏名:
                   p.my-page__box_txt
                     = child.full_name
@@ -66,24 +66,24 @@
                     = child.full_name_kana
                     |)
                 .my-page__box
-                  p.my-page__box_midashi
+                  p.my-page__box_heading
                     | 学年・クラス:
                   p.my-page__box_txt
                     = child.grade
                     = child.school_class
                     | 組
                 .my-page__box
-                  p.my-page__box_midashi
+                  p.my-page__box_heading
                     | 性別:
                   p.my-page__box_txt
                     = child.gender
                 .my-page__box
-                  p.my-page__box_midashi
+                  p.my-page__box_heading
                     | アレルギー:
                   p.my-page__box_txt
                     = child.allergy
                 .my-page__box
-                  p.my-page__box_midashi
+                  p.my-page__box_heading
                     | 特筆事項:
                   p.my-page__box_txt
                     = child.special_notes

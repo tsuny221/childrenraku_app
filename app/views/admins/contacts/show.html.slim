@@ -1,15 +1,15 @@
 .container
   .row
     section.contact-show
-        h3.midashi.txt_size_l.admin-page__midashi
+        h3.heading.txt_size_l.admin-page__heading
           | 連絡網詳細
         .contact__cont
-          h4.marker.contact__midashi
+          h4.marker.contact__heading
            | 送信日時
           p.contact__box_txt.contact__user_cont
              = @contact.created_at.to_s(:datetime_jp)
         .contact__cont
-          h4.marker.contact__midashi
+          h4.marker.contact__heading
            |  宛先
           - if @group.present?
             .panel-group id="Accordion"
@@ -30,24 +30,24 @@
           - else
             p.contact__user_cont 全員
         .contact__cont
-          h4.marker.contact__midashi
+          h4.marker.contact__heading
             | 件名
           p.contact__box_txt.contact__user_cont
              = @contact.subject
         .contact__cont
-          h4.marker.contact__midashi
+          h4.marker.contact__heading
             | 本文
           p.contact__box_txt.contact__user_cont
              = @contact.text
         .contact__cont
-          h4.marker.contact__midashi
+          h4.marker.contact__heading
             | 画像
           p.contact__box_txt.contact__user_cont
             = link_to attachment_url(@contact,:image),class:"product_img_s txt_color_blue" do
               = @contact.image_filename
         .contact__flex
           .contact__box
-            h4.midashi.contact__midashi2.border_color_blue
+            h4.heading.contact__heading2.border_color_blue
               | 既読者一覧
             - @read_users.each do |user|
                 li
@@ -56,7 +56,7 @@
                   = mail_to user.email, user.email, class: "txt_color_blue"
                   | )
           .contact__box
-            h4.midashi.contact__midashi2.border_color_red
+            h4.heading.contact__heading2.border_color_red
               | 未読者一覧
             - @noread_users.each do |user|
                 li.txt_color_red
@@ -64,5 +64,5 @@
                   | (
                   = mail_to user.email, user.email, class: "txt_color_blue"
                   | )
-        .contact__midashi
+        .contact__heading
           = link_to '戻る', admins_contacts_path,class:"btn btn_color_gray"

@@ -1,7 +1,7 @@
 .container
   .row.page_space
     .form
-      h2.form__midashi
+      h2.form__heading
         | 宛先グループ編集
       .form__cont
 
@@ -16,5 +16,5 @@
                     = user.label {user.check_box + user.object.full_name}
             .actions
               = f.submit "登録", autofocus: true, class: "form__btn"
-      .contact__midashi
+      .contact__heading
              = link_to '戻る', admins_groups_path,class:"btn btn_color_gray"

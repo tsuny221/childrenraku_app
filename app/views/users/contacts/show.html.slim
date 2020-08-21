@@ -1,29 +1,29 @@
 .container
   .row
     section.contact-show
-        h3.midashi.txt_size_l.admin-page__midashi
+        h3.heading.txt_size_l.admin-page__heading
           | 連絡網詳細
         .contact__cont
-          h4.marker.contact__midashi
+          h4.marker.contact__heading
            | 送信日時
           p.contact__box_txt.contact__user_cont
              = @contact.created_at.to_s(:datetime_jp)
         .contact__cont
-          h4.marker.contact__midashi
+          h4.marker.contact__heading
             | 件名
           p.contact__box_txt.contact__user_cont
              = @contact.subject
         .contact__cont
-          h4.marker.contact__midashi
+          h4.marker.contact__heading
             | 本文
           p.contact__box_txt.contact__user_cont
              = @contact.text
         .contact__cont
-          h4.marker.contact__midashi
+          h4.marker.contact__heading
             | 画像
           p.contact__box_txt.contact__user_cont
              = link_to attachment_url(@contact,:image),class:"product_img_s txt_color_blue" do
               = @contact.image_filename
 
-        .contact__midashi
+        .contact__heading
             = link_to '戻る', users_contacts_path,class:"btn btn_color_gray"

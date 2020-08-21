@@ -1,7 +1,7 @@
 .container
   .row
     section
-        h2.midashi.txt_size_xl
+        h2.heading.txt_size_xl
           | 管理者ページ
 
         .my-page__cont
@@ -11,12 +11,12 @@
             | 下記ルームキーを会員に伝えることで、このルームに会員を招待することができます。
           .my-page__user_cont
             .my-page__box
-                p.my-page__box_midashi
+                p.my-page__box_heading
                  | ルーム名:
                 p.my-page__box_txt
                   = @room.name
             .my-page__box
-                p.my-page__box_midashi
+                p.my-page__box_heading
                   | ルームキー:
                 p.my-page__box_txt
                   = @room.key
@@ -26,12 +26,12 @@
            | 管理者情報
           .my-page__user_cont
             .my-page__box
-                p.my-page__box_midashi
+                p.my-page__box_heading
                   | 名称:
                 p.my-page__box_txt
                   = @admin.name
             .my-page__box
-                p.my-page__box_midashi
+                p.my-page__box_heading
                   | メールアドレス:
                 p.my-page__box_txt
                   = @admin.email

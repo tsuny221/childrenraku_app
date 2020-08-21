@@ -1,25 +1,25 @@
 .container
   .row
     section.event-show
-        h3.midashi.txt_size_l.admin-page__midashi
+        h3.heading.txt_size_l.admin-page__heading
           | イベント詳細
         .event__cont
-          h4.marker.event__midashi
+          h4.marker.event__heading
            | 日時
           p.event__box_txt.event__user_cont
-             = @event.start_time.to_s(:datetime_jp)
+             = @event.start_time.to_s(:date_jp)
         .event__cont
-          h4.marker.event__midashi
+          h4.marker.event__heading
             | タイトル
           p.event__box_txt.event__user_cont
              = @event.title
         .event__cont
-          h4.marker.event__midashi
+          h4.marker.event__heading
             | イベント内容
           p.event__box_txt.event__user_cont
              = @event.explanation
         .event__cont
-          h4.marker.event__midashi
+          h4.marker.event__heading
             | 出欠回答一覧
           - unless @event_attendance.present?
                 p.text-center
@@ -50,5 +50,5 @@
                             = @event_attendance.comment
                 .text-right
                   = link_to "編集",  edit_users_event_event_attendance_path(@event.id, @event_attendance.id), class:"btn btn_color_orange"
-        .event__midashi
+        .event__heading
           = link_to '戻る', users_events_path,class:"btn btn_color_gray"

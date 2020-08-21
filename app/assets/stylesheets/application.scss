@@ -63,7 +63,9 @@ section {
 table {
   border-collapse: collapse;
 }
-
+.main {
+  min-height: 90vh;
+}
 /*------------Bootstrap上書き/初期化系-------------*/
 .navbar-nav > li > a:hover {
   background-color: transparent;
@@ -244,7 +246,7 @@ table {
   color: #5c6567;
 }
 
-.midashi {
+.heading {
   font-weight: bold;
 }
 .top_bg {
@@ -345,7 +347,7 @@ table {
 .point {
   position: relative;
 }
-.point__midashi {
+.point__heading {
   padding: 20px 0px;
   line-height: normal;
   text-align: center;
@@ -415,7 +417,7 @@ table {
   margin-bottom: 30px;
   text-align: center;
 }
-.catch-copy__midashi {
+.catch-copy__heading {
   line-height: normal;
   font-size: 35px;
   font-weight: bold;
@@ -438,7 +440,7 @@ table {
   margin-left: auto;
   margin-right: auto;
 }
-.form__midashi {
+.form__heading {
   font-size: 30px;
   text-align: center;
   font-weight: 600;
@@ -557,6 +559,9 @@ textarea:read-only {
   padding: 100px 0px;
 }
 /*------------フッター-------------*/
+footer {
+  display: block;
+}
 .footer__size {
   padding: 20px;
 }
@@ -617,7 +622,7 @@ textarea:read-only {
 .admin-page {
   padding: 5%;
 }
-.admin-page__midashi {
+.admin-page__heading {
   text-align: center;
   padding-top: 30px;
 }
@@ -704,7 +709,7 @@ caption {
   padding: 0;
   width: 100%;
 }
-.my-page__box_midashi {
+.my-page__box_heading {
   flex-basis: 156px;
   display: flex;
   margin-right: 5px;
@@ -770,7 +775,7 @@ caption {
   max-width: 700px;
   margin: 0 auto;
 }
-.contact__midashi {
+.contact__heading {
   margin: 30px 0px;
 }
 .contact__btn {
@@ -789,7 +794,7 @@ caption {
 .border_color_red {
   border-bottom: solid 5px #eb4444;
 }
-.contact__midashi2 {
+.contact__heading2 {
   margin: 20px;
   display: inline-block;
 }
@@ -858,13 +863,13 @@ caption {
   max-width: 700px;
   margin: 0 auto;
 }
-.event__midashi {
+.event__heading {
   margin: 30px 0px;
 }
 .event__btn {
   margin-right: 10px;
 }
-.event__midashi2 {
+.event__heading2 {
   margin: 20px;
   display: inline-block;
 }
@@ -982,7 +987,7 @@ caption {
   .point__cont {
     flex-wrap: wrap;
   }
-  .point__midashi {
+  .point__heading {
     font-size: 17px;
   }
   .point__logo {

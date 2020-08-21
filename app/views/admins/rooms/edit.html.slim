@@ -1,7 +1,7 @@
 .container
   .row.page_space
     .form
-      h2.form__midashi
+      h2.form__heading
         | ルームの編集
       .form__cont
         = form_with model: @room ,url: admins_room_path(@room),local: true do |f|
@@ -14,5 +14,5 @@
             = f.text_field :key, autofocus: true, autocomplete: "key", class: "form__item_input"
           .actions
             = f.submit "ルームの編集", class: "form__btn"
-      .contact__midashi
+      .contact__heading
                   = link_to '戻る', admins_admin_path(current_admin.id),class:"btn btn_color_gray"

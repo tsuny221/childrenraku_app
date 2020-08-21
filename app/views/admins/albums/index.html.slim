@@ -2,7 +2,7 @@
   .row
     section.admin-page
       = render 'search/albums', q: @q
-      h2.form__midashi
+      h2.form__heading
         | アルバム
       p.text-right
         = link_to 'アルバム追加', new_admins_album_path, class: "btn btn_color_green"

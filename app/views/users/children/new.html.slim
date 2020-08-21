@@ -1,7 +1,7 @@
 .container
   .row.page_space
     .form
-        h2.form__midashi
+        h2.form__heading
           | お子様の情報登録
         .form__cont
           = form_with model: @child, url: users_children_path, local: true do |f|
@@ -31,5 +31,5 @@
               = f.text_area :special_notes, autofocus: true, class: "form__item_textarea"
             .actions
               = f.submit "登録", class: "form__btn"
-        .contact__midashi
+        .contact__heading
                       = link_to '戻る', users_user_path(current_user.id),class:"btn btn_color_gray"
