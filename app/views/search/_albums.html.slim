@@ -16,9 +16,10 @@ a.btn.btn_theme_main data-target="#modal1" data-toggle="modal" type="button"
                                     = f.collection_select :name_cont,Album.where(room_id: @room.id),:name, :name, { include_blank: '選択してください'},{class:"form__item_input"}
 
                             .search
+                                -#タグが重複しないようにラジオボタン で一覧表示
                                 .field.check__box
                                     = f.label :name, 'タグで検索',class:"form__label"
                                     = f.collection_check_boxes :tags_name_eq_any, Tag.where(q.id).select(:name).distinct, :name, :name
-                                -#タグが重複しないようにラジオボタン で一覧表示
+
                                 .action
                                     = f.submit '検索',class:"form__btn"

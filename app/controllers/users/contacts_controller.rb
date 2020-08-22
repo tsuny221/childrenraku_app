@@ -13,7 +13,7 @@ class Users::ContactsController < ApplicationController
     if ContactUser.create(contact_id: params[:id], user_id: params[:user_id], read: true).valid?
     else
       @contact = Contact.find(params[:id])
-      flash[:notice] = "既に既読済みです。"
+      flash.now[:notice] = "既に既読済みです。"
       render :show
     end
   end

@@ -911,6 +911,10 @@ caption {
 .album {
   margin: 5% 0px;
 }
+.album__flex {
+  display: flex;
+  flex-wrap: wrap;
+}
 .album__btn {
   margin-right: 10px;
 }
@@ -941,7 +945,7 @@ caption {
 }
 .tag,
 .check__box label {
-  margin-right: 5px;
+  margin: 5px;
 }
 
 /*------------------------------スマホ版-----------------------------*/

@@ -14,8 +14,8 @@ class Admins::ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.room_id = @room.id
-    render(:new) && return if params[:back] || !@contact.save
     # 確認画面から戻れるようにする
+    render(:new) && return if params[:back] || !@contact.save
     if @contact.group_id.present?
       @group = Group.find_by(id: @contact.group_id)
       @group.group_users.each do |group_user|
@@ -27,6 +27,7 @@ class Admins::ContactsController < ApplicationController
         ContactMailer.with(user: user).send_mail(@contact).deliver_later
       end
    end
+
     # 管理者にもメール送信
     # ContactMailer.with(user:current_admin).send_mail(@contact).deliver_later
     redirect_to admins_contacts_path

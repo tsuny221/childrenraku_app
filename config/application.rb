@@ -14,7 +14,7 @@ module ChildrenrakuApp
     config.action_mailer.asset_host = 'https://childrenraku.work'
     config.active_job.queue_adapter = :delayed_job
     config.assets.initialize_on_precompile = false
-    # アダプターの設定を追記
+    config.action_view.field_error_proc = proc { |html_tag, instance| html_tag }
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

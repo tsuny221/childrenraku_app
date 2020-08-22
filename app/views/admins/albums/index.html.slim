@@ -21,10 +21,11 @@
               = link_to image, "data-lightbox": image do
                   = image_tag image, width:150, class: "album__img imagefadein"
           p タグ一覧
-          - album.tags.select(:name).distinct.each do |tag|
-            span.label.label-default.tag
-              = tag.name
           -#Tagがかぶらないように表示
+          .album__flex
+            - album.tags.select(:name).distinct.each do |tag|
+              span.label.label-default.tag
+                = tag.name
       - else
         p.text-center アルバムが登録されていません
       .text-center

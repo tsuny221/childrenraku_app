@@ -23,6 +23,7 @@ class Admins::AlbumsController < ApplicationController
         end
      end
       redirect_to admins_albums_path
+      flash[:success] = "アルバムを作成しました。"
     else
       render :new
     end
@@ -48,6 +49,7 @@ class Admins::AlbumsController < ApplicationController
         end
      end
     redirect_to admins_albums_path
+    flash[:success] = "アルバムを編集しました。"
     else
       render :edit
     end
@@ -58,14 +60,15 @@ class Admins::AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     @album.destroy
     redirect_to admins_albums_path
+    flash[:success] = "アルバムを削除しました。"
   end
 
   private
-
+  # ActiveStorageを利用して複数画像の保存
   def album_params
     params.require(:album).permit(:name, :room_id, images: [])
   end
-  # ActiveStorageを利用して複数画像の保存
+
   def current_room
     @room = current_admin.room
   end

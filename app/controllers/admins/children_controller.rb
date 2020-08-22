@@ -66,8 +66,8 @@ class Admins::ChildrenController < ApplicationController
       @children = @q.result(distinct: true)
       @enter = Child.where(family_id: @families).where(room_access: 1)
       @plans = Plan.where(start_time: Date.today.beginning_of_day)
+       flash.now[:alert] = "入室している児童がいません。"
       render :room_access
-      flash[:alert] = "入室している児童がいません。"
   end
 end
 

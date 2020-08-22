@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
+   # ルームキーをチェックするためパラメータを引き渡すもの
   def check
-    # ルームキーをチェックするためパラメータを引き渡すもの
   end
 end
