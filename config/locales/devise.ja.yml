@@ -5,26 +5,26 @@ ja:
         user:
           attributes:
             email:
-              taken: "は既に使用されています。"
-              blank: "が入力されていません。"
-              too_short: "は%{count}文字以上に設定して下さい。"
-              too_long: "は%{count}文字以下に設定して下さい。"
-              invalid: "は有効でありません。"
+              taken: "既に使用されています"
+              blank: "入力してください"
+              too_short: "%{count}文字以上に設定して下さい"
+              too_long: "%{count}文字以下に設定して下さい"
+              invalid: "有効な値ではありません"
             password:
-              taken: "は既に使用されています。"
-              blank: "が入力されていません。"
-              too_short: "は%{count}文字以上に設定して下さい。"
-              too_long: "は%{count}文字以下に設定して下さい。"
-              invalid: "は有効でありません。"
-              confirmation: "が内容とあっていません。"
+              taken: "既に使用されています"
+              blank: "入力してください"
+              too_short: "%{count}文字以上に設定して下さい"
+              too_long: "%{count}文字以下に設定して下さい"
+              invalid: "有効な値ではありません。"
+              confirmation: "内容とあっていません。"
     attributes:
       user:
         room_id: 部屋ID
         room: 部屋名
-        last_name: 苗字
-        first_name: 名前
-        last_name_kana: フリガナ
-        first_name_kana: フリガナ
+        last_name: 姓
+        first_name: 名
+        last_name_kana: セイ
+        first_name_kana: メイ
         email: メールアドレス
         phone_number: 電話番号
         postcode: 郵便番号

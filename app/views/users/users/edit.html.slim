@@ -7,13 +7,15 @@
         = form_with model: @user, url: users_user_path(@user), local: true do |f|
           = render "/layouts/errors", obj: @user
           .field
+            = f.label :last_name, class: "form__label"
+            = f.text_field :last_name, autofocus: true, autocomplete: "family-name", class: "form__item_input",placeholder: "例）山田"
             = f.label :first_name, class: "form__label"
-            = f.text_field :last_name, autofocus: true, autocomplete: "family-name", class: "form__item_input_s",placeholder: "例）山田"
-            = f.text_field :first_name, autofocus: true, autocomplete: "given-name", class: "form__item_input_s",placeholder: "例）太郎"
+            = f.text_field :first_name, autofocus: true, autocomplete: "given-name", class: "form__item_input",placeholder: "例）太郎"
           .field
             = f.label :last_name_kana, class: "form__label"
-            = f.text_field :last_name_kana, autofocus: true, class: "form__item_input_s",placeholder: "例）ヤマダ"
-            = f.text_field :first_name_kana, autofocus: true, class: "form__item_input_s",placeholder: "例）タロウ"
+            = f.text_field :last_name_kana, autofocus: true, class: "form__item_input",placeholder: "例）ヤマダ"
+            = f.label :first_name_kana, class: "form__label"
+            = f.text_field :first_name_kana, autofocus: true, class: "form__item_input",placeholder: "例）タロウ"
           .field
             = f.label :postcode, class: "form__label"
             = f.text_field :postcode, autofocus: true, autocomplete: "post-code", class: "form__item_input",placeholder: "例）1110001"

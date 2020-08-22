@@ -1,8 +1,9 @@
 - if obj.errors.any?
   #error_explanation.error_messages.txt_color_red
-    h3
-      = pluralize(obj.errors.count, "")
-      | 件のエラーが発生したため保存されませんでした。
-    ul
-      - obj.errors.full_messages.each do |message|
-        li = message
+    .error_txt.text-center.text_bold 入力内容に不備があります。入力内容をご確認ください。
+    / h3
+    /   = pluralize(obj.errors.count, "")
+    /   | 件のエラーが発生したため保存されませんでした。
+    / ul
+    /   - obj.errors.full_messages.each do |message|
+    /     li = message

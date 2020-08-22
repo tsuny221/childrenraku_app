@@ -12,13 +12,15 @@
             = f.hidden_field :invited_by_id
             = f.hidden_field :family_id
             .field
+              = f.label :last_name, class: "form__label"
+              = f.text_field :last_name, autofocus: true, autocomplete: "family-name", class: "form__item_input",placeholder: "例）山田"
               = f.label :first_name, class: "form__label"
-              = f.text_field :last_name, autofocus: true, autocomplete: "family-name", class: "form__item_input_s",placeholder: "例）山田"
-              = f.text_field :first_name, autofocus: true, autocomplete: "given-name", class: "form__item_input_s",placeholder: "例）太郎"
+              = f.text_field :first_name, autofocus: true, autocomplete: "given-name", class: "form__item_input",placeholder: "例）太郎"
             .field
               = f.label :last_name_kana, class: "form__label"
-              = f.text_field :last_name_kana, autofocus: true, class: "form__item_input_s",placeholder: "例）ヤマダ"
-              = f.text_field :first_name_kana, autofocus: true, class: "form__item_input_s",placeholder: "例）タロウ"
+              = f.text_field :last_name_kana, autofocus: true, class: "form__item_input",placeholder: "例）ヤマダ"
+              = f.label :first_name_kana, class: "form__label"
+              = f.text_field :first_name_kana, autofocus: true, class: "form__item_input",placeholder: "例）タロウ"
             .field
               = f.label :postcode, class: "form__label"
               = f.text_field :postcode, autofocus: true, autocomplete: "post-code", class: "form__item_input",placeholder: "例）1110001"
@@ -37,7 +39,7 @@
                 em
                   | (
                   = @minimum_password_length
-                  |  characters minimum)
+                  |  文字以上)
               = f.password_field :password, autocomplete: "new-password", class: "form__item_input"
             .field
               = f.label :password_confirmation, class: "form__label"

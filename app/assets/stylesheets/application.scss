@@ -325,7 +325,15 @@ table {
   margin: 0px;
 }
 /*-------------エラーメッセージ -------------*/
-
+.has-error .help-block {
+  color: #eb4444;
+}
+.error_txt {
+  border-radius: 5px;
+  border: solid 2px #eb4444;
+  padding: 5px;
+  margin-bottom: 5%;
+}
 /*------------メインビジュアル-------------*/
 .main-visual__cont {
   padding: 10% 0px;

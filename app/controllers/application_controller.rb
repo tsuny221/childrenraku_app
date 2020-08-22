@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   # CSRF対策(クロスサイトリクエストフォージェリ)
   protect_from_forgery with: :exception
 
-
   protected
 
   def configure_permitted_parameters

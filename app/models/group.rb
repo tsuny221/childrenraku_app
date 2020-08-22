@@ -5,4 +5,5 @@ class Group < ApplicationRecord
   has_many :contacts
 
   validates :name, presence: true, uniqueness: true
+  validates :group_users, presence: true
 end
