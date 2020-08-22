@@ -9,11 +9,11 @@
           .field
             = f.label :name, class: "form__label"
             br
-            = f.text_field :name, autofocus: true, autocomplete: "name", class: "form__item_input"
+            = f.text_field :name, autofocus: true, autocomplete: "name", class: "form__item_input",placeholder: "例）横浜学童"
           .field
             = f.label :email, class: "form__label"
             br
-            = f.email_field :email, autofocus: true, autocomplete: "email", class: "form__item_input"
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "form__item_input",placeholder: "例）example@gmail.com"
           .actions
             = f.submit "更新", class: "form__btn"
       .contact__heading
