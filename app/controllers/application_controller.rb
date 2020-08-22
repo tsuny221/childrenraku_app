@@ -37,6 +37,7 @@ class ApplicationController < ActionController::Base
       render 'admins/rooms/new'
     end
   end
+
   # 児童情報を作成したかどうかチェック
   def child_check
     if Child.find_by(family_id: current_user.family_id).blank?
@@ -44,5 +45,4 @@ class ApplicationController < ActionController::Base
       render 'users/children/new'
     end
   end
-
 end

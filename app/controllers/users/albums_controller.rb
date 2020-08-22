@@ -8,8 +8,8 @@ class Users::AlbumsController < ApplicationController
     @albums = @q.result(distinct: true)
   end
 
-
   private
+
   def current_room
     @room = current_user.room
   end

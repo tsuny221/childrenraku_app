@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
-    first_name { Faker::Lorem.characters(number:10) }
-    last_name { Faker::Lorem.characters(number:10) }
+    first_name { Faker::Lorem.characters(number: 10) }
+    last_name { Faker::Lorem.characters(number: 10) }
     first_name_kana { "テスト" }
     last_name_kana { "テスト" }
     email { Faker::Internet.email }

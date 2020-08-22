@@ -12,7 +12,7 @@ class Admins::EventsController < ApplicationController
     @families = Family.where(room_id: @room.id)
     @q = EventAttendance.where(event_id: @event.id).page(params[:page]).ransack(params[:q])
     @event_attendances = @q.result(distinct: true)
-     # イベントに紐づく出欠のうち出席のもののみ抽出
+    # イベントに紐づく出欠のうち出席のもののみ抽出
     @event_attendances_attend = @event_attendances.where(attendance: 1)
     @attendance_members = EventParticipant.where(event_attendance_id: @event_attendances_attend.ids)
     # その出欠から人数内訳情報を引っ張っている

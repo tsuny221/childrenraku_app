@@ -12,14 +12,14 @@ module Vision
       params = {
         requests: [{
           image: {
-            content: base64_image
+            content: base64_image,
           },
           features: [
             {
-              type: 'LABEL_DETECTION'
-            }
-          ]
-        }]
+              type: 'LABEL_DETECTION',
+            },
+          ],
+        }],
       }.to_json
       # Google Cloud Vision APIにリクエスト
       uri = URI.parse(api_url)

@@ -21,7 +21,7 @@ class Admins::AlbumsController < ApplicationController
         tags.each do |tag|
           @album.tags.create(name: tag)
         end
-     end
+      end
       redirect_to admins_albums_path
       flash[:success] = "アルバムを作成しました。"
     else
@@ -35,11 +35,11 @@ class Admins::AlbumsController < ApplicationController
 
   def update
     @album = Album.find(params[:id])
-    if @album.images.attached? && params[:album][:image_ids] != nil
+    if @album.images.attached? && !params[:album][:image_ids].nil?
       params[:album][:image_ids].each do |image_id|
-          image = @album.images.find(image_id)
-          image.purge
-     end
+        image = @album.images.find(image_id)
+        image.purge
+      end
     end
     if @album.update(album_params)
       @album.images.each do |image|
@@ -47,13 +47,12 @@ class Admins::AlbumsController < ApplicationController
         tags.each do |tag|
           @album.tags.create(name: tag)
         end
-     end
-    redirect_to admins_albums_path
-    flash[:success] = "アルバムを編集しました。"
+      end
+      redirect_to admins_albums_path
+      flash[:success] = "アルバムを編集しました。"
     else
       render :edit
     end
-
   end
 
   def destroy
@@ -64,6 +63,7 @@ class Admins::AlbumsController < ApplicationController
   end
 
   private
+
   # ActiveStorageを利用して複数画像の保存
   def album_params
     params.require(:album).permit(:name, :room_id, images: [])
