@@ -33,7 +33,7 @@ class Admins::SessionsController < Devise::SessionsController
         redirect_to new_admin_session_path
       end
     else
-      flash[:danger] = "必須項目を入力してください。"
+      flash.now[:notice] = "必須項目を入力してください。"
     end
   end
 end
