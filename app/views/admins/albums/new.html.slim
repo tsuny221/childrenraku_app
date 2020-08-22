@@ -7,10 +7,14 @@
        .form__cont
           = render "layouts/errors", obj: @album
           .field
-            = f.label :name, class: "form__label"
+            .form__label
+              span.form__item 必須
+              = f.label :name, class: "form__label"
             = f.text_field :name, class: "form__item_input"
           .field
-                  = f.label :images, class: "form__label"
+            .form__label
+              span.form__item 必須
+              = f.label :images, class: "form__label"
           .file_field
               = f.file_field :images, multiple: true, id:"img-file"
               #image-box-1

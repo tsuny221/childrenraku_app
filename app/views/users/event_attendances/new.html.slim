@@ -7,7 +7,9 @@
         = form_with model: @event_attendance, url: users_event_event_attendances_path, local: true do |f|
           = render "layouts/errors", obj: @event_attendance
           .field
-            = f.label :attendance, class: "form__label"
+            .form__label
+              span.form__item 必須
+              = f.label :attendance, class: "form__label"
             = f.select :attendance, EventAttendance.attendances.keys.map, { include_blank: '選択してください'},{class: "form__item_select"}
           .field
              - EventParticipant.relationship_names.keys.each do |key|

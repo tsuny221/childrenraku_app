@@ -7,13 +7,19 @@
         = form_with model: @event, url: admins_events_path, local: true do |f|
           = render "layouts/errors", obj: @event
           .field
-            = f.label :start_time, class: "form__label"
+            .form__label
+             span.form__item 必須
+             = f.label :start_time, class: "form__label"
             = f.date_field :start_time, class: "form__item_input"
           .field
-            = f.label :title, class: "form__label"
+            .form__label
+              span.form__item 必須
+              = f.label :title, class: "form__label"
             = f.text_field :title, autofocus: true, class: "form__item_input"
           .field
-            = f.label :explanation, class: "form__label"
+            .form__label
+              span.form__item 必須
+              = f.label :explanation, class: "form__label"
             = f.text_area :explanation, autofocus: true, class: "form__item_textarea"
           .actions
             = f.submit "作成", class: "form__btn"

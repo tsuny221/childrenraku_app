@@ -11,13 +11,19 @@
           = form_with model: @contact ,url: confirm_admins_contacts_path(@contact),method: :post, local: true do |f|
             = render "layouts/errors", obj: @contact
             .field
-              = f.label :group_id, autofocus: true, class: "form__label"
+              .form__label
+                span.form__item 必須
+                = f.label :group_id, autofocus: true, class: "form__label"
               = f.collection_select :group_id, Group.where(room_id: @room.id),:id, :name, { include_blank: '全メンバーへ送信'},{class: "form__item_input"}
             .field
-              = f.label :subject, autofocus: true, class: "form__label"
+              .form__label
+                span.form__item 必須
+                = f.label :subject, autofocus: true, class: "form__label"
               = f.text_field :subject, autofocus: true, class: "form__item_input"
             .field
-              = f.label :text, autofocus: true, class: "form__label"
+              .form__label
+                span.form__item 必須
+                = f.label :text, autofocus: true, class: "form__label"
               = f.text_area :text, autofocus: true, class: "form__item_textarea"
             .field
               = f.label :image, autofocus: true, class: "form__label"
