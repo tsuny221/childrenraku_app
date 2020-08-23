@@ -69,7 +69,7 @@ Rails.application.configure do
   authentication: 'plain',
   enable_starttls_auto: true
 }
+#devise の招待メール用
   host = 'localhost:3000'
     Rails.application.routes.default_url_options[:host] = host
-    #devise の招待メール用
 end

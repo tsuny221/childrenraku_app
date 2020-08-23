@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get 'admins/password/edit' => 'admins/passwords#edit', as: 'edit_admin_password'
     put 'admins/password' => 'admins/passwords#update', as: ''
   end
-
+  # 共通
   root 'home#top'
   get 'about' => 'home#about', as: 'about'
   get 'signup/select' => 'home#signup_select', as: 'signup_select'
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     end
   end
   # get 'inquiries/confirm' => 'home#top', as: '/'
-  # 共通
+  # 管理者
   namespace :admins do
     resources :rooms, only: [:new, :create, :edit, :update]
     get 'top' => 'home#top', as: 'top'
@@ -64,7 +64,7 @@ Rails.application.routes.draw do
     resources :events
     resources :albums
   end
-  # 管理者
+  # ユーザー
   namespace :users do
     get 'top' => 'home#top', as: 'top'
     resources :children
@@ -84,5 +84,4 @@ Rails.application.routes.draw do
     end
     resources :albums
   end
-  # ユーザー
 end

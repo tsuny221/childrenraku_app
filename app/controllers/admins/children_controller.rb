@@ -18,8 +18,8 @@ class Admins::ChildrenController < ApplicationController
     @users = User.where(family_id: @child.family_id).where.not(id: @user)
   end
 
+  # 入退室管理ページ
   def room_access
-    # 入退室管理ページ
     @q = Child.order(grade: "DESC").where(family_id: @families).page(params[:page]).ransack(params[:q])
     @children = @q.result(distinct: true)
     @enter = Child.where(family_id: @families).where(room_access: 1)

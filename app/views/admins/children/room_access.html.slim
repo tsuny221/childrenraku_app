@@ -43,10 +43,11 @@
                         td id="mail_#{child.id}"
                           = render 'admins/children/mail', child: child
                         td
+                          /今日の日付の予定を全て取り出し、each文で回して、その中でもchildに結びつく結果のみ表示している
                           - @plans.each do |plan|
                             - if plan.child_id == child.id
                               = plan.attendance
-                          /今日の日付の予定を全て取り出し、each文で回して、その中でもchildに結びつく結果のみ表示している
+
 
               .text-center
                 = paginate @children, class: "paginate"

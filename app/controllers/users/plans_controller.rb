@@ -43,6 +43,7 @@ end
     params.permit(plans: [:attendance, :comment, :start_time, :child_id])[:plans]
    end
 
+  # シンプルカレンダーの現在の月の日付以外にフォームを表示しないため
   def set_start_date
     if params[:start_date].present?
       @start_date = params[:start_date].to_date
@@ -50,7 +51,6 @@ end
       @start_date = Date.today
     end
   end
-  # シンプルカレンダーの現在の月の日付以外にフォームを表示しないため
 
   def set_event
     @events = Event.where(room_id: @room.id)

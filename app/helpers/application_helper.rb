@@ -1,3 +1,4 @@
+# フラッシュメッセージをBootstrapデザインで
 module ApplicationHelper
   def bootstrap_alert(key)
     case key
@@ -10,5 +11,3 @@ module ApplicationHelper
     end
   end
 end
-
-# フラッシュメッセージをBootstrapデザインで

@@ -7,15 +7,16 @@
           .child__plan__cont
               .txt_size_m
                 span.plan__child-name.marker= child.full_name
-              = link_to '新規/編集', new_users_plan_path(child_id: child.id, start_date: params[:start_date]), class:'btn btn_color_orange', start_date: params[:start_today]
               / 予定データがあるかどうかで新規登録編集両方行える
+              = link_to '新規/編集', new_users_plan_path(child_id: child.id, start_date: params[:start_date]), class:'btn btn_color_orange', start_date: params[:start_today]
               = month_calendar events: child.plans do |date, plans|
                 .text-left.date__txt_size
                   = date.day
+                / イベントも表示
                 - @events.each do |event|
                         - if event.start_time == date.beginning_of_day
                           .txt_color_orange = event.title
-                          / イベントも表示
+
                 - plans.each do |plan|
 
                       - if plan.attendance == '出席'

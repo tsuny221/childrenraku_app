@@ -6,6 +6,7 @@
         .txt_size_m
           span.plan__child-name.marker= @child.full_name
         p.txt_color_red 月を移動すると現在入力中の内容は保存されませんので、ご注意ください。
+        /start_dateの日に予定が存在しないのでcreateが働く
         - unless @plan.present?
           = form_with model: @plans, url: users_plans_path, local: true do |f|
               - @plans.collection.each do |plan|
@@ -13,9 +14,9 @@
                   = month_calendar events: @events do |date, events|
                     .text-left.date__txt_size
                       = date.day
+                    /イベントも表示
                     - events.each do |event|
                        .txt_color_orange = event.title
-                       /イベントも表示
                     - if (@start_date.beginning_of_month..@start_date.end_of_month).cover?(date)
                       .field.text-left
                         - f.label :attendance
@@ -28,18 +29,18 @@
                         = f.text_field :comment, autofocus: true, autocomplete: "name", class: "form__textarea_s"
               .actions
                 = f.submit "登録", class: "form__btn"
-              /start_dateの日に予定が存在しないのでcreateが働く
               .contact__heading
                                 = link_to '戻る', users_plans_path,class:"btn btn_color_gray"
+        /start_dateの日に予定が存在するのでupdateが働く
         - else
           = form_with model: @plans, url: users_plan_path(@plan), method: :put, local: true do |f|
               = month_calendar events: @child.plans do |date, plans|
                 .text-left.date__txt_size
                   = date.day
+                / イベントも表示
                 - @events.each do |event|
                         - if event.start_time == date.beginning_of_day
                           .txt_color_orange = event.title
-                          / イベントも表示
                 - if (@start_date.beginning_of_month..@start_date.end_of_month).cover?(date)
                     - plans.each do |plan|
                       = fields_for "plans[]", plan do |f|
@@ -51,6 +52,5 @@
                               = f.text_field :comment, autofocus: true, autocomplete: "name", class: "form__textarea_s"
               .actions
                 = f.submit "登録", class: "form__btn"
-                 /start_dateの日に予定が存在するのでupdateが働く
               .contact__heading
                                 = link_to '戻る', users_plans_path,class:"btn btn_color_gray"
