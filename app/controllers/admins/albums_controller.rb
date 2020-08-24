@@ -35,12 +35,14 @@ class Admins::AlbumsController < ApplicationController
 
   def update
     @album = Album.find(params[:id])
+    # アルバムに画像が存在して、かつ、選択した画像がある場合その画像を削除
     if @album.images.attached? && !params[:album][:image_ids].nil?
       params[:album][:image_ids].each do |image_id|
         image = @album.images.find(image_id)
         image.purge
       end
     end
+    # 新たに登録した画像の更新
     if @album.update(album_params)
       @album.images.each do |image|
         tags = Vision.get_image_data(image)

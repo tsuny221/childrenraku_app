@@ -1,3 +1,4 @@
+# dviseのフラッシュメッセージをBootstrapデザインで
 module DeviseHelper
   def bootstrap_alert(key)
     case key
@@ -10,4 +11,3 @@ module DeviseHelper
     end
   end
 end
-# dviseのフラッシュメッセージをBootstrapデザインで

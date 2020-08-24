@@ -17,6 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
+  # ユーザーを作成した後にfamilyを作成　save!で念のためバリデーションをかけたりしたときにエラーを吐くようにしている
   def create
     @room = Room.find_by(id: params[:user][:room_id])
     super do
@@ -29,7 +30,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     end
   end
-  # ユーザーを作成した後にfamilyを作成　save!で念のためバリデーションをかけたりしたときにエラーを吐くようにしている
 
   #   @room = Room.find_by(id: params[:user][:room_id])
   #   # パラメータから@roomを再度探す
