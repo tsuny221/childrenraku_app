@@ -14,9 +14,9 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   def update
-    @user = User.find_by(params[:invited_by_id])
-    params[:user][:family_id] = @user.family_id
-    params[:user][:room_id] = @user.room_id
+    @invited_user = User.find_by(id: params[:user][:invited_by_id])
+    params[:user][:family_id] = @invited_user.family_id
+    params[:user][:room_id] = @invited_user.room_id
     super
   end
 

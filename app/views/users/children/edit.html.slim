@@ -6,32 +6,8 @@
       .form__cont
         = form_with model: @child, url: users_child_path(@child), mehod: :post, local: true do |f|
           = render "layouts/errors", obj: @child
-          .field
-            = f.label :last_name, class: "form__label"
-            = f.text_field :last_name, autofocus: true, autocomplete: "name", class: "form__item_input",placeholder: "例）山田"
-            = f.label :first_name, class: "form__label"
-            = f.text_field :first_name, autofocus: true, autocomplete: "name", class: "form__item_input",placeholder: "例）次郎"
-          .field
-            = f.label :last_name_kana, class: "form__label"
-            = f.text_field :last_name_kana, autofocus: true, autocomplete: "name", class: "form__item_input",placeholder: "例）ヤマダ"
-            = f.label :first_name_kana, class: "form__label"
-            = f.text_field :first_name_kana, autofocus: true, autocomplete: "name", class: "form__item_input",placeholder: "例）ジロウ"
-          .field
-            = f.label :grade, class: "form__label"
-             = f.select :grade,Child.grades.keys.map, { include_blank: '選択してください'},{class: "form__item_select"}
-          .field
-            = f.label :school_class, class: "form__label"
-            = f.text_field :school_class, autofocus: true, autocomplete: "class", class: "form__item_input",placeholder: "例）2"
-          .field
-            = f.label :gender, class: "form__label"
-            = f.select :gender, Child.genders.keys.map,{},{class: "form__item_select"}
-          .field
-            = f.label :allergy, class: "form__label"
-            = f.text_field :allergy, autofocus: true, class: "form__item_input",placeholder: "例）ピーナッツ"
-          .field
-            = f.label :special_notes, class: "form__label"
-            = f.text_area :special_notes, autofocus: true, class: "form__item_textarea"
+          = render "users/children/form", f: f
           .actions
-            = f.submit "登録", class: "form__btn"
+            = f.submit "編集", class: "form__btn"
       .contact__heading
                         = link_to '戻る', users_user_path(current_user.id),class:"btn btn_color_gray"

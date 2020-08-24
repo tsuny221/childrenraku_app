@@ -7,7 +7,7 @@ class Users::EventAttendancesController < ApplicationController
     @event_attendance = EventAttendance.new
     # relationship_nameの数だけフォームを生成する
     EventParticipant.relationship_names.keys.each do |key|
-        @event_attendance.event_participants.build(relationship_name: key)
+      @event_attendance.event_participants.build(relationship_name: key)
     end
   end
 

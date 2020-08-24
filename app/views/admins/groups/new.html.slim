@@ -7,17 +7,7 @@
 
           = form_with model: @group ,url: admins_groups_path(@group),method: :post, local: true do |f|
             = render "layouts/errors", obj: @group
-            .field
-              .form__label
-                span.form__item 必須
-                = f.label :name, autofocus: true, class: "form__label"
-              = f.text_field :name, autofocus: true, placeholder: 'グループ名を入力してください', class: "form__item_input"
-            .field.check__box
-              .form__label
-                span.form__item 必須
-                = f.label "メンバー", autofocus: true, class: "form__label"
-              = f.collection_check_boxes(:user_ids, User.where(room_id: @room.id), :id, :last_name) do |user|
-                    = user.label {user.check_box + user.object.full_name}
+            = render "admins/groups/form", f: f
             .actions
               = f.submit "登録", autofocus: true, class: "form__btn"
       .contact__heading

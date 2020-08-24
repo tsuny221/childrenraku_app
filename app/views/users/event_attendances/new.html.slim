@@ -6,20 +6,7 @@
       .form__cont
         = form_with model: @event_attendance, url: users_event_event_attendances_path, local: true do |f|
           = render "layouts/errors", obj: @event_attendance
-          .field
-            .form__label
-              span.form__item 必須
-              = f.label :attendance, class: "form__label"
-            = f.select :attendance, EventAttendance.attendances.keys.map, { include_blank: '選択してください'},{class: "form__item_select"}
-          .field
-             = f.fields_for :event_participants do |f|
-                = f.label :number_of_people, class: "form__label"
-                = f.text_field :relationship_name, readonly: true, class: "form__item_input_s"
-                = f.select :number_of_people, EventParticipant.number_of_people.keys.map,{}, class: "form__item_select form__item_input_s"
-          .field
-            = f.label :comment, class: "form__label"
-            = f.text_field :comment, autofocus: true, class: "form__item_input"
-
+          = render "users/event_attendances/form", f: f
           .actions
             = f.submit "作成", class: "form__btn"
       .contact__heading

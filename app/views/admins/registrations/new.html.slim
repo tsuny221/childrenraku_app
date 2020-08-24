@@ -8,11 +8,9 @@
           = render "admins/shared/error_messages", resource: resource
           .field
             = f.label :name, class: "form__label"
-            br
             = f.text_field :name, autofocus: true, autocomplete: "name", class: "form__item_input",placeholder: "例）横浜学童"
           .field
             = f.label :email, class: "form__label"
-            br
             = f.email_field :email, autofocus: true, autocomplete: "email", class: "form__item_input",placeholder: "例）example@gmail.com"
           .field
             = f.label :password, class: "form__label"
@@ -21,12 +19,10 @@
                 | (
                 = @minimum_password_length
                 |  文字以上)
-            br
             = f.password_field :password, autocomplete: "new-password", class: "form__item_input"
           .field
             = f.label :password_confirmation, class: "form__label"
-            br
             = f.password_field :password_confirmation, autocomplete: "new-password", class: "form__item_input"
           .actions
-            = f.submit "ログイン", class: "form__btn"
+            = f.submit "新規登録", class: "form__btn"
         = render "admins/shared/links"
