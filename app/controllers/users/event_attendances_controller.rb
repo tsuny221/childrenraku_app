@@ -5,7 +5,10 @@ class Users::EventAttendancesController < ApplicationController
 
   def new
     @event_attendance = EventAttendance.new
-    @event_attendance.event_participants.build
+    # relationship_nameの数だけフォームを生成する
+    EventParticipant.relationship_names.keys.each do |key|
+        @event_attendance.event_participants.build(relationship_name: key)
+    end
   end
 
   def create
@@ -16,9 +19,7 @@ class Users::EventAttendancesController < ApplicationController
       flash[:success] = "出欠回答を送信しました。"
       redirect_to users_event_path(@event.id)
     else
-      flash[:danger] = "出欠を選択してください。"
-      # renderだとフォーム が増えていくバグが起きるため
-      redirect_back(fallback_location: new_users_event_event_attendance_path)
+      render :new
     end
   end
 
@@ -32,8 +33,7 @@ class Users::EventAttendancesController < ApplicationController
       flash[:success] = "出欠回答を編集しました。"
       redirect_to users_event_path(@event.id)
     else
-      flash[:danger] = "出欠を選択してください。"
-      redirect_back(fallback_location: edit_users_event_event_attendance_path)
+      render :edit
     end
   end
 

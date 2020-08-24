@@ -17,12 +17,12 @@ class Admins::EventsController < ApplicationController
     @attendance_members = EventParticipant.where(event_attendance_id: @event_attendances_attend.ids)
     # その出欠から人数内訳情報を引っ張っている
     # そのイベントに紐づく出席人数内訳
-    @fathers = @attendance_members.where(relationship_name: 1).where.not(number_of_people: 0)
-    @mothers = @attendance_members.where(relationship_name: 2).where.not(number_of_people: 0)
-    @children = @attendance_members.where(relationship_name: 3).where.not(number_of_people: 0)
-    @infants = @attendance_members.where(relationship_name: 4).where.not(number_of_people: 0)
-    @others = @attendance_members.where(relationship_name: 5).where.not(number_of_people: 0)
-    @total = @fathers.size + @mothers.size + @children.size + @infants.size + @others.size
+    @number_of_fathers = @attendance_members.where(relationship_name: 0).where.not(number_of_people: 0).sum(:number_of_people)
+    @number_of_mothers = @attendance_members.where(relationship_name: 1).where.not(number_of_people: 0).sum(:number_of_people)
+    @number_of_children = @attendance_members.where(relationship_name: 2).where.not(number_of_people: 0).sum(:number_of_people)
+    @number_of_infants = @attendance_members.where(relationship_name: 3).where.not(number_of_people: 0).sum(:number_of_people)
+    @number_of_others = @attendance_members.where(relationship_name: 4).where.not(number_of_people: 0).sum(:number_of_people)
+    @number_of_total_people = [@number_of_fathers.to_i, @number_of_mothers.to_i, @number_of_children.to_i, @number_of_infants.to_i, @number_of_others.to_i].sum
   end
 
   def new

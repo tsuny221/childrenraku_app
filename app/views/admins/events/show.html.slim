@@ -33,17 +33,17 @@
                   .txt_size_m.admin__caption
                       .caption_left
                         | 出席人数：
-                        = @total
+                        = @number_of_total_people
                         | 人(父
-                        = @fathers.size
+                        = @number_of_fathers
                         | 母
-                        = @mothers.size
+                        = @number_of_mothers
                         | 児童
-                        = @children.size
+                        = @number_of_children
                         | 未就学児
-                        = @infants.size
+                        = @number_of_infants
                         | その他
-                        = @others.size
+                        = @number_of_others
                         |)
                       .caption_right
                           span.txt_color_red
@@ -87,15 +87,15 @@
                 .event__cont
                     h4.marker.event__heading
                       | 未回答者一覧
+                    / 未回答者を表示（roomに紐づく家族から、その家族に紐づく、回答が存在しないひとのみ表示）
                     - @families.each do |family|
-                        - unless EventAttendance.where(family_id: family.id, event_id: @event.id).present?
-                            li.txt_color_red.event-attendance__list
-                            - family.users.each do |user|
-                              = user.full_name
-                              | (
-                              = mail_to user.email, user.email, class: "txt_color_blue"
-                              | )
-                              / 未回答者を表示（roomに紐づく家族から、その家族に紐づく、回答が存在しないひとのみ表示）
+                          - unless EventAttendance.where(family_id: family.id, event_id: @event.id).present?
+                              li.txt_color_red.event-attendance__list
+                              - family.users.each do |user|
+                                = user.full_name
+                                | (
+                                = mail_to user.email, user.email, class: "txt_color_blue"
+                                | )
           - else @event_attendances.present?
                 p.text-center 出欠回答がありません
         .event__heading
