@@ -42,9 +42,7 @@ https://docs.google.com/spreadsheets/d/1VkMcbUaErn9sy6cioJIrw_9qh0R-E5k8SXxHGA3F
 
 - マイページ機能（プロフィール編集、家族招待機能）
 
-### AI コースで後に実装
-
-- 写真管理機能（施設で撮った写真をアルバムで管理）
+- 写真管理機能（施設で撮った写真をアルバムで管理、AI による写真の自動タグ付）
 
 ### 開発環境
 
