@@ -40,6 +40,33 @@ https://docs.google.com/spreadsheets/d/1VkMcbUaErn9sy6cioJIrw_9qh0R-E5k8SXxHGA3F
 
 - 写真管理機能（施設で撮った写真をアルバムで管理）
 
+### 開発環境
+
+- OS
+  Linux(CentOS)
+
+- 言語
+  HTML,CSS,JavaScript,Ruby,SQL,Python
+
+- フレームワーク
+  Ruby on Rails
+  Bootstrap
+
+- JS ライブラリ
+  jQuery
+
+- 外部 API
+  Google Vision AI API
+
+- インフラ
+  AWS(EC2,RDS,AMI,EIP)
+
+- テストフレームワーク
+  RSpec
+
+- その他ツールなど
+  Vagrant,VirtualBox, Slack
+
 ### 遷移図/ワイヤーフレーム(初期バージョンのため変更あり)
 
 - https://xd.adobe.com/view/c1a0f38d-7063-4b83-a51b-e1d52729a880-94f3/
